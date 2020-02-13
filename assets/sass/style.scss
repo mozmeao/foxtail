@@ -1,6 +1,6 @@
 /*!
 Theme Name: Foxtail
-Theme URI: http://underscores.me/
+Theme URI: http://www.mozilla.org/firefox/
 Author: Mozilla
 Author URI: https://www.mozilla.org/
 Description: Theme for the new Firefox content portal
@@ -14,6 +14,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Mozilla Protocol
 # Normalize
 # Typography
 # Elements
@@ -37,14 +38,20 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 @import "mixins/mixins-master";
 
 /*--------------------------------------------------------------
+# Mozilla Protocol
+--------------------------------------------------------------*/
+@import "./node_modules/@mozilla-protocol/core/protocol/css/protocol.css";
+@import "./node_modules/@mozilla-protocol/core/protocol/css/protocol-extra.css";
+
+/*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
-@import "normalize";
+// @import "normalize";
 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-@import "typography/typography";
+// @import "typography/typography";
 
 /*--------------------------------------------------------------
 # Elements
@@ -54,12 +61,12 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
-@import "forms/forms";
+// @import "forms/forms";
 
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
-@import "navigation/navigation";
+// @import "navigation/navigation";
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -69,29 +76,29 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
-@import "modules/alignments";
+// @import "modules/alignments";
 
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
-@import "modules/clearings";
+// @import "modules/clearings";
 
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-@import "site/secondary/widgets";
+// @import "site/secondary/widgets";
 
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
-@import "site/site";
+// @import "site/site";
 
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-@import "modules/infinite-scroll";
+// @import "modules/infinite-scroll";
 
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-@import "media/media";
+// @import "media/media";

@@ -1,11 +1,11 @@
 {
-  "name": "your-project",
-  "description": "A WPGulp based project.",
+  "name": "foxtail",
+  "description": "A wordpres theme for the Firefox content hub",
   "version": "1.0.0",
-  "author": "Author Name (https://twitter.com/MrAhmadAwais/)",
+  "author": "Dan Brown (dbrown@mozila.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmadawais/WPGulp"
+    "url": "https://github.com/slightlyoffbeat/foxtail"
   },
   "license": "MIT",
   "devDependencies": {
@@ -39,6 +39,7 @@
   },
   "scripts": {
     "start": "gulp",
+    "dev": "gulp",
     "styles": "gulp styles",
     "stylesRTL": "gulp stylesRTL",
     "vendorsJS": "gulp vendorsJS",
@@ -46,5 +47,8 @@
     "images": "gulp images",
     "clearCache": "gulp clearCache",
     "translate": "gulp translate"
+  },
+  "dependencies": {
+    "@mozilla-protocol/core": "^10.0.1"
   }
 }
