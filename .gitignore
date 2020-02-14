@@ -70,8 +70,11 @@ assets/img/.DS_Store
 
 # Other #
 /haters
+css
 style.css
 style.min.css
+editor.csseditor.css.map
+editor.min.css
 assets/js/custom.min.js
 assets/js/custom.js
 assets/js/vendor.js

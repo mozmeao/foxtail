@@ -130,10 +130,16 @@ function foxtail_scripts() {
 		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js' );
 
 		// Minified and Concatenated styles.
-		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . 'css/style.min.css', array(), '1.0', 'all' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
+
+
+// Enqueue WordPress theme styles within Gutenberg.
+add_theme_support( 'editor-styles' );
+add_editor_style( 'css/editor.min.css' );
+
 
 /**
  * Implement the Custom Header feature.

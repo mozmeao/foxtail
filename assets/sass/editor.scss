@@ -1,0 +1,34 @@
+/*--------------------------------------------------------------
+Editor Styles
+
+Because of the new block editor in Wordpress, we now need to include some styles
+for the CMS/editor
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Setup
+--------------------------------------------------------------*/
+@import "config";
+
+// Fonts
+@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/inter";
+@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/metropolis";
+
+/*--------------------------------------------------------------
+# Elements - Unclassed HTML elements.
+--------------------------------------------------------------*/
+@import "elements/protocol-elements";
+
+/*--------------------------------------------------------------
+# Blocks
+--------------------------------------------------------------*/
+// @import "components/blocks/**/*.scss";
+
+/*--------------------------------------------------------------
+# Other
+--------------------------------------------------------------*/
+
+// set title of page/post to use Inter
+.editor-post-title__block .editor-post-title__input {
+  font-family: Inter, X-LocaleSpecific, sans-serif;
+}

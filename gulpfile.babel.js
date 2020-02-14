@@ -115,7 +115,7 @@ const reload = done => {
  */
 gulp.task( 'styles', () => {
 	return gulp
-		.src( config.styleSRC, { allowEmpty: true })
+		.src([config.styleSRC, config.styleEditorSRC], { allowEmpty: true})
 		.pipe( plumber( errorHandler ) )
 		.pipe( sourcemaps.init() )
 		.pipe(
