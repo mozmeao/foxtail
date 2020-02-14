@@ -23,7 +23,7 @@ module.exports = {
 	precision: 10,
 
 	// JS Vendor options.
-	jsVendorSRC: './assets/js/vendor/*.js', // Path to JS vendor folder.
+	jsVendorSRC: './assets/js/vendor/**/*.js', // Path to JS vendor folder.
 	jsVendorDestination: './assets/js/', // Path to place the compiled JS vendors file.
 	jsVendorFile: 'vendor', // Compiled JS vendors file name. Default set to vendors i.e. vendors.js.
 
@@ -38,7 +38,7 @@ module.exports = {
 
 	// Watch files paths.
 	watchStyles: './assets/sass/**/*.scss', // Path to all *.scss files inside css folder and inside them.
-	watchJsVendor: './assets/js/vendor/*.js', // Path to all vendor JS files.
+	watchJsVendor: './assets/js/vendor/**/*.js', // Path to all vendor JS files.
 	watchJsCustom: './assets/js/custom/*.js', // Path to all custom JS files.
 	watchPhp: './**/*.php', // Path to all PHP files.
 

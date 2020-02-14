@@ -1,0 +1,16 @@
+/*--------------------------------------------------------------
+Protocol Layouts
+
+This is a place to import Protocol Layouts that DO NOT need any modification.
+
+If a component is extended in any way, then it will have its own component file, 
+and import the protocol component there.
+--------------------------------------------------------------*/
+
+// Global Partials (nav, footer, etc)
+// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/footer";
+// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/navigation-form";
+
+// Wrappers and other layouts
+// @import "./node_modules/@mozilla-protocol/core/protocol/css/templates/card-layout";
+// @import "./node_modules/@mozilla-protocol/core/protocol/css/templates/main-with-sidebar";

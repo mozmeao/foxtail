@@ -60,7 +60,8 @@ const sort = require( 'gulp-sort' ); // Recommended to prevent unnecessary chang
 const cache = require( 'gulp-cache' ); // Cache files in stream for later use.
 const remember = require( 'gulp-remember' ); //  Adds all the files it has ever seen back into the stream.
 const plumber = require( 'gulp-plumber' ); // Prevent pipe breaking caused by errors from gulp plugins.
-const beep = require( 'beepbeep' );
+const beep = require('beepbeep');
+var del = require('del'); // Used to delete files in a gulp task
 
 /**
  * Custom Error Handler.
@@ -363,3 +364,33 @@ gulp.task(
 		gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on customJS file changes.
 	})
 );
+
+
+// CUSTOM GULP PROCESSES
+
+/**
+ * Task: `protocol-js`.
+ *
+ * Copies JS files from protocol into the js/custom folder
+ *
+ * This task does the following:
+ *     1. Run a clean task that will delete current protocol js files
+ *     2. Copy a list of files to the protocol folder inside assets/js/vendor
+ */
+
+gulp.task('protocolJsClean', () => {
+	return del(['./assets/js/vendor/protocol/**/*']);
+})
+
+gulp.task('protocolJsCopy', () => {
+	const files = [
+		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-footer.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-navigation.js',
+	];
+
+	return gulp
+		.src(files)
+		.pipe(gulp.dest('./assets/js/vendor/protocol'));
+});
+
+gulp.task('protocolJS', gulp.series('protocolJsClean', 'protocolJsCopy'));

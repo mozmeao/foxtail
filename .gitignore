@@ -72,5 +72,9 @@ assets/img/.DS_Store
 /haters
 style.css
 style.min.css
+assets/js/custom.min.js
+assets/js/custom.js
+assets/js/vendor.js
+assets/js/vendor.min.js
 z_archive/
 /z_archive/

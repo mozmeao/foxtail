@@ -1,6 +1,6 @@
 /*!
 Theme Name: Foxtail
-Theme URI: http://www.mozilla.org/firefox/
+Theme URI: TBD
 Author: Mozilla
 Author URI: https://www.mozilla.org/
 Description: Theme for the new Firefox content portal
@@ -8,97 +8,74 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: foxtail
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: Firefox, Mozilla
 */
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Mozilla Protocol
-# Normalize
-# Typography
-# Elements
-# Forms
-# Navigation
-	## Links
-	## Menus
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-	## Posts and pages
-	## Comments
-# Infinite scroll
-# Media
-	## Captions
-	## Galleries
+# Setup - config, variables, fonts, etc
+# Tools - Mixins, Functions
+# Generic - ground-zero styles
+# Elements - unclassed HTML elements
+# Layouts - partials, wrappers, etc
+# Components - specific UI components.
+# Wordpress Core - required Wordpress classes
+# Pages - page specific styles
+# Utilities
+# Shame - The stuff that shouldn't exist..but...does
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
 
 /*--------------------------------------------------------------
-# Mozilla Protocol
+# Setup
 --------------------------------------------------------------*/
-@import "./node_modules/@mozilla-protocol/core/protocol/css/protocol.css";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/protocol-extra.css";
+@import "config";
+
+// Fonts
+@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/inter";
+@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/metropolis";
 
 /*--------------------------------------------------------------
-# Normalize
+# Tools - Mixins, Functions, etc
 --------------------------------------------------------------*/
-// @import "normalize";
 
 /*--------------------------------------------------------------
-# Typography
+# Generic - Ground-zero styles (resets, box-sizing, etc.)
 --------------------------------------------------------------*/
-// @import "typography/typography";
+@import "generic/box-sizing";
+@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/reset";
 
 /*--------------------------------------------------------------
-# Elements
+# Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
-@import "elements/elements";
+@import "elements/protocol-elements";
 
 /*--------------------------------------------------------------
-# Forms
+# Layouts - partials, wrappers, etc
 --------------------------------------------------------------*/
-// @import "forms/forms";
+// @import "layouts/protocol-layouts";
 
 /*--------------------------------------------------------------
-# Navigation
+# Components - specific UI components.
 --------------------------------------------------------------*/
-// @import "navigation/navigation";
+@import "components/protocol-components";
 
 /*--------------------------------------------------------------
-# Accessibility
+# Wordpres Core - Required classes for Wordpress
 --------------------------------------------------------------*/
-@import "modules/accessibility";
+@import "wp-core/wp-core";
 
 /*--------------------------------------------------------------
-# Alignments
+# Pages - Page specific styles (use sparingly)
 --------------------------------------------------------------*/
-// @import "modules/alignments";
+// @import "page/about";
 
 /*--------------------------------------------------------------
-# Clearings
+# Utilities - helpers, etc
 --------------------------------------------------------------*/
-// @import "modules/clearings";
+// @import "utilities/center";
 
 /*--------------------------------------------------------------
-# Widgets
+# SHAAAAME! - The stuff that shouldn't exist..but...does
 --------------------------------------------------------------*/
-// @import "site/secondary/widgets";
-
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-// @import "site/site";
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-// @import "modules/infinite-scroll";
-
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-// @import "media/media";
+@import "shame.scss";

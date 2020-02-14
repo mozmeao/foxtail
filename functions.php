@@ -60,10 +60,10 @@ if ( ! function_exists( 'foxtail_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'foxtail_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+		// add_theme_support( 'custom-background', apply_filters( 'foxtail_custom_background_args', array(
+		// 	'default-color' => 'ffffff',
+		// 	'default-image' => '',
+		// ) ) );
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -138,7 +138,7 @@ add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+// require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -153,7 +153,7 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Advanced Custom Fields
