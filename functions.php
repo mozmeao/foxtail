@@ -124,13 +124,13 @@ function foxtail_scripts() {
 	// Frontend scripts.
 	if ( ! is_admin() ) {
 		// Enqueue vendors first.
-		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendors.min.js' );
+		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js' );
 
 		// Enqueue custom JS after vendors.
 		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js' );
 
 		// Minified and Concatenated styles.
-		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . 'css/style.min.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0', 'all' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
@@ -138,7 +138,7 @@ add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
 
 // Enqueue WordPress theme styles within Gutenberg.
 add_theme_support( 'editor-styles' );
-add_editor_style( 'css/editor.min.css' );
+add_editor_style( 'assets/css/editor.min.css' );
 
 
 /**
@@ -165,23 +165,4 @@ require get_template_directory() . '/inc/template-functions.php';
  * Advanced Custom Fields
  */
 
-// Define path and URL to the ACF plugin.
-define( 'MY_ACF_PATH', get_stylesheet_directory() . '/inc/acf/' );
-define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/inc/acf/' );
-
-// Include the ACF plugin.
-include_once( MY_ACF_PATH . 'acf.php' );
-
-// Customize the url setting to fix incorrect asset URLs.
-add_filter('acf/settings/url', 'my_acf_settings_url');
-function my_acf_settings_url( $url ) {
-    return MY_ACF_URL;
-}
-
-/**
- * Load Jetpack compatibility file.
- */
-// if ( defined( 'JETPACK__VERSION' ) ) {
-// 	require get_template_directory() . '/inc/jetpack.php';
-// }
-
+require get_template_directory() . '/inc/advanced-custom-fields.php';

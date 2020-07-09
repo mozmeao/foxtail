@@ -37,10 +37,6 @@ Tags: Firefox, Mozilla
 @import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/metropolis";
 
 /*--------------------------------------------------------------
-# Tools - Mixins, Functions, etc
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
 # Generic - Ground-zero styles (resets, box-sizing, etc.)
 --------------------------------------------------------------*/
 @import "generic/box-sizing";
@@ -50,16 +46,21 @@ Tags: Firefox, Mozilla
 # Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
 @import "elements/protocol-elements";
+@import "elements/typography";
+// @import "elements/container";
+// @import "elements/label";
 
 /*--------------------------------------------------------------
-# Layouts - partials, wrappers, etc
+# Objects - Rules that focus only on structure and layout.
 --------------------------------------------------------------*/
-// @import "layouts/protocol-layouts";
+// @import "objects/grid";
+// @import "objects/spacing";
 
 /*--------------------------------------------------------------
 # Components - specific UI components.
 --------------------------------------------------------------*/
 @import "components/protocol-components";
+@import "components/header";
 
 /*--------------------------------------------------------------
 # Wordpres Core - Required classes for Wordpress
@@ -74,7 +75,6 @@ Tags: Firefox, Mozilla
 /*--------------------------------------------------------------
 # Utilities - helpers, etc
 --------------------------------------------------------------*/
-// @import "utilities/center";
 
 /*--------------------------------------------------------------
 # SHAAAAME! - The stuff that shouldn't exist..but...does

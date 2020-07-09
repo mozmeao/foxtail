@@ -18,7 +18,7 @@ module.exports = {
 	// Style options.
 	styleSRC: './assets/sass/style.scss', // Path to main .scss file.
 	styleEditorSRC: './assets/sass/editor.scss', // Path to main .scss file.
-	styleDestination: './css', // Path to place the compiled CSS file. Default set to root folder.
+	styleDestination: './assets/css', // Path to place the compiled CSS file. Default set to root folder.
 	outputStyle: 'compact', // Available options → 'compact' or 'compressed' or 'nested' or 'expanded'
 	errLogToConsole: true,
 	precision: 10,

@@ -1,0 +1,23 @@
+.ft-l-container {
+  margin: 0 auto;
+  padding: 0 6%;
+
+  @media #{$mq-sm} {
+    // max-width: 432px;
+    // padding: 0 48px;
+  }
+
+  @media #{$mq-md} {
+    // padding: 0 48px;
+    padding: 0;
+    max-width: 688px;
+  }
+
+  @media #{$mq-lg} {
+    max-width: 928px;
+  }
+
+  @media #{$mq-xl} {
+    max-width: 1152px;
+  }
+}
