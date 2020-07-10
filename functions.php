@@ -42,6 +42,13 @@ if ( ! function_exists( 'foxtail_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/*
+		 * Custom Image Sizes + calculations
+		 */
+		require get_template_directory() . '/inc/image-sizes.php';
+
+
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'foxtail' ),

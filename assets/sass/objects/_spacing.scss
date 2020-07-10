@@ -1,0 +1,11 @@
+.ft-l-space-unrelated {
+  height: 120px;
+
+  @media #{$mq-lg} {
+    height: 192px;
+  }
+}
+
+.ft-l-space-related {
+  height: 96px;
+}

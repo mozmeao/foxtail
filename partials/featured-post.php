@@ -13,8 +13,7 @@
   // set up variables
   if( $featured_post ):
     $featured_permalink = get_permalink( $featured_post->ID );
-    $featured_image_url = '';
-    $featured_image = get_the_post_thumbnail($featured_post);
+    $featured_image = get_the_post_thumbnail($featured_post, '3x2');
     $featured_title = esc_html( $featured_post->post_title);
     $featured_excerpt = wp_trim_words( get_the_excerpt($featured_post), 55, ' ...' );
   ?>

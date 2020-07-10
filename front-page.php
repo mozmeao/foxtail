@@ -7,10 +7,15 @@ get_header();
 set_query_var('lang', 'en');
 ?>
 
-<?php
+<!-- This is the large featured post section -->
+<?php get_template_part('partials/featured-post'); ?>
 
-// This is the large featured post section
-get_template_part('partials/featured-post');
-?>
+<div class="ft-l-space-unrelated"></div>
+
+<!-- The 2nd featured section which has 3 items -->
+<?php get_template_part('partials/secondary-featured'); ?>
+
+<div class="ft-l-space-unrelated"></div>
+
 <?php
 get_footer();

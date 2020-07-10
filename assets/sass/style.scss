@@ -54,6 +54,7 @@ Tags: Firefox, Mozilla
 # Objects - Rules that focus only on structure and layout.
 --------------------------------------------------------------*/
 @import "objects/container";
+@import "objects/spacing";
 
 /*--------------------------------------------------------------
 # Components - specific UI components.
@@ -63,6 +64,7 @@ Tags: Firefox, Mozilla
 @import "components/featured-hero";
 @import "components/label";
 @import "components/button";
+@import "components/featured-secondary";
 
 /*--------------------------------------------------------------
 # Wordpres Core - Required classes for Wordpress
