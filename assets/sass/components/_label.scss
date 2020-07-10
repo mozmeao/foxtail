@@ -1,0 +1,16 @@
+.ft-c-label {
+  @include text-body-xs;
+  letter-spacing: 0.15rem;
+  color: $color-ink-80;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+
+  &.ft-c-label--dark {
+    color: $color-light-gray-70;
+  }
+
+  &.ft-c-label--white {
+    color: $color-white;
+  }
+}

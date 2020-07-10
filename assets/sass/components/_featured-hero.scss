@@ -1,0 +1,52 @@
+.ft-c-featured-hero {
+  background-color: $color-ink-90;
+  color: $color-white;
+  padding: 24px 0;
+}
+
+.ft-c-featured-hero__wrap {
+  @media #{$mq-lg} {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    grid-column-gap: 80px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.ft-c-featured-hero__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1;
+
+  @media #{$mq-lg} {
+    padding: 24px 0;
+  }
+}
+
+.ft-c-featured-hero__title {
+  margin-bottom: 24px;
+  @include text-title-md;
+}
+
+.ft-c-featured-hero__desc {
+  margin-bottom: 24px;
+}
+
+.ft-c-featured-hero__image {
+  align-self: center;
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 1;
+  margin-bottom: 24px;
+
+  @media #{$mq-lg} {
+    margin-bottom: 0px;
+  }
+
+  img {
+    border-radius: 8px;
+  }
+}
