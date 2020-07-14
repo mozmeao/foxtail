@@ -17,5 +17,11 @@ set_query_var('lang', 'en');
 
 <div class="ft-l-space-unrelated"></div>
 
+<!-- The Featured Video section -->
+<?php get_template_part('partials/featured-video'); ?>
+
+<div class="ft-l-space-unrelated"></div>
+
+
 <?php
 get_footer();

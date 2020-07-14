@@ -2,6 +2,7 @@
 
 .ft-button--dark,
 a.ft-button--dark {
+  @extend .mzp-c-button.mzp-t-xl;
   @extend .mzp-c-button;
   background-color: $color-violet-60;
   color: $color-white;

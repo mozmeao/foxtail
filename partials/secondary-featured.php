@@ -1,6 +1,6 @@
 <!-- First, some JS that handles the mouseover hover -->
-<script type="text/javascript">
-window.onload = function() {
+<script type="text/javascript" async>
+function secondaryFeatured() {
   document.querySelector(".ft-c-featured-secondary__image--1").classList.add("is-active");
   document.getElementById("ft-js-first").addEventListener("mouseover", function() {
     document.querySelector(".ft-c-featured-secondary__image--1").classList.add("is-active");
@@ -18,6 +18,7 @@ window.onload = function() {
     document.querySelector(".ft-c-featured-secondary__image--3").classList.add("is-active");
   })
 }
+window.addEventListener("load", secondaryFeatured, false);
 </script>
 
 <?php

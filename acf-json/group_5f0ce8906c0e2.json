@@ -1,0 +1,86 @@
+{
+    "key": "group_5f0ce8906c0e2",
+    "title": "Featured Video (EN)",
+    "fields": [
+        {
+            "key": "field_5f0ce8a79db3e",
+            "label": "Featured Video URl",
+            "name": "featured_video_url_en",
+            "type": "text",
+            "instructions": "Past the entire youtube URL. It must be a Youtube URL\r\n\r\nex: https:\/\/www.youtube.com\/watch?v=PLTL0FiV_3o",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f0cf1c901ad6",
+            "label": "Featured Video Image",
+            "name": "featured_video_image_en",
+            "type": "image",
+            "instructions": "Upload an image that is either 1920x1080 or 1280x720",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5f0d091ade177",
+            "label": "Featured Video Title (en)",
+            "name": "featured_video_title_en",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-front-page-en"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1594689834
+}
