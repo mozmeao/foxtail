@@ -6,9 +6,18 @@
 
   if ($lang && $lang === 'en'):
     $featured_post = get_field('post_to_feature_en', 'option');
+
+    // add to array that tracks displayed posts on homepage
+    global $_displayed_posts_en;
+    $_displayed_posts_en[] = $featured_post->ID;
   elseif ($lang && $lang === 'de'):
     $featured_post = get_field('post_to_feature_de', 'option');
+
+    // add to array that tracks displayed posts on homepage
+    global $_displayed_posts_de;
+    $_displayed_posts_de[] = $featured_post->ID;
   endif;
+
 
   // set up variables
   if( $featured_post ):

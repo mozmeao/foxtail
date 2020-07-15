@@ -31,10 +31,23 @@ if ($lang && $lang === 'en'):
   $secondary_featured_1 = get_field('secondary_featured_1_en', 'option');
   $secondary_featured_2 = get_field('secondary_featured_2_en', 'option');
   $secondary_featured_3 = get_field('secondary_featured_3_en', 'option');
+
+  // Add these posts to this array so that they aren't duplicated on front page
+  global $_displayed_posts_en;
+  $_displayed_posts_en[] = $secondary_featured_1->ID;
+  $_displayed_posts_en[] = $secondary_featured_2->ID;
+  $_displayed_posts_en[] = $secondary_featured_3->ID;
 elseif ($lang && $lang === 'de'):
   $secondary_featured_1 = get_field('secondary_featured_1_de', 'option');
   $secondary_featured_2 = get_field('secondary_featured_2_de', 'option');
   $secondary_featured_3 = get_field('secondary_featured_3_de', 'option');
+
+
+  // Add these posts to this array so that they aren't duplicated on front page
+  global $_displayed_posts_de;
+  $_displayed_posts_de[] = $secondary_featured_1->ID;
+  $_displayed_posts_de[] = $secondary_featured_2->ID;
+  $_displayed_posts_de[] = $secondary_featured_3->ID;
 endif;
 
 // set up variables

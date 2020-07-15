@@ -1,0 +1,76 @@
+.ft-c-post-list__title {
+  margin-bottom: 64px;
+  max-width: 60%;
+}
+
+// this post list layout is 2 columns one wide desktops
+.ft-c-post-list__wrap--two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+
+  section:nth-child(n + 5) {
+    display: none;
+  }
+
+  .ft-c-card a {
+    display: flex;
+    flex-direction: column;
+  }
+  .ft-c-card__content {
+    margin: 0;
+  }
+
+  @media #{$mq-md} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 80px;
+
+    section:nth-child(n + 5) {
+      display: block;
+    }
+
+    .ft-c-card a {
+      flex-direction: row;
+    }
+    .ft-c-card__content {
+      margin-left: 16px;
+    }
+  }
+}
+
+// this post list lyout is 3 columns on wide desktops
+.ft-c-post-list__wrap--three-column {
+  .ft-c-card {
+    margin-bottom: 48px;
+  }
+
+  section:nth-child(n + 4) {
+    display: none;
+  }
+
+  @media #{$mq-md} {
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: 1fr 1fr;
+
+    section:nth-child(n + 4) {
+      display: block;
+    }
+
+    .ft-c-card {
+      margin-bottom: none;
+    }
+  }
+
+  @media #{$mq-lg} {
+    grid-gap: 80px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.ft-c-post-list__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}

@@ -1,0 +1,75 @@
+// generic card with thumbnail over content
+
+.ft-c-card__link {
+  text-decoration: none;
+  color: $color-ink-80;
+}
+
+.ft-c-card__image {
+  img {
+    border-radius: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+}
+
+.ft-c-card__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ft-c-card__cta {
+  color: $color-light-gray-90;
+  letter-spacing: 0.1rem;
+}
+
+.ft-c-card__title {
+  @include text-title-sm;
+}
+
+// Hover over a card
+.ft-c-card__link:hover {
+  .ft-c-card__image img {
+    box-shadow: $box-shadow-md;
+  }
+
+  .ft-c-card__title {
+    text-decoration: underline;
+  }
+}
+
+// styles for smaller card format
+// Thumbnail is on the left
+
+.ft-c-card--small {
+  .ft-c-card__link {
+    display: flex;
+  }
+
+  .ft-c-card__image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: none;
+      margin-bottom: 0;
+
+      @media #{$mq-md} {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+  }
+
+  .ft-c-card__content {
+    margin-top: 16px;
+    flex: 3;
+  }
+
+  .ft-c-card__title {
+    @include text-title-xs;
+  }
+}

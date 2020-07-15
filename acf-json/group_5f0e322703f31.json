@@ -1,0 +1,127 @@
+{
+    "key": "group_5f0e322703f31",
+    "title": "Featured Collection #1 (EN)",
+    "fields": [
+        {
+            "key": "field_5f0e4b98cdc3e",
+            "label": "Feature Collection 1 Title (EN)",
+            "name": "feature_collection_1_title_en",
+            "type": "text",
+            "instructions": "This is the title displayed before showing this collection. Keep it short.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f0e323624b83",
+            "label": "Feature Category or Tag",
+            "name": "feature_category_or_tag_1_en",
+            "type": "radio",
+            "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "category": "category",
+                "tag": "tag"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5f0e32c124b84",
+            "label": "Featured Collection 1 Category (EN)",
+            "name": "featured_collection_1_category_en",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f0e323624b83",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5f0e331624b85",
+            "label": "Featured Collection 1 Tag (EN)",
+            "name": "featured_collection_1_tag_en",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f0e323624b83",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "post_tag",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-front-page-en"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1594774842
+}

@@ -5,6 +5,10 @@
 
 get_header();
 set_query_var('lang', 'en');
+
+global $_displayed_posts_en;
+$_displayed_posts_en = array();
+
 ?>
 
 <!-- This is the large featured post section -->
@@ -21,6 +25,26 @@ set_query_var('lang', 'en');
 <?php get_template_part('partials/featured-video'); ?>
 
 <div class="ft-l-space-unrelated"></div>
+
+<!-- Collection #1 -->
+
+<?php get_template_part('partials/collection/collection-one'); ?>
+
+<div class="ft-l-space-unrelated"></div>
+
+<!-- Collection #2 -->
+
+<?php get_template_part('partials/collection/collection-two'); ?>
+
+<div class="ft-l-space-unrelated"></div>
+
+<!-- Collection #3 -->
+
+<?php get_template_part('partials/collection/collection-three'); ?>
+
+<div class="ft-l-space-unrelated"></div>
+
+
 
 
 <?php
