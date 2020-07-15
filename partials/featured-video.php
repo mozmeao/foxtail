@@ -23,6 +23,7 @@ function featuredVideo() {
     videoiframe.setAttribute("src", "https://www.youtube-nocookie.com/embed/" + videoId +
       "?rel=0&showinfo=0&autoplay=1");
     youtube.innerHTML = "";
+    youtube.classList.add('responsive-video');
     youtube.appendChild(videoiframe);
   });
 }
@@ -51,8 +52,8 @@ endif;
     <div class="ft-l-container">
       <span class="ft-c-label ft-c-label--white">Featured Video</span>
       <h2><?php echo $featured_video_title ?></h2>
-      <div id="featuredvideo" class="responsive-video ft-c-featured-video__media ">
-        <div class="ft-c-featured-video__thumbnail">
+      <div id="featuredvideo" class="ft-c-featured-video__media ">
+        <div class="ft-c-featured-video__play-icon">
           <img src="<?php echo get_template_directory_uri() . '/assets/images/play.svg' ?>" alt="play button" />
         </div>
 

@@ -23,23 +23,23 @@
 
 .ft-c-featured-video__media {
   margin-bottom: -160px;
-  border-radius: 8px;
-  background-color: #000000;
+  position: relative;
 
   > img {
     box-shadow: $box-shadow-lg;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
+    transition: filter 0.2s ease;
+    filter: brightness(0.8);
+    border-radius: 8px;
   }
 
   &:hover {
     > img {
-      opacity: 0.8;
+      filter: brightness(1);
     }
   }
 }
 
-.ft-c-featured-video__thumbnail {
+.ft-c-featured-video__play-icon {
   cursor: pointer;
   position: absolute;
   z-index: 99999;
