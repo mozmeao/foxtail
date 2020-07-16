@@ -1,0 +1,173 @@
+{
+    "key": "group_5f10953ba6741",
+    "title": "Featured Extra (EN)",
+    "fields": [
+        {
+            "key": "field_5f10955017bf1",
+            "label": "Headline (EN)",
+            "name": "featured_extra_headline_en",
+            "type": "text",
+            "instructions": "Example: IRL: Online life is real life",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f10958817bf2",
+            "label": "Subheading (EN)",
+            "name": "featured_extra_subhead_en",
+            "type": "textarea",
+            "instructions": "Example:\r\n\r\nHost Manoush Zomorodi shares real stories of life online and real talk about the future of the Web.\r\n\r\nIRL is an original podcast from Firefox.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5f1098382191e",
+            "label": "Label Text",
+            "name": "featured_extra_label_en",
+            "type": "text",
+            "instructions": "This is the small label that appears on this section. Keep this short. For example: \"Ear Candy\"",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f10960217bf3",
+            "label": "Image to Feature",
+            "name": "featured_extra_image_en",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 500,
+            "min_height": 500,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5f10965b17bf4",
+            "label": "CTA #1 Text",
+            "name": "featured_extra_cta_1_en",
+            "type": "text",
+            "instructions": "This is the text in the CTA button. Keep it short. Examples are \"Listen\", \"Read More\", \"Learn More\", \"Subscribe\", etc",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f1096a417bf5",
+            "label": "CTA #1 Link",
+            "name": "featured_extra_link_1_en",
+            "type": "link",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_5f10a3b694be5",
+            "label": "CTA #2 Text",
+            "name": "featured_extra_cta_2_en",
+            "type": "text",
+            "instructions": "If you need a secondary CTA, you can use this. This is not required",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f10a3e62f1d9",
+            "label": "CTA #2 Link",
+            "name": "featured_extra_link_2_en",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-front-page-en"
+            }
+        ]
+    ],
+    "menu_order": 6,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "This section was designed to feature the Podcat, but it can be used to feature anything. Just fill in the required fields.",
+    "modified": 1594926084
+}

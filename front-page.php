@@ -9,6 +9,10 @@ set_query_var('lang', 'en');
 global $_displayed_posts_en;
 $_displayed_posts_en = array();
 
+$featured_post = get_field('post_to_feature_en', 'option');
+set_query_var('featured_post', $featured_post);
+
+
 ?>
 
 <!-- This is the large featured post section -->
@@ -44,6 +48,8 @@ $_displayed_posts_en = array();
 
 <div class="ft-l-space-unrelated"></div>
 
+<!-- Featured CTA -->
+<?php get_template_part('partials/featured-extra'); ?>
 
 
 

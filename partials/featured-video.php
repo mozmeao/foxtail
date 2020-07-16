@@ -58,7 +58,7 @@ endif;
         </div>
 
         <?php if ($featured_video_image) {
-          echo wp_get_attachment_image($featured_video_image, '16:9');
+          echo wp_get_attachment_image($featured_video_image, '16x9');
         };
         ?>
         <span id="featuredvideourl" style="display: none"><?php echo $featured_video_url ?></span>
