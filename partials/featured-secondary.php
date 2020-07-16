@@ -27,84 +27,73 @@ window.addEventListener("load", secondaryFeatured, false);
 $lang = get_query_var('lang');
 
 // set the post object according to what langauge is set
-if ($lang && $lang === 'en'):
-  $secondary_featured_1 = get_field('secondary_featured_1_en', 'option');
-  $secondary_featured_2 = get_field('secondary_featured_2_en', 'option');
-  $secondary_featured_3 = get_field('secondary_featured_3_en', 'option');
+if ($lang):
+  $featured_secondary_1 = get_field('featured_secondary_1_' . $lang, 'option');
+  $featured_secondary_2 = get_field('featured_secondary_2_' . $lang, 'option');
+  $featured_secondary_3 = get_field('featured_secondary_3_' . $lang, 'option');
 
   // Add these posts to this array so that they aren't duplicated on front page
-  global $_displayed_posts_en;
-  $_displayed_posts_en[] = $secondary_featured_1->ID;
-  $_displayed_posts_en[] = $secondary_featured_2->ID;
-  $_displayed_posts_en[] = $secondary_featured_3->ID;
-elseif ($lang && $lang === 'de'):
-  $secondary_featured_1 = get_field('secondary_featured_1_de', 'option');
-  $secondary_featured_2 = get_field('secondary_featured_2_de', 'option');
-  $secondary_featured_3 = get_field('secondary_featured_3_de', 'option');
-
-
-  // Add these posts to this array so that they aren't duplicated on front page
-  global $_displayed_posts_de;
-  $_displayed_posts_de[] = $secondary_featured_1->ID;
-  $_displayed_posts_de[] = $secondary_featured_2->ID;
-  $_displayed_posts_de[] = $secondary_featured_3->ID;
+  global $_displayed_posts;
+  $_displayed_posts[] = $featured_secondary_1->ID;
+  $_displayed_posts[] = $featured_secondary_2->ID;
+  $_displayed_posts[] = $featured_secondary_3->ID;
 endif;
 
 // set up variables
-if ($secondary_featured_1):
-  $secondary_featured_1_image = get_the_post_thumbnail($secondary_featured_1, '1x1', array('class' => 'ft-c-featured-secondary__image--1'));
-  $secondary_featured_1_link = get_permalink($secondary_featured_1->ID);
-  $secondary_featured_1_title = esc_html($secondary_featured_1->post_title);
+if ($featured_secondary_1):
+  $featured_secondary_1_image = get_the_post_thumbnail($featured_secondary_1, '1x1', array('class' => 'ft-c-featured-secondary__image--1'));
+  $featured_secondary_1_link = get_permalink($featured_secondary_1->ID);
+  $featured_secondary_1_title = esc_html($featured_secondary_1->post_title);
 endif;
-if ($secondary_featured_2):
-  $secondary_featured_2_image = get_the_post_thumbnail($secondary_featured_2, '1x1', array('class' => 'ft-c-featured-secondary__image--2'));
-  $secondary_featured_2_link = get_permalink($secondary_featured_2->ID);
-  $secondary_featured_2_title = esc_html($secondary_featured_2->post_title);
+if ($featured_secondary_2):
+  $featured_secondary_2_image = get_the_post_thumbnail($featured_secondary_2, '1x1', array('class' => 'ft-c-featured-secondary__image--2'));
+  $featured_secondary_2_link = get_permalink($featured_secondary_2->ID);
+  $featured_secondary_2_title = esc_html($featured_secondary_2->post_title);
 endif;
-if ($secondary_featured_3):
-  $secondary_featured_3_image = get_the_post_thumbnail($secondary_featured_3, '1x1', array('class' => 'ft-c-featured-secondary__image--3'));
-  $secondary_featured_3_link = get_permalink( $secondary_featured_3->ID );
-  $secondary_featured_3_title = esc_html($secondary_featured_3->post_title);
+if ($featured_secondary_3):
+  $featured_secondary_3_image = get_the_post_thumbnail($featured_secondary_3, '1x1', array('class' => 'ft-c-featured-secondary__image--3'));
+  $featured_secondary_3_link = get_permalink( $featured_secondary_3->ID );
+  $featured_secondary_3_title = esc_html($featured_secondary_3->post_title);
 endif;
 ?>
 
 <section class="ft-c-featured-secondary">
   <div class="ft-c-featured-secondary__wrap ft-l-container">
     <div class="ft-c-featured-secondary__media">
-      <?php echo $secondary_featured_1_image ?>
-      <?php echo $secondary_featured_2_image ?>
-      <?php echo $secondary_featured_3_image ?>
+      <?php echo $featured_secondary_1_image ?>
+      <?php echo $featured_secondary_2_image ?>
+      <?php echo $featured_secondary_3_image ?>
     </div>
     <div class="ft-c-featured-secondary__item-list">
 
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-first">
-        <?php echo $secondary_featured_1_image ?>
+        <?php echo $featured_secondary_1_image ?>
         <div class="ft-c-featured-secondary__item">
           <span class="ft-c-label">Firefox</span>
-          <a href="<?php echo $secondary_featured_1_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $secondary_featured_1_title ?></h2>
+          <a href="<?php echo $featured_secondary_1_link ?>">
+            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_1_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>
           </a>
         </div>
       </div>
 
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-second">
-        <?php echo $secondary_featured_2_image ?>
+        <?php echo $featured_secondary_2_image ?>
         <div class="ft-c-featured-secondary__item">
           <span class="ft-c-label">Firefox</span>
-          <a href="<?php echo $secondary_featured_2_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $secondary_featured_2_title ?></h2>
+          <a href="<?php echo $featured_secondary_2_link ?>">
+            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_2_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>
           </a>
         </div>
       </div>
 
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-third">
-        <?php echo $secondary_featured_3_image ?>
+        <?php echo $featured_secondary_3_image ?>
         <div class="ft-c-featured-secondary__item">
           <span class="ft-c-label">Firefox</span>
-          <a href="<?php echo $secondary_featured_3_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $secondary_featured_3_title ?></h2>
+          <a href="<?php echo $featured_secondary_3_link ?>">
+            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_3_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>
           </a>
         </div>

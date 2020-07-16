@@ -6,8 +6,8 @@
 get_header();
 set_query_var('lang', 'en');
 
-global $_displayed_posts_en;
-$_displayed_posts_en = array();
+global $_displayed_posts;
+$_displayed_posts = array();
 
 $featured_post = get_field('post_to_feature_en', 'option');
 set_query_var('featured_post', $featured_post);
@@ -21,7 +21,7 @@ set_query_var('featured_post', $featured_post);
 <div class="ft-l-space-unrelated"></div>
 
 <!-- The 2nd featured section which has 3 items -->
-<?php get_template_part('partials/secondary-featured'); ?>
+<?php get_template_part('partials/featured-secondary'); ?>
 
 <div class="ft-l-space-unrelated"></div>
 

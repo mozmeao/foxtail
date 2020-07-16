@@ -7,12 +7,12 @@
 
 
       <?php
-      global $_displayed_posts_en;
+      global $_displayed_posts;
 $args = array(
     'post_type' => 'post',
     'post_status' => 'publish',
     'posts_per_page' => 6,
-    'post__not_in' => $_displayed_posts_en,
+    'post__not_in' => $_displayed_posts,
 );
 
 // Select posts based on either a category or a tag

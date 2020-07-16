@@ -1,18 +1,18 @@
 <section class="ft-c-post-list">
   <div class="ft-l-container">
-    <span class="ft-label">Featured collection</span>
+    <span class="ft-c-label">Featured collection</span>
     <h2 class="ft-c-post-list__title">Be smart. Shop Safe.</h2>
     <div class="ft-c-post-list__wrap--three-column">
 
 
 
       <?php
-      global $_displayed_posts_en;
+      global $_displayed_posts;
 $args = array(
     'post_type' => 'post',
     'post_status' => 'publish',
     'posts_per_page' => 6,
-    'post__not_in' => $_displayed_posts_en,
+    'post__not_in' => $_displayed_posts,
 );
 
 // Select posts based on either a category or a tag
