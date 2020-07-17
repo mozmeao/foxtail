@@ -11,26 +11,250 @@
 
 ?>
 
-	</div><!-- #content -->
+</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'foxtail' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'foxtail' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'foxtail' ), 'foxtail', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer class="mzp-c-footer">
+  <div class="mzp-l-content">
+    <nav class="mzp-c-footer-primary">
+      <div class="mzp-c-footer-primary-logo">
+        <a href="https://www.mozilla.org/">Mozilla</a>
+      </div>
+
+      <div class="mzp-c-footer-sections">
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/features/">
+                Link Four
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Long link just to mix things up and cause problems.
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/">
+                Link Six
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </nav>
+
+    <nav class="mzp-c-footer-secondary">
+
+      <ul class="mzp-c-footer-links-social">
+        <li>
+          <a class="twitter" href="https://twitter.com/firefox">
+            Twitter<span> (@firefox)</span>
+          </a>
+        </li>
+        <li>
+          <a class="youtube" href="https://www.youtube.com/firefoxchannel">
+            YouTube<span> (firefoxchannel)</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="mzp-c-footer-legal">
+        <ul class="mzp-c-footer-terms">
+          <li>
+            <a href="https://www.mozilla.org/privacy/websites/">
+              Website Privacy Notice
+            </a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/privacy/websites/#cookies">
+              Cookies
+            </a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/about/legal/">Legal</a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/privacy/websites/">
+              Website Privacy Notice
+            </a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/privacy/websites/#cookies">
+              Cookies
+            </a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/about/legal/">Legal</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
 </body>
+
 </html>
