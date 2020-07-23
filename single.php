@@ -18,9 +18,12 @@ get_header();
 			the_post();
 
 			get_template_part( 'partials/content', get_post_type() );
-			?>
+
+			get_template_part( 'partials/single-post-share');
+		?>
   </main><!-- #main -->
   <?php
+
 	
 			if( get_field('display_mega_cta') == 'enable_sidebar' ) {
     		get_template_part( 'partials/single-mega-cta' );
