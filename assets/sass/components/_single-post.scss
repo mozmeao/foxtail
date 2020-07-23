@@ -130,3 +130,23 @@
     max-width: 80%;
   }
 }
+
+.ft-c-single-post__line {
+  grid-row: 3;
+  grid-column: 1 / 2;
+  background-color: $color-violet-60;
+  height: 6px;
+  margin-top: 18px;
+  border-radius: 4px;
+  display: none;
+  visibility: visible;
+
+  @media #{$mq-lg} {
+    display: block;
+    visibility: visible;
+    margin-right: 30px;
+  }
+  @media #{$mq-xl} {
+    margin-right: 18px;
+  }
+}

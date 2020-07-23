@@ -23,6 +23,7 @@
       Firefox News
     </span>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
+    <div class="ft-c-single-post__line"></div>
   </div>
 
   <div class="ft-c-single-post__body">
