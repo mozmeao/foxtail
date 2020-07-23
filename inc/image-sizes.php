@@ -113,4 +113,6 @@ add_filter( 'intermediate_image_sizes_advanced', function( $sizes, $metadata ) {
   return $sizes;
 }, 10, 2 );
 
+add_image_size( 'featured-image', 1000);
+
 ?>

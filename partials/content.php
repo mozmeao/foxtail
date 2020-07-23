@@ -9,30 +9,41 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+<article id="post-<?php the_ID(); ?>" <?php post_class('ft-c-single-post'); ?>>
+  <div class="ft-c-single-post__header">
+    <?php 
+			if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+				return;
+			}
+			else {
+				the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
+			}
+		?>
+    <span class="ft-c-label ft-c-single-post__category">
+      Firefox News
+    </span>
+    <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
+  </div>
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				foxtail_posted_on();
-				foxtail_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+  <div class="ft-c-single-post__body">
+    <div class="ft-c-single-post__meta">
+      <div class="ft-c-post-meta">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/calendar.svg' ?>" alt="calendar" />
+        <span><?php echo get_the_date(); ?></span>
+      </div>
+      <div class="ft-c-post-meta">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/author.svg' ?>" alt="author" />
+        <span>
+          <?php
+					echo sprintf(
+						'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>');
+					?>
+        </span>
+      </div>
+      <hr />
+    </div>
 
-	<?php foxtail_post_thumbnail(); ?>
-
-	<div class="entry-content">
-		<?php
+    <?php
 		the_content( sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
@@ -51,9 +62,6 @@
 			'after'  => '</div>',
 		) );
 		?>
-	</div><!-- .entry-content -->
+  </div>
 
-	<footer class="entry-footer">
-		<?php foxtail_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

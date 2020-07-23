@@ -1,0 +1,23 @@
+.ft-c-post-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  img {
+    margin-right: 16px;
+    max-width: 24px;
+    padding: 0;
+  }
+
+  span {
+    text-transform: uppercase;
+    // font-weight: bold;
+    letter-spacing: 0.5px;
+
+    a,
+    a:hover {
+      text-decoration: none;
+      color: #000000;
+    }
+  }
+}
