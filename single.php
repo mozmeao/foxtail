@@ -27,6 +27,8 @@ get_header();
 			}
 			
 			get_template_part('partials/single-navigation');
+
+			get_template_part('partials/single-related-posts');
 			
 		endwhile; // End of the loop.
 		?>
