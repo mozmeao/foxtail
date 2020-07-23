@@ -18,20 +18,18 @@ get_header();
 			the_post();
 
 			get_template_part( 'partials/content', get_post_type() );
-
-			the_post_navigation();
-
-		endwhile; // End of the loop.
-		?>
-
+			?>
   </main><!-- #main -->
   <?php
-	if( get_field('display_mega_cta') == 'enable_sidebar' ) {
-    get_template_part( 'partials/mega-cta' );
-	}
-	?>
-
-
+	
+			if( get_field('display_mega_cta') == 'enable_sidebar' ) {
+    		get_template_part( 'partials/single-mega-cta' );
+			}
+			
+			get_template_part('partials/single-navigation');
+			
+		endwhile; // End of the loop.
+		?>
 
 </div><!-- #primary -->
 

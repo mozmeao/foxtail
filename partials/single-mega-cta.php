@@ -10,7 +10,7 @@ if ( get_field('select_mega_cta_type') === 'Custom' ) {
   <div class="ft-l-container">
     <div class="ft-c-mega-cta__wrap">
       <div class="ft-c-mega-cta__content">
-        <span class="ft-c-label ft-label--white ft-c-single-post__category">
+        <span class="ft-c-label ft-c-label--white ft-c-single-post__category">
           <?php if ($megalabel) echo $megalabel  ?>
         </span>
         <h3><?php echo $megatitle ?></h3>
