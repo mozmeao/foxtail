@@ -75,6 +75,7 @@ Tags: Firefox, Mozilla
 @import "components/mega-cta";
 @import "components/post-nav";
 @import "components/post-share";
+@import "components/pagination";
 
 /*--------------------------------------------------------------
 # Wordpres Core - Required classes for Wordpress
@@ -84,11 +85,12 @@ Tags: Firefox, Mozilla
 /*--------------------------------------------------------------
 # Pages - Page specific styles (use sparingly)
 --------------------------------------------------------------*/
-// @import "page/about";
+@import "pages/archive";
 
 /*--------------------------------------------------------------
 # Utilities - helpers, etc
 --------------------------------------------------------------*/
+@import "utilities/utilities";
 
 /*--------------------------------------------------------------
 # SHAAAAME! - The stuff that shouldn't exist..but...does

@@ -74,12 +74,12 @@ if ( ! function_exists( 'foxtail_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		) );
+		// add_theme_support( 'custom-logo', array(
+		// 	'height'      => 250,
+		// 	'width'       => 250,
+		// 	'flex-width'  => true,
+		// 	'flex-height' => true,
+		// ) );
 	}
 endif;
 add_action( 'after_setup_theme', 'foxtail_setup' );
@@ -167,3 +167,10 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 
 require get_template_directory() . '/inc/advanced-custom-fields.php';
+
+
+/**
+ * Function for disiplaying pagination
+ */
+
+require get_template_directory() . '/inc/pagination.php';

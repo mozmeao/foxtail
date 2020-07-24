@@ -1,0 +1,75 @@
+{
+    "key": "group_5f1a35792db4f",
+    "title": "Category Customization",
+    "fields": [
+        {
+            "key": "field_5f1a35cb624fb",
+            "label": "Display Featured Image",
+            "name": "tax_featured_image_display",
+            "type": "true_false",
+            "instructions": "Select if you want to customize a category page with a featured image. This is turned off by default",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Display",
+            "ui_off_text": "Hide"
+        },
+        {
+            "key": "field_5f1a358f624fa",
+            "label": "Featured Image",
+            "name": "tax_featured_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f1a35cb624fb",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 1280,
+            "min_height": 720,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1595571885
+}

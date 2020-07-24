@@ -1,0 +1,94 @@
+.ft-c-pagination {
+  font-family: $font-metropolis;
+  display: flex;
+  justify-content: center;
+  @include text-title-xs;
+}
+
+.ft-c-pagination .page-numbers {
+  @media #{$mq-md} {
+    display: inline;
+  }
+}
+
+.ft-c-pagination .page-numbers {
+  margin: 0 2px;
+  color: #000000;
+  position: relative;
+  min-width: 10px;
+  text-decoration: none;
+
+  @media #{$mq-md} {
+    margin: 0 10px;
+  }
+
+  &.prev,
+  &.next {
+    display: inline;
+  }
+
+  &:after {
+    position: absolute;
+    left: calc(50% - 8px);
+    display: block;
+    width: 16px;
+    border-bottom: 3px solid #000000;
+    border-radius: 3px;
+    content: "";
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    color: #000000;
+
+    &:after {
+      opacity: 1;
+    }
+
+    &.prev,
+    &.next,
+    &.dots {
+      &:after {
+        border: none;
+      }
+    }
+  }
+}
+
+.page-numbers.current {
+  color: $color-violet-60;
+
+  &:hover {
+    color: $color-violet-60;
+
+    &:after {
+      border-bottom: 3px solid $color-violet-60;
+    }
+  }
+
+  &:after {
+    border-bottom: 3px solid $color-violet-60;
+    opacity: 1;
+  }
+}
+
+.ft-c-pagination .page-numbers.prev,
+.ft-c-pagination .page-numbers.next {
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  vertical-align: middle;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  padding: 4px 0;
+  transition: border-bottom 0.3s ease;
+
+  &:after {
+    border-bottom: 0px solid $color-violet-60;
+    opacity: 0;
+  }
+
+  &:hover {
+    border-bottom: 1px solid #000000;
+  }
+}

@@ -8,35 +8,52 @@
  */
 
 get_header();
+
+
+$term = get_queried_object();
+$image_display = get_field('tax_featured_image_display', $term);
+
 ?>
+<main class="ft-c-post-list">
+  <div class="ft-l-container">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+    <?php if ( have_posts() ) : ?>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
+    <?php
+			if ($image_display == true) {
+				echo '<div class="ft-c-archive-header ftc-archive-header--has-image">';
+				$image = get_field('tax_featured_image', $term);
+				echo wp_get_attachment_image($image, '16x9');
+				echo '<div class="ft-u-center-text">';
+				echo '<h2>';
+				echo single_term_title();
+				echo '</h2>';
 				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+				echo '</div>';
+			}
 
-			<?php
+			else {
+				echo '<div class="ft-l-space-related"></div>';
+				echo '<div class="ft-c-archive-header">';
+				the_archive_title( '<h2>', '</h2>' );
+				the_archive_description( '<div class="archive-description">', '</div>' );
+			}
+			
+			
+			?>
+  </div><!-- .ft-c-archive-header -->
+  <div class="ft-l-space-related"></div>
+  <div class="ft-c-post-list__wrap--three-column">
+
+    <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'partials/content', get_post_type() );
+				
+				get_template_part('partials/card'); 
 
 			endwhile;
 
-			the_posts_navigation();
 
 		else :
 
@@ -45,9 +62,10 @@ get_header();
 		endif;
 		?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+  </div>
+  <?php foxtail_pagination(); ?>
+  </div>
+</main>
 
 <?php
-get_sidebar();
 get_footer();
