@@ -66,7 +66,52 @@
 
   .ft-c-card__content {
     margin-top: 16px;
+    margin-left: 16px;
     flex: 3;
+  }
+
+  .ft-c-card__title {
+    @include text-title-xs;
+  }
+}
+
+// styles for smaller card format
+// Thumbnail is on the left
+
+.ft-c-card--large {
+  margin-bottom: 60px;
+
+  @media #{$mq-md} {
+    display: block;
+  }
+
+  .ft-c-card__link {
+    // display: flex;
+
+    @media #{$mq-md} {
+      display: flex;
+    }
+  }
+
+  .ft-c-card__image {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .ft-c-card__content {
+    margin-top: 16px;
+    flex: 3;
+
+    @media #{$mq-md} {
+      margin-left: 40px;
+    }
   }
 
   .ft-c-card__title {

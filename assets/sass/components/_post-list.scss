@@ -6,19 +6,11 @@
 // this post list layout is 2 columns one wide desktops
 .ft-c-post-list__wrap--two-column {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 40px;
 
   section:nth-child(n + 5) {
     display: none;
-  }
-
-  .ft-c-card a {
-    display: flex;
-    flex-direction: column;
-  }
-  .ft-c-card__content {
-    margin: 0;
   }
 
   @media #{$mq-md} {
@@ -28,13 +20,6 @@
 
     section:nth-child(n + 5) {
       display: block;
-    }
-
-    .ft-c-card a {
-      flex-direction: row;
-    }
-    .ft-c-card__content {
-      margin-left: 16px;
     }
   }
 }

@@ -1,0 +1,109 @@
+{
+    "key": "group_5f20a8ee0ba03",
+    "title": "Collection Info",
+    "fields": [
+        {
+            "key": "field_5f20a93232c8f",
+            "label": "Collection Filter",
+            "name": "collection_filter",
+            "type": "select",
+            "instructions": "How do you want to filter the contents of this collection: By category, or by tag?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Tag": "Tag",
+                "Category": "Category"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5f20a99432c90",
+            "label": "Collection Category",
+            "name": "collection_category",
+            "type": "taxonomy",
+            "instructions": "Select which category to use for this collection",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f20a93232c8f",
+                        "operator": "==",
+                        "value": "Category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5f20a9d732c91",
+            "label": "Collection Tag",
+            "name": "collection_tag",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f20a93232c8f",
+                        "operator": "==",
+                        "value": "Tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "post_tag",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "collection"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1595976201
+}
