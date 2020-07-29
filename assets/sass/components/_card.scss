@@ -86,8 +86,6 @@
   }
 
   .ft-c-card__link {
-    // display: flex;
-
     @media #{$mq-md} {
       display: flex;
     }

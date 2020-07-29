@@ -23,8 +23,9 @@ function create_collection_type() {
     'labels'        => $labels,
     'description'   => 'Curated collections of posts, defined by a tag or category',
     'public'        => true,
+    'rewrite' => array('slug' => 'collections'),
     'menu_position' => 5,
-    'supports'      => array( 'title', 'thumbnail', 'excerpt' ),
+    'supports'      => array( 'title', 'thumbnail', 'excerpt', 'editor' ),
     'has_archive'   => true,
   );
   register_post_type( 'collection', $args ); 

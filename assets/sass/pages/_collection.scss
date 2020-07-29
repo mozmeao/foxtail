@@ -1,0 +1,28 @@
+.ft-c-collection-content {
+  padding: 24px 0;
+}
+
+.ft-c-collection-content__featured-image {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.ft-c-collection-content__title {
+  text-align: center;
+}
+
+.ft-c-collection-content__body {
+  margin: 0 auto 60px;
+
+  @media #{$mq-sm} {
+    max-width: 70%;
+  }
+
+  @media #{$mq-md} {
+    max-width: 60%;
+  }
+
+  @media #{$mq-lg} {
+    max-width: 50%;
+  }
+}
