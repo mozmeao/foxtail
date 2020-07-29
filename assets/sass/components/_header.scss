@@ -1,5 +1,125 @@
 .ft-c-header {
   height: 72px;
   width: 100%;
-  background-color: $color-ink-30;
+  background-color: #ffffff;
+  box-shadow: 0 8px 12px 0 rgba(29, 17, 51, 0.04),
+    0 3px 16px 0 rgba(9, 32, 77, 0.12), 0 5px 10px 0 rgba(29, 17, 51, 0.12);
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 0 6%;
+  z-index: 99999;
+  overflow: hidden;
+
+  @media #{$mq-md} {
+    padding: 0 20px;
+  }
+
+  @media #{$mq-lg} {
+    overflow: visible;
+  }
+}
+
+// when the hamburger menu is toggled
+.ft-c-header.ft-j-active {
+  height: 100vh;
+  overflow: scroll;
+  @media #{$mq-lg} {
+    height: 72px;
+    overflow: hidden;
+  }
+}
+
+.ft-c-header__logo {
+  margin: 14px 16px 14px 0;
+  float: left;
+}
+
+.ft-c-header__logo a {
+  overflow: hidden;
+  text-indent: 120%;
+  white-space: nowrap;
+  background-image: url("/wp-content/themes/foxtail/assets/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: 165px 40px;
+  height: 40px;
+  width: 165px;
+  display: block;
+}
+
+.ft-c-header__nav {
+  width: 100%;
+  float: left;
+
+  @media #{$mq-lg} {
+    width: auto;
+    float: left;
+    height: 100%;
+    display: flex;
+  }
+}
+
+.ft-c-header__cta-wrap {
+  float: left;
+  margin-top: 40px;
+  @media #{$mq-lg} {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    float: right;
+  }
+}
+
+.ft-c-header__cta {
+  border: 2px solid $color-blue-50;
+  background-color: transparent;
+  color: $color-blue-50;
+  transition: all 0.3s ease;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 6px 24px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: $color-blue-50;
+    color: #ffffff;
+  }
+}
+
+// NOTE: there is also css for this component in the _hamburger.scss file
+.ft-c-header__toggle {
+  cursor: pointer;
+  margin: 24px 16px 24px 0;
+  float: left;
+
+  @media #{$mq-lg} {
+    display: none;
+  }
+}
+
+.ft-c-header__search {
+  display: none;
+  float: right;
+  padding: 24px 16px;
+
+  img {
+    cursor: pointer;
+    height: 24px;
+  }
+
+  @media #{$mq-lg} {
+    display: block;
+  }
+}
+
+.ft-c-header__search--mobile {
+  padding: 24px 0 24px 32px;
+  display: block;
+
+  @media #{$mq-lg} {
+    display: none;
+  }
 }

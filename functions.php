@@ -48,12 +48,6 @@ if ( ! function_exists( 'foxtail_setup' ) ) :
 		require get_template_directory() . '/inc/image-sizes.php';
 
 
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary-nav-en' => esc_html__( 'Primary Navigation', 'foxtail' ),
-		) );
-
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -128,7 +122,7 @@ function foxtail_scripts() {
 		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js' );
 
 		// Enqueue custom JS after vendors.
-		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js' );
+		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), '1.0', true );
 
 		// Minified and Concatenated styles.
 		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0', 'all' );
@@ -181,3 +175,12 @@ require get_template_directory() . '/inc/pagination.php';
  */
 
 require get_template_directory() . '/inc/collection-post-type.php';
+
+/**
+ * Function for adding Menus and allowing for BEM menus
+ */
+
+ require get_template_directory() . '/inc/bem-menu.php';
+
+ register_nav_menu('primary_menu', 'primary site menu');
+ 

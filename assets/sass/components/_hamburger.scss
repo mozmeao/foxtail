@@ -1,0 +1,66 @@
+// some variables to make the math easier;
+$_bar-width: 32px;
+$_bar-height: 4px;
+$_bar-spacing: 10px;
+$_border-radius: 3px;
+
+// technically this shouldn't be in this file, but making an exception
+.ft-c-header__toggle {
+  width: $_bar-width;
+  height: $_bar-height + $_bar-spacing * 2;
+}
+
+.ft-c-hamburger,
+.ft-c-hamburger:after,
+.ft-c-hamburger:before {
+  width: $_bar-width;
+  height: $_bar-height;
+}
+
+.ft-c-hamburger {
+  position: relative;
+  transform: translateY($_bar-spacing);
+  background: $color-ink-80;
+  border-radius: $_border-radius;
+  transition: all 0ms 300ms;
+
+  &.ft-j-active {
+    background: rgba(255, 255, 255, 0);
+  }
+}
+
+.ft-c-hamburger:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: $_bar-spacing;
+  background: $color-ink-80;
+  border-radius: $_border-radius;
+  transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ft-c-hamburger:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: $_bar-spacing;
+  background: $color-ink-80;
+  border-radius: $_border-radius;
+  transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ft-c-hamburger.ft-j-active:after {
+  top: 0;
+  transform: rotate(45deg);
+  transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ft-c-hamburger.ft-j-active:before {
+  bottom: 0;
+  transform: rotate(-45deg);
+  transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
