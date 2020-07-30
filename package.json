@@ -35,7 +35,7 @@
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
-    "gulp-uglifycss": "^1.0.6",
+    "gulp-uglifycss": "^1.1.0",
     "gulp-wp-pot": "^2.4.3"
   },
   "scripts": {

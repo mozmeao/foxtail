@@ -5,18 +5,43 @@
 
 // this post list layout is 2 columns one wide desktops
 .ft-c-post-list__wrap--two-column {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 40px;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+  .ft-c-card {
+    margin-bottom: 20px;
+
+    @supports (display: grid) {
+      margin-bottom: 0;
+    }
+  }
 
   section:nth-child(n + 5) {
     display: none;
   }
 
   @media #{$mq-md} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 80px;
+    }
+
+    .ft-c-card {
+      margin: 20px;
+      width: calc((100% / 2) - 40px);
+
+      @supports (display: grid) {
+        margin: 0;
+        width: auto;
+      }
+    }
 
     section:nth-child(n + 5) {
       display: block;
@@ -25,6 +50,7 @@
 }
 
 // this post list lyout is 3 columns on wide desktops
+
 .ft-c-post-list__wrap--three-column {
   .ft-c-card {
     margin-bottom: 48px;
@@ -35,22 +61,46 @@
   }
 
   @media #{$mq-md} {
-    display: grid;
-    grid-gap: 40px;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .ft-c-card {
+      margin: 20px;
+      width: calc((100% / 2) - 40px);
+
+      @supports (display: grid) {
+        margin: 0 0 20px 0;
+        width: auto;
+      }
+    }
+
+    @supports (display: grid) {
+      display: grid;
+      grid-gap: 40px;
+      grid-template-columns: 1fr 1fr;
+    }
 
     section:nth-child(n + 4) {
       display: block;
     }
-
-    .ft-c-card {
-      margin-bottom: none;
-    }
   }
 
   @media #{$mq-lg} {
-    grid-gap: 80px;
-    grid-template-columns: 1fr 1fr 1fr;
+    .ft-c-card {
+      margin: 20px;
+      width: calc((100% / 3) - 40px);
+
+      @supports (display: grid) {
+        margin: 0 0 20px 0;
+        width: auto;
+      }
+    }
+
+    @supports (display: grid) {
+      grid-gap: 80px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 

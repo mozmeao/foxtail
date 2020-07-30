@@ -37,7 +37,7 @@ const gulp = require( 'gulp' ); // Gulp of-course.
 const sass = require( 'gulp-sass' ); // Gulp plugin for Sass compilation.
 const minifycss = require( 'gulp-uglifycss' ); // Minifies CSS files.
 const autoprefixer = require( 'gulp-autoprefixer' ); // Autoprefixing magic.
-const mmq = require( 'gulp-merge-media-queries' ); // Combine matching media queries into one.
+// const mmq = require( 'gulp-merge-media-queries' ); // Combine matching media queries into one.
 const rtlcss = require( 'gulp-rtlcss' ); // Generates RTL stylesheet.
 
 // JS related plugins.
@@ -133,7 +133,7 @@ gulp.task( 'styles', () => {
 		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 		.pipe( gulp.dest( config.styleDestination ) )
 		.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files.
-		.pipe( mmq({ log: true }) ) // Merge Media Queries only for .min.css version.
+		// .pipe( mmq({ log: true }) ) // Merge Media Queries only for .min.css version.
 		.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
 		.pipe( rename({ suffix: '.min' }) )
 		.pipe( minifycss({ maxLineLen: 10 }) )

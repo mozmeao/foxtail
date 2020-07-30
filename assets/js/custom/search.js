@@ -10,7 +10,8 @@
     searchArea.classList.toggle('ft-j-active');
   }
 
-  searchToggle.forEach(el => {
+  // a little bit extra to make sure it works in IE11
+  Array.prototype.slice.call(searchToggle).forEach(el => {
     el.onclick = () => handleToggle();
     el.addEventListener('keyup', (event) => {
       if (event.keyCode === 13 || event.keyCode === 32) {

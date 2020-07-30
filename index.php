@@ -31,7 +31,6 @@ get_header();
         <span>page: <?php echo $paged ?></span>
         <?php } ?>
       </header>
-      <div class="ft-l-space-related"></div>
       <div class="ft-c-post-list__wrap--three-column">
         <?php
 			endif;

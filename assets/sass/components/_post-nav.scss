@@ -19,6 +19,7 @@
 .ft-c-post-nav__item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex: 1;
   transition: background-color 0.3s ease;
   text-decoration: none;
@@ -30,7 +31,10 @@
   }
 
   img {
-    padding: 8px;
+    padding: 6px;
+    width: 38px;
+    height: 32px;
+    flex-shrink: 0;
   }
 
   @media #{$mq-md} {

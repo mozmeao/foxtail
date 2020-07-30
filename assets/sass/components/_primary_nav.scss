@@ -35,8 +35,12 @@
       height: 28px;
       width: 12px;
       background-repeat: no-repeat;
-      background-size: 12px 12px;
+      background-size: 12px 8px;
       background-position: center center;
+
+      @supports (display: grid) {
+        background-size: 12px 12px;
+      }
     }
   }
 }
@@ -54,7 +58,7 @@
   font-size: 24px;
 
   @media #{$mq-lg} {
-    font-size: initial;
+    font-size: inherit;
 
     &:after {
       content: "";
@@ -98,7 +102,7 @@
     transition: all 0.3s ease;
     margin-bottom: 16px;
     margin-left: 0;
-    font-size: initial;
+    font-size: inherit;
 
     &:hover {
       background-color: $color-light-gray-30;

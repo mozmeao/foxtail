@@ -14,9 +14,13 @@
 
 .ft-c-featured-extra__wrap {
   @media #{$mq-md} {
-    display: grid;
-    grid-column-gap: 80px;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-column-gap: 80px;
+      grid-template-columns: 1fr 2fr;
+    }
   }
 }
 
@@ -26,12 +30,17 @@
 }
 
 .ft-c-featured-extra__image {
-  display: flex;
   justify-content: center;
 
   @media #{$mq-md} {
-    justify-content: flex-end;
-    align-self: center;
+    display: flex;
+    margin-right: 40px;
+
+    @supports (display: grid) {
+      margin-right: 0;
+      justify-content: flex-end;
+      align-self: center;
+    }
   }
 }
 
