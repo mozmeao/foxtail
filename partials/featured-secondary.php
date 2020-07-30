@@ -101,4 +101,9 @@ endif;
 
     </div>
   </div>
+  <div class="ft-c-post-list__cta">
+    <a href="/latest" class="ft-button-secondary">
+      View All Posts
+    </a>
+  </div>
 </section>

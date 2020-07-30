@@ -1,0 +1,13 @@
+.ft-404 {
+  min-height: 80vh;
+  text-align: center;
+  padding: 80px 0;
+
+  .ft-button-secondary {
+    margin-top: 40px;
+  }
+
+  @media #{$mq-lg} {
+    padding: 160px 0;
+  }
+}

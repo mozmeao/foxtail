@@ -112,3 +112,9 @@ a img.aligncenter {
   z-index: 100000;
   /* Above WP toolbar. */
 }
+
+figcaption {
+  font-size: 14px;
+  color: $color-dark-gray-20;
+  text-align: center;
+}
