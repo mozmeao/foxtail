@@ -47,8 +47,11 @@ Tags: Firefox, Mozilla
 --------------------------------------------------------------*/
 @import "elements/protocol-elements";
 @import "elements/typography";
-// @import "elements/container";
-// @import "elements/label";
+
+/*--------------------------------------------------------------
+# Layout- unstyled. Has to do with layout
+--------------------------------------------------------------*/
+@import "layouts/content";
 
 /*--------------------------------------------------------------
 # Objects - Rules that focus only on structure and layout.
@@ -78,6 +81,7 @@ Tags: Firefox, Mozilla
 @import "components/pagination";
 @import "components/primary_nav";
 @import "components/hamburger";
+@import "components/search";
 
 /*--------------------------------------------------------------
 # Wordpres Core - Required classes for Wordpress

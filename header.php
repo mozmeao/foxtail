@@ -33,7 +33,8 @@
         <a href="<?php echo home_url() ?>">Firefox Blog</a>
       </div>
       <div class="ft-c-header__search ft-c-header__search--mobile">
-        <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />
+        <img class="ft-c-header__search-icon"
+          src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />
       </div>
       <div class="ft-c-header__nav">
         <?php bem_menu('primary_menu', 'ft-c-primary-nav',); ?>
@@ -43,10 +44,15 @@
           rel="external" class="ft-c-header__cta">Download Firefox</a>
       </div>
       <div class="ft-c-header__search">
-        <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />
+        <img class="ft-c-header__search-icon"
+          src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />
       </div>
 
 
     </header><!-- #masthead -->
+    <div class="ft-c-search">
+      <h4>Search</h4>
+      <?php get_search_form(); ?>
+    </div>
 
     <div id="content" class="site-content">
