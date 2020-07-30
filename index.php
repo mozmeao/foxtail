@@ -14,26 +14,26 @@
 
 get_header();
 ?>
-<div class="ft-l-space-related"></div>
-<main class="ft-c-post-list">
-  <div class="ft-l-container">
+<div class="ft-l-content">
+  <main class="ft-c-post-list">
+    <div class="ft-l-container">
 
-    <?php
+      <?php
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
 				?>
-    <header>
-      <h2>Latest Posts</h2>
-      <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-      <?php if ($paged && $paged > 1) { ?>
+      <header>
+        <h2>Latest Posts</h2>
+        <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+        <?php if ($paged && $paged > 1) { ?>
 
-      <span>page: <?php echo $paged ?></span>
-      <?php } ?>
-    </header>
-    <div class="ft-l-space-related"></div>
-    <div class="ft-c-post-list__wrap--three-column">
-      <?php
+        <span>page: <?php echo $paged ?></span>
+        <?php } ?>
+      </header>
+      <div class="ft-l-space-related"></div>
+      <div class="ft-c-post-list__wrap--three-column">
+        <?php
 			endif;
 
 			/* Start the Loop */
@@ -51,11 +51,11 @@ get_header();
 		endif;
 		?>
 
+      </div>
+      <?php foxtail_pagination(); ?>
     </div>
-    <?php foxtail_pagination(); ?>
-  </div>
-</main>
-<div class="ft-l-space-related"></div>
+  </main>
+</div>
 
 <?php
 get_footer();

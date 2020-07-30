@@ -14,12 +14,13 @@ $term = get_queried_object();
 $image_display = get_field('tax_featured_image_display', $term);
 
 ?>
-<main class="ft-c-post-list">
-  <div class="ft-l-container">
+<div class="ft-l-content">
+  <main class="ft-c-post-list">
+    <div class="ft-l-container">
 
-    <?php if ( have_posts() ) : ?>
+      <?php if ( have_posts() ) : ?>
 
-    <?php
+      <?php
 			if ($image_display == true) {
 				echo '<div class="ft-c-archive-header ftc-archive-header--has-image">';
 				$image = get_field('tax_featured_image', $term);
@@ -33,7 +34,6 @@ $image_display = get_field('tax_featured_image_display', $term);
 			}
 
 			else {
-				echo '<div class="ft-l-space-related"></div>';
 				echo '<div class="ft-c-archive-header">';
 				the_archive_title( '<h2>', '</h2>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );
@@ -41,11 +41,11 @@ $image_display = get_field('tax_featured_image_display', $term);
 			
 			
 			?>
-  </div><!-- .ft-c-archive-header -->
-  <div class="ft-l-space-related"></div>
-  <div class="ft-c-post-list__wrap--three-column">
+    </div><!-- .ft-c-archive-header -->
+    <div class="ft-l-space-related"></div>
+    <div class="ft-c-post-list__wrap--three-column">
 
-    <?php
+      <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
@@ -62,10 +62,11 @@ $image_display = get_field('tax_featured_image_display', $term);
 		endif;
 		?>
 
-  </div>
-  <?php foxtail_pagination(); ?>
-  </div>
+    </div>
+    <?php foxtail_pagination(); ?>
+</div>
 </main>
+</div>
 
 <?php
 get_footer();

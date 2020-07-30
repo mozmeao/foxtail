@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<div id="primary" class="content-area">
+<div class="ft-l-content">
   <main id="main" class="site-main ft-l-container">
 
     <?php

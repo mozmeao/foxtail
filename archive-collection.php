@@ -14,12 +14,13 @@ $term = get_queried_object();
 $image_display = get_field('tax_featured_image_display', $term);
 
 ?>
-<main class="ft-c-post-list">
-  <div class="ft-l-container">
+<div class="ft-l-content">
+  <main class="ft-c-post-list">
+    <div class="ft-l-container">
 
-    <?php if ( have_posts() ) : ?>
+      <?php if ( have_posts() ) : ?>
 
-    <?php
+      <?php
 			if ($image_display == true) {
 				echo '<div class="ft-c-archive-header ftc-archive-header--has-image">';
 				$image = get_field('tax_featured_image', $term);
@@ -30,18 +31,17 @@ $image_display = get_field('tax_featured_image_display', $term);
 			}
 
 			else {
-				echo '<div class="ft-l-space-related"></div>';
 				echo '<div class="ft-c-archive-header">';
 				echo '<h2>Collections</h2>';
 			}
 			
 			
 			?>
-  </div><!-- .ft-c-archive-header -->
-  <div class="ft-l-space-related"></div>
-  <div class="ft-c-post-list__wrap--one-column">
+    </div><!-- .ft-c-archive-header -->
+    <div class="ft-l-space-related"></div>
+    <div class="ft-c-post-list__wrap--one-column">
 
-    <?php
+      <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
@@ -58,11 +58,12 @@ $image_display = get_field('tax_featured_image_display', $term);
 		endif;
 		?>
 
-  </div>
-  <div class="ft-l-space-related"></div>
-  <?php foxtail_pagination(); ?>
-  </div>
+    </div>
+    <div class="ft-l-space-related"></div>
+    <?php foxtail_pagination(); ?>
+</div>
 </main>
+</div>
 
 <?php
 get_footer();
