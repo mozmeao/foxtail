@@ -1,77 +1,96 @@
 <?php
 
-/* Basic WP SEO
-	Usage: 
-		1. add this code to functions.php
-		2. replace the $default_keywords with your own
-		3. add <?php echo basic_wp_seo(); ?> to header.php
-		4. test well and fine tune as needed
+/* Foxtail DIY WP SEO
+  Usage: This function is called in functions.php and is then added to
+  the header with <?php echo foxtail_seo(); ?>
 
-	Optional: add custom description, keywords, and/or title
+	Optional: add custom description, and/or title
 	to any post or page using these custom field keys:
 
-		mm_seo_desc
-		mm_seo_keywords
-		mm_seo_title
+		ft_seo_desc
+		ft_seo_title
 
 	To migrate from any SEO plugin, replace its custom field 
 	keys with those listed above. More information:
 
-		@ https://digwp.com/2013/08/basic-wp-seo/
 */
 function foxtail_seo() {
+
+  // SET UP VARIABLES
 	global $page, $paged, $post;
-	$default_keywords = 'wordpress, plugins, themes, design, dev, development, security, htaccess, apache, php, sql, html, css, jquery, javascript, tutorials'; // customize
-	$output = '';
+  $description = ''; // description
+  $robots = ''; // robot preferences
+  $page_title = ''; // page title
+  $image = ''; // page image
+  $lang = 'en'; // some future-proofing
 
-	// description
-	$seo_desc = get_post_meta($post->ID, 'mm_seo_desc', true);
-	$description = get_bloginfo('description', 'display');
-	$pagedata = get_post($post->ID);
-	if (is_singular()) {
+  // SET THE DESCRIPTION
+
+  // use the field set in our option page, but fall back to wordpress desc if needed
+  $site_description = ''; // temporary variable
+  $description_wp = get_bloginfo('description', 'display'); // set in wordpress options
+  $description_ft = get_field('site_description_' . $lang, 'option'); // set in custom option page
+  $description_ft ? $site_description = $description_ft : $site_description = $description_wp;
+
+  if ( get_post() ) {
+    $seo_desc = get_post_meta($post->ID, 'ft_seo_desc', true);
+    $pagedata = get_post($post->ID);
+  }
+  
+
+  if (is_home() || is_front_page()) {
+    $description = $site_description;
+  }
+	elseif (is_singular()) {
+
 		if (!empty($seo_desc)) {
-			$content = $seo_desc;
-		} else if (!empty($pagedata)) {
-			$content = apply_filters('the_excerpt_rss', $pagedata->post_content);
-			$content = substr(trim(strip_tags($content)), 0, 155);
-			$content = preg_replace('#\n#', ' ', $content);
-			$content = preg_replace('#\s{2,}#', ' ', $content);
-			$content = trim($content);
+			$description = $seo_desc;
+    } 
+    elseif (!empty($pagedata)) {
+      $description = get_the_excerpt($pagedata);
+			$description = substr(trim(strip_tags($description)), 0, 155);
+			$description = preg_replace('#\n#', ' ', $description);
+			$description = preg_replace('#\s{2,}#', ' ', $description);
+			$description = trim($description);
 		} 
-	} else {
-		$content = $description;	
+  } 
+  elseif ((is_category() || is_tag()) && get_the_archive_description()) {
+    $description = get_the_archive_description();
+    $description = substr(trim(strip_tags($description)), 0, 155);
+    $description = preg_replace('#\n#', ' ', $description);
+    $description = preg_replace('#\s{2,}#', ' ', $description);
+    $description = trim($description);
+  }  
+  else {
+		$description = $site_description;
 	}
-	$output .= '<meta name="description" content="' . esc_attr($content) . '">' . "\n";
 
-	// keywords
-	$keys = get_post_meta($post->ID, 'mm_seo_keywords', true);
-	$cats = get_the_category();
-	$tags = get_the_tags();
-	if (empty($keys)) {
-		if (!empty($cats)) foreach($cats as $cat) $keys .= $cat->name . ', ';
-		if (!empty($tags)) foreach($tags as $tag) $keys .= $tag->name . ', ';
-		$keys .= $default_keywords;
-	}
-	$output .= "\t\t" . '<meta name="keywords" content="' . esc_attr($keys) . '">' . "\n";
-
-	// robots
-	if (is_category() || is_tag()) {
+  // SET THE ROBOT META PROPERTY
+	if (is_category() || is_tag() || is_post_type_archive( 'collection' )) {
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if ($paged > 1) {
-			$output .=  "\t\t" . '<meta name="robots" content="noindex,follow">' . "\n";
+      $robots = "noindex,follow";
 		} else {
-			$output .=  "\t\t" . '<meta name="robots" content="index,follow">' . "\n";
+      $robots = "index,follow";
 		}
 	} else if (is_home() || is_singular()) {
-		$output .=  "\t\t" . '<meta name="robots" content="index,follow">' . "\n";
+    $robots = "index,follow";
 	} else {
-		$output .= "\t\t" . '<meta name="robots" content="noindex,follow">' . "\n";
+    $robots = "noindex,follow";
 	}
 
-	// title
-	$title_custom = get_post_meta($post->ID, 'mm_seo_title', true);
+  // SET THE TITLE
+
+  // use the field set in our option page, but fall back to wordpress desc if needed
+  $name = '';
+  $name_wp = get_bloginfo('name', 'display'); // set in wordpress options
+  $name_ft = get_field('site_name_' . $lang, 'option'); // set in custom panel
+  $name = $name_ft ? $name_ft : $name_wp;
+
+  if ( get_post() ) {
+    $title_custom = get_post_meta($post->ID, 'ft_seo_title', true);
+  }
 	$url = ltrim(esc_url($_SERVER['REQUEST_URI']), '/');
-	$name = get_bloginfo('name', 'display');
 	$title = trim(wp_title('', false));
 	$cat = single_cat_title('', false);
 	$tag = single_tag_title('', false);
@@ -81,16 +100,56 @@ function foxtail_seo() {
 	if ($paged >= 2 || $page >= 2) $page_number = ' | ' . sprintf('Page %s', max($paged, $page));
 	else $page_number = '';
 
-	if (is_home() || is_front_page()) $seo_title = $name . ' | ' . $description;
+	if (is_home() || is_front_page()) $seo_title = $name;
 	elseif (is_singular())            $seo_title = $title . ' | ' . $name;
-	elseif (is_tag())                 $seo_title = 'Tag Archive: ' . $tag . ' | ' . $name;
-	elseif (is_category())            $seo_title = 'Category Archive: ' . $cat . ' | ' . $name;
-	elseif (is_archive())             $seo_title = 'Archive: ' . $title . ' | ' . $name;
+	elseif (is_tag())                 $seo_title = $tag . ' | ' . $name;
+	elseif (is_category())            $seo_title = $cat . ' | ' . $name;
+	elseif (is_archive())             $seo_title = $title . ' | ' . $name;
 	elseif (is_search())              $seo_title = 'Search: ' . $search . ' | ' . $name;
 	elseif (is_404())                 $seo_title = '404 - Not Found: ' . $url . ' | ' . $name;
 	else                              $seo_title = $name . ' | ' . $description;
 
-	$output .= "\t\t" . '<title>' . esc_attr($seo_title . $page_number) . '</title>' . "\n";
+  $page_title = $seo_title . $page_number;
+
+  // SET THE IMAGE
+
+  $site_image = get_field('site_image_' . $lang, 'option');
+  $site_image = wp_get_attachment_url($site_image, '3x2');
+
+  if (is_singular()) {
+    $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $pagedata ), '3x2' );
+    $image = $thumbnail_src ? esc_attr( $thumbnail_src[0]) : $site_image;
+  }
+  elseif (is_category() || is_tag()) {
+    $term = get_queried_object();
+    $image_display = get_field('tax_featured_image', $term);
+    $image = $image_display ? wp_get_attachment_image_url($image_display, '3x2') : $site_image;
+  }
+  else {
+    $image = $site_image;
+  }
+
+  ob_start(); ?>
+  <!-- Basic meta & SEO -->
+  <title><?php echo $page_title ?></title>
+  <meta name="description" content="<?php echo esc_attr($description) ?>" />
+  <meta name="robots" content="<? echo esc_attr($robots)?>">
+
+   <!-- OpenGraph -->
+  <meta property="og:title" content="<?php echo esc_attr($page_title) ?>" />
+  <meta property="og:description" content="<?php echo esc_attr($description) ?>" />
+  <meta property="og:image" content="<?php echo esc_attr($image) ?>" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@firefox" />
+  <meta name="twitter:title" content="<?php echo esc_attr($page_title) ?>" />
+  <meta name="twitter:description" content="<?php echo esc_attr($description) ?>" />
+  <meta name="twitter:image" content="<?php echo esc_attr($image) ?>" />
+
+  <?php $output = ob_get_clean();
+
+ 
 
 	return $output;
 }

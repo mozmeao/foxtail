@@ -184,3 +184,9 @@ require get_template_directory() . '/inc/collection-post-type.php';
 
  register_nav_menu('primary_menu', 'primary site menu');
  
+
+ /**
+ * Function for header SEO & Meta tags
+ */
+
+  require get_template_directory() . '/inc/seo.php';

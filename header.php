@@ -19,6 +19,7 @@
   <link rel="profile" href="https://gmpg.org/xfn/11">
 
   <?php wp_head(); ?>
+  <?php echo foxtail_seo(); ?>
 </head>
 
 <body <?php body_class('mzp-t-firefox'); ?>>
