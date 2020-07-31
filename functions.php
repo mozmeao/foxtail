@@ -189,4 +189,10 @@ require get_template_directory() . '/inc/collection-post-type.php';
  * Function for header SEO & Meta tags
  */
 
-  require get_template_directory() . '/inc/seo.php';
+	require get_template_directory() . '/inc/seo.php';
+	
+	/**
+ * Helper functions
+ */
+
+require get_template_directory() . '/inc/helpers.php';

@@ -69,7 +69,7 @@ endif;
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-first">
         <?php echo $featured_secondary_1_image ?>
         <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label">Firefox</span>
+          <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_1) ?></span>
           <a href="<?php echo $featured_secondary_1_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_1_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>
@@ -80,7 +80,7 @@ endif;
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-second">
         <?php echo $featured_secondary_2_image ?>
         <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label">Firefox</span>
+          <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_2) ?></span>
           <a href="<?php echo $featured_secondary_2_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_2_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>
@@ -91,7 +91,7 @@ endif;
       <div class="ft-c-featured-secondary__item-wrap" id="ft-js-third">
         <?php echo $featured_secondary_3_image ?>
         <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label">Firefox</span>
+          <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_3) ?></span>
           <a href="<?php echo $featured_secondary_3_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_3_title ?></h2>
             <p class="ft-c-featured-secondary__readmore">Read More</p>

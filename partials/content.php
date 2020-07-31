@@ -26,7 +26,8 @@
 			}
 		?>
     <span class="ft-c-label ft-c-single-post__category">
-      Firefox News
+			<?php $post->post_parent; ?>
+			<?php echo foxtail_get_cat($post) ?>
     </span>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
     <div class="ft-c-single-post__line"></div>

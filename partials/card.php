@@ -8,7 +8,8 @@
       ?>
     </div>
     <div class="ft-c-card__content">
-      <span class="ft-c-label">Mozilla Comunity</span>
+      <?php $post->post_parent; ?>
+      <span class="ft-c-label"><?php echo foxtail_get_cat($post) ?></span>
       <h2 class="ft-c-card__title"><?php the_title(); ?></h2>
       <span class="ft-c-card__cta">Read More</span>
     </div>
