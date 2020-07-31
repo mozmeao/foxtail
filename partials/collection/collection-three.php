@@ -38,8 +38,9 @@ if ( $arr_posts->have_posts() ) :
 endif;
 ?>
     </div>
+    <? $collection_3_link = get_field('featured_collection_3_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">
-      <a href="#" class="ft-button-secondary">
+    <a href="<?php if ($collection_3_link) echo esc_url($collection_3_link) ?>" class="ft-button-secondary">
         View Collection
       </a>
     </div>

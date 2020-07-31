@@ -1,3 +1,5 @@
+<?php $lang = 'en'; // getting ready for future changes ?>
+
 <section class="ft-c-post-list">
   <div class="ft-l-container">
     <span class="ft-c-label">Featured collection</span>
@@ -16,11 +18,11 @@ $args = array(
 );
 
 // Select posts based on either a category or a tag
-$categoryortag = get_field('feature_category_or_tag_2_en', 'option');
+$categoryortag = get_field('feature_category_or_tag_2' . $lang, 'option');
 if ( $categoryortag === 'category' ):
-  $args['cat'] = get_field('featured_collection_2_category_en', 'option');
+  $args['cat'] = get_field('featured_collection_2_category' . $lang, 'option');
 elseif ($categoryortag && $categoryortag === 'tag'):
-  $args['tag_id'] = get_field('featured_collection_2_tag_en', 'option');
+  $args['tag_id'] = get_field('featured_collection_2_tag' . $lang, 'option');
 endif;
 
 
@@ -38,8 +40,9 @@ if ( $arr_posts->have_posts() ) :
 endif;
 ?>
     </div>
+    <? $collection_2_link = get_field('featured_collection_2_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">
-      <a href="#" class="ft-button-secondary">
+    <a href="<?php if ($collection_2_link) echo esc_url($collection_2_link) ?>" class="ft-button-secondary">
         View Collection
       </a>
     </div>
