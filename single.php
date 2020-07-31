@@ -20,7 +20,7 @@ get_header();
 			get_template_part( 'partials/content', get_post_type() );
 
 			get_template_part( 'partials/single-post-share');
-		?>
+		?>	
   </main><!-- #main -->
   <?php
 

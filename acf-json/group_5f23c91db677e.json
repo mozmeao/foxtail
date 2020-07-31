@@ -1,0 +1,70 @@
+{
+    "key": "group_5f23c91db677e",
+    "title": "Post Options",
+    "fields": [
+        {
+            "key": "field_5f23c92aeb60c",
+            "label": "Show Featured Image",
+            "name": "show_featured_image",
+            "type": "true_false",
+            "instructions": "If turned on, then the featured image will not be displayed at the top of this post.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
+        },
+        {
+            "key": "field_5f23c984f7f86",
+            "label": "Show Author",
+            "name": "show_author",
+            "type": "true_false",
+            "instructions": "If turned on, the the author name will be displayed on this post.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f23c92aeb60c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1596181314
+}
