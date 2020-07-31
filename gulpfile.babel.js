@@ -394,3 +394,36 @@ gulp.task('protocolJsCopy', () => {
 });
 
 gulp.task('protocolJS', gulp.series('protocolJsClean', 'protocolJsCopy'));
+
+// CUSTOM GULP PROCESSES
+
+
+/**
+ * Task: `update-protocol`.
+ *
+ * Updates protocol with the latest
+ *
+ * This task does the following:
+ *     1. Run a clean task that will delete current protocol files
+ *     2. Copy a list of files to the protocol folder inside assets/sass/vendor
+ */
+
+gulp.task('protocolClean', () => {
+	return del(['./assets/vendor/protocol/**/*']);
+})
+
+gulp.task('protocolCopy', () => {
+	const files = [
+		'./node_modules/@mozilla-protocol/core/protocol/css/base/**/*',
+		'./node_modules/@mozilla-protocol/core/protocol/css/components/**/*',
+		'./node_modules/@mozilla-protocol/core/protocol/css/includes/**/*',
+		'./node_modules/@mozilla-protocol/core/protocol/img/**/*',
+		'./node_modules/@mozilla-protocol/core/protocol/fonts/**/*',
+	];
+
+	return gulp
+		.src(files, {base: './node_modules/@mozilla-protocol/core/protocol'})
+		.pipe(gulp.dest('./assets/vendor/protocol'));
+});
+
+gulp.task('updateProtocol', gulp.series('protocolClean', 'protocolCopy'));

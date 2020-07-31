@@ -16,6 +16,7 @@ npm install
 # Download necessary JS files from protocol (you only need to do this once, or whenever you change wpgulp.config.js to bring in another .js file)
 npm run protocolJS
 
+
 # Run gulp script (requires local instance of wordpress running at foxtail.local)
 npm run dev
 ```

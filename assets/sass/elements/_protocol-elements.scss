@@ -7,13 +7,13 @@ If an element is extended in any way, then it will have its own component file,
 and import the protocol component there.
 --------------------------------------------------------------*/
 
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/details";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/document";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/forms";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/links";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/lists";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/quotes";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/sections";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/tables";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/typography";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/includes/animations";
+@import "../../vendor/protocol/css/base/elements/details";
+@import "../../vendor/protocol/css/base/elements/document";
+@import "../../vendor/protocol/css/base/elements/forms";
+@import "../../vendor/protocol/css/base/elements/links";
+@import "../../vendor/protocol/css/base/elements/lists";
+@import "../../vendor/protocol/css/base/elements/quotes";
+@import "../../vendor/protocol/css/base/elements/sections";
+@import "../../vendor/protocol/css/base/elements/tables";
+@import "../../vendor/protocol/css/base/elements/typography";
+@import "../../vendor/protocol/css/base/includes/animations"

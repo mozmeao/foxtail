@@ -48,7 +48,8 @@
     "images": "gulp images",
     "clearCache": "gulp clearCache",
     "translate": "gulp translate",
-    "protocolJS": "gulp protocolJS"
+    "protocolJS": "gulp protocolJS",
+    "updateProtocol": "gulp updateProtocol"
   },
   "dependencies": {
     "@mozilla-protocol/core": "^12.0.0"

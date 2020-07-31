@@ -11,8 +11,8 @@ for the CMS/editor
 @import "config";
 
 // Fonts
-@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/inter";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/metropolis";
+@import "../vendor/protocol/css/includes/fonts/inter";
+@import "../vendor/protocol/css/includes/fonts/metropolis";
 
 /*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.

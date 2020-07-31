@@ -33,14 +33,14 @@ Tags: Firefox, Mozilla
 @import "config";
 
 // Fonts
-@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/inter";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/includes/fonts/metropolis";
+@import "../vendor/protocol/css/includes/fonts/inter";
+@import "../vendor/protocol/css/includes/fonts/metropolis";
 
 /*--------------------------------------------------------------
 # Generic - Ground-zero styles (resets, box-sizing, etc.)
 --------------------------------------------------------------*/
 @import "generic/box-sizing";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/base/elements/reset";
+@import "../vendor/protocol/css/base/elements/reset";
 
 /*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.

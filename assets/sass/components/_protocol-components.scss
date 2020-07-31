@@ -7,20 +7,20 @@ If a component is extended in any way, then it will have its own component file,
 and import the protocol component there.
 --------------------------------------------------------------*/
 
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/article";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/billboard";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/button";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/call-out";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/card";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/emphasis-box";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/feature-card";
-@import "./node_modules/@mozilla-protocol/core/protocol/css/components/footer";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/hero";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/inline-list";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/modal";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/menu-list";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/menu-list";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/notification-bar";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/picto-card";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/sidebar-menu";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/zap";
+// @import "../../vendor/protocol/css/components/article";
+// @import "../../vendor/protocol/css/components/billboard";
+// @import "../../vendor/protocol/css/components/button";
+// @import "../../vendor/protocol/css/components/call-out";
+// @import "../../vendor/protocol/css/components/card";
+// @import "../../vendor/protocol/css/components/emphasis-box";
+// @import "../../vendor/protocol/css/components/feature-card";
+@import "../../vendor/protocol/css/components/footer";
+// @import "../../vendor/protocol/css/components/hero";
+// @import "../../vendor/protocol/css/components/inline-list";
+// @import "../../vendor/protocol/css/components/modal";
+// @import "../../vendor/protocol/css/components/menu-list";
+// @import "../../vendor/protocol/css/components/menu-list";
+// @import "../../vendor/protocol/css/components/notification-bar";
+// @import "../../vendor/protocol/css/components/picto-card";
+// @import "../../vendor/protocol/css/components/sidebar-menu";
+// @import "../../vendor/protocol/css/components/zap";

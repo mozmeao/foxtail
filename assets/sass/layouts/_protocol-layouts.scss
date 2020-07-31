@@ -8,9 +8,9 @@ and import the protocol component there.
 --------------------------------------------------------------*/
 
 // Global Partials (nav, footer, etc)
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/footer";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/components/navigation-form";
+// @import "../../vendor/protocol/css/components/footer"
+// @import "../../vendor/protocol/css/components/navigation-form";
 
 // Wrappers and other layouts
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/templates/card-layout";
-// @import "./node_modules/@mozilla-protocol/core/protocol/css/templates/main-with-sidebar";
+// @import "../../vendor/protocol/css/templates/card-layout";
+// @import "../../vendor/protocol/css/templates/main-with-sidebar";

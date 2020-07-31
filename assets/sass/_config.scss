@@ -5,5 +5,5 @@ Variables, configurations, etc
 --------------------------------------------------------------*/
 
 // Protocol Variables
-$font-path: "../fonts" !default;
-$image-path: "../../node_modules/@mozilla-protocol/core/protocol/img";
+$font-path: "../vendor/protocol/fonts" !default;
+$image-path: "../vendor/protocol/img";
