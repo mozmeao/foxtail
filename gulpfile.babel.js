@@ -386,6 +386,8 @@ gulp.task('protocolJsCopy', () => {
 	const files = [
 		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-footer.js',
 		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-navigation.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-newsletter.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-base.js',
 	];
 
 	return gulp

@@ -15,6 +15,7 @@
   overflow: hidden;
   display: none;
   visibility: hidden;
+  z-index: 30;
 
   .search-form {
     display: flex;

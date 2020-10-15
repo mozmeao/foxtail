@@ -10,4 +10,14 @@ function foxtail_get_cat($the_page) {
   }
   return $cat_name;
 }
+
+/*
+* Print the current page URL.
+*/
+function foxtail_current_url() {
+  global $wp;
+  $current_url = esc_url(home_url(add_query_arg(array(),$wp->request)));
+
+  echo $current_url;
+}
 ?>

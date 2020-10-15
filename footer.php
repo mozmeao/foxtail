@@ -13,6 +13,9 @@
 
 </div><!-- #content -->
 
+<!-- Newsletter -->
+<?php get_template_part('partials/newsletter'); ?>
+
 <footer class="mzp-c-footer">
   <div class="mzp-l-content">
     <nav class="mzp-c-footer-primary">

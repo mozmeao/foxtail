@@ -119,7 +119,7 @@ function foxtail_scripts() {
 	// Frontend scripts.
 	if ( ! is_admin() ) {
 		// Enqueue vendors first.
-		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js' );
+		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '1.0', true );
 
 		// Enqueue custom JS after vendors.
 		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), '1.0', true );
