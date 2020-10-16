@@ -33,7 +33,7 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 				
-				get_template_part('partials/card'); 
+				get_template_part('partials/card-search'); 
 
 			endwhile;
 
