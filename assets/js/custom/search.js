@@ -8,6 +8,14 @@
 
   const handleToggle = () => {
     searchArea.classList.toggle('ft-j-active');
+
+    // send of a GA event for opening
+    if (searchArea.classList.contains('ft-j-active')) {
+      gtag('event', 'click', {
+        'event_category': blogname + ' Interactions',
+        'event_label': 'Click on search label',
+      })
+    }
   }
 
   // a little bit extra to make sure it works in IE11

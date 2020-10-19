@@ -39,7 +39,7 @@ if ($args) {
   if( $my_query->have_posts() ) {
     ?>
 <div class="ft-l-space-related"></div>
-<section class="ft-c-post-list">
+<section id="related-articles" class="ft-c-post-list">
   <div class="ft-l-container">
     <h2 class="ft-c-post-list__title">Related Articles</h2>
     <div class="ft-c-post-list__wrap--three-column">

@@ -17,12 +17,25 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSYYYSCH2V"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  // REPLACE WITH THE FINAL GA TAG
+  // THIS TAG FOR TESTING PURPOSES ONLY
+  gtag('config', 'G-QSYYYSCH2V');
+  </script>
 
   <?php wp_head(); ?>
   <?php echo foxtail_seo(); ?>
 </head>
 
-<body <?php body_class('mzp-t-firefox'); ?>>
+<body <?php body_class('mzp-t-firefox'); ?> data-blogname="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'foxtail' ); ?></a>
 
@@ -37,11 +50,12 @@
         <img class="ft-c-header__search-icon"
           src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />
       </div>
-      <div class="ft-c-header__nav">
+      <div id="nav" class="ft-c-header__nav">
         <?php bem_menu('primary_menu', 'ft-c-primary-nav',); ?>
       </div>
       <div class="ft-c-header__cta-wrap">
-        <a href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&amp;utm_medium=referral&amp;utm_campaign=blog-nav"
+        <a id="nav-download"
+          href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&amp;utm_medium=referral&amp;utm_campaign=blog-nav"
           rel="external" class="ft-c-header__cta">Download Firefox</a>
       </div>
       <div class="ft-c-header__search">
