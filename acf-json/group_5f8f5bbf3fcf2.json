@@ -1,0 +1,82 @@
+{
+    "key": "group_5f8f5bbf3fcf2",
+    "title": "Inline CTA Block",
+    "fields": [
+        {
+            "key": "field_5f8f5d5d9b98e",
+            "label": "Image",
+            "name": "block-inlinecta-image",
+            "type": "image",
+            "instructions": "Try to use a 1x1 image",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 200,
+            "min_height": 200,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5f8f5dc59b98f",
+            "label": "Text",
+            "name": "block-inlinecta-text",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 80
+        },
+        {
+            "key": "field_5f8f5e119b990",
+            "label": "CTA",
+            "name": "block-inlinecta-cta",
+            "type": "link",
+            "instructions": "CTA Text & CTA Link. Keep the CTA text short. Examples are \"Learn More\", \"Get it now\", \"Read More\", etc.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/inline-cta"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1603244500
+}

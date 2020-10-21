@@ -207,3 +207,42 @@ add_filter( 'posts_search', function( $search, \WP_Query $q )
 
     return $search;
 }, 10, 2 );
+
+/**
+ * Add Gutenberg block category
+ */
+add_filter( 'block_categories', function( $categories, $post ) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'custom',
+                'title' => 'Mozilla Custom',
+            ),
+        )
+    );
+}, 10, 2 );
+
+/**
+ * Add custom Gutenberg blocks (using ACF)
+ */
+
+function acf_inline_cta_block() {
+	
+	// check function exists
+	if( function_exists('acf_register_block') ) {
+		
+		// register a portfolio item block
+		acf_register_block(array(
+			'name'				=> 'inline-cta',
+			'title'				=> __('Inline CTA'),
+			'description'		=> __('A custom block for displaying a CTA inside a blog post'),
+			'render_template'	=> '/partials/blocks/inline-cta/block-inline-cta.php',
+			'category'			=> 'custom',
+			'icon'				=> 'external',
+			'keywords'			=> array( 'custom, mozilla, cta, inline' ),
+		));
+	}
+}
+
+add_action('acf/init', 'acf_inline_cta_block');
