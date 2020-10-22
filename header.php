@@ -35,7 +35,7 @@
   <?php echo foxtail_seo(); ?>
 </head>
 
-<body <?php body_class('mzp-t-firefox'); ?> data-blogname="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
+<body <?php body_class(''); ?> data-blogname="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'foxtail' ); ?></a>
 

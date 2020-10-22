@@ -25,7 +25,7 @@
 }
 
 .ft-c-card__title {
-  @include text-title-sm;
+  @include ft-text-title-xs;
 }
 
 // Hover over a card
@@ -71,7 +71,7 @@
   }
 
   .ft-c-card__title {
-    @include text-title-xs;
+    @include ft-text-title-xs;
   }
 }
 
@@ -113,6 +113,6 @@
   }
 
   .ft-c-card__title {
-    @include text-title-xs;
+    @include ft-text-title-xs;
   }
 }

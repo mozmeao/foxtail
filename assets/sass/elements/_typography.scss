@@ -1,0 +1,28 @@
+body {
+  font-size: 18px;
+}
+
+h1,
+.h1 {
+  @include ft-text-title-lg;
+}
+
+h2,
+.h2 {
+  @include ft-text-title-md;
+}
+
+h3,
+.h3 {
+  @include ft-text-title-sm;
+}
+
+h4,
+.h4 {
+  @include ft-text-title-xs;
+}
+
+h5,
+.h5 {
+  @include ft-text-title-xxs;
+}

@@ -33,7 +33,7 @@
 }
 
 .ft-c-single-post__title {
-  @include text-title-md;
+  @include ft-text-title-md;
   margin-bottom: 32px;
   @supports (display: grid) {
     grid-row: 3 / 4;

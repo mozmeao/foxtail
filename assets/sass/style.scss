@@ -43,6 +43,12 @@ Tags: Firefox, Mozilla
 @import "../vendor/protocol/css/base/elements/reset";
 
 /*--------------------------------------------------------------
+# Utilities - helpers, etc
+--------------------------------------------------------------*/
+@import "utilities/utilities";
+@import "utilities/mixins/typography";
+
+/*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
 @import "elements/protocol-elements";
@@ -97,11 +103,6 @@ Tags: Firefox, Mozilla
 @import "pages/archive";
 @import "pages/collection";
 @import "pages/404";
-
-/*--------------------------------------------------------------
-# Utilities - helpers, etc
---------------------------------------------------------------*/
-@import "utilities/utilities";
 
 /*--------------------------------------------------------------
 # SHAAAAME! - The stuff that shouldn't exist..but...does
