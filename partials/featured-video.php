@@ -63,7 +63,7 @@ endif;
   </div>
   <div class="ft-l-container">
     <div class="ft-c-featured-video__cta">
-      <a class="ft-button--dark" href="https://www.youtube.com/firefox">
+      <a href="https://www.youtube.com/firefox" class="mzp-c-button mzp-t-neutral">
         Watch more videos
       </a>
     </div>

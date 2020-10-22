@@ -102,7 +102,8 @@ endif;
     </div>
   </div>
   <div class="ft-c-post-list__cta">
-    <a href="/latest" class="ft-button-secondary">
+
+    <a href="/latest" class="mzp-c-button mzp-t-neutral">
       View All Posts
     </a>
   </div>

@@ -29,12 +29,12 @@ endif
       <h3><?php echo $featured_extra_headline ?></h3>
       <?php echo $featured_extra_subhead ?>
       <div class="ft-c-featured-extra__ctas">
-        <a class="ft-button--dark" href="<?php echo $featured_extra_link_1['url'] ?>" target="
+        <a class="mzp-c-button mzp-t-dark" href="<?php echo $featured_extra_link_1['url'] ?>" target="
           <?php $featured_extra_link_1['target'] ? $featured_extra_link_1['target'] : '_self';?>">
           <?php echo $featured_extra_cta_1 ?>
         </a>
         <?php if ($featured_extra_link_2 && $featured_extra_cta_2) { ?>
-        <a class="ft-button-secondary--dark" href="<?php echo $featured_extra_link_2['url'] ?>" target="
+        <a class="mzp-c-button mzp-t-secondary mzp-t-dark" href="<?php echo $featured_extra_link_2['url'] ?>" target="
           <?php $featured_extra_link_2['target'] ? $featured_extra_link_2['target'] : '_self';?>">
           <?php echo $featured_extra_cta_2 ?>
         </a>

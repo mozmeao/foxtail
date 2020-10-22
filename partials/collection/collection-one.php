@@ -43,7 +43,7 @@ endif;
     </div>
     <? $collection_1_link = get_field('featured_collection_1_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">
-    <a href="<?php if ($collection_1_link) echo esc_url($collection_1_link) ?>" class="ft-button-secondary">
+      <a href="<?php if ($collection_1_link) echo esc_url($collection_1_link) ?>" class="mzp-c-button mzp-t-neutral">
         View Collection
       </a>
     </div>

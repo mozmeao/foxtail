@@ -39,7 +39,7 @@
       </div>
 
       <p class="ft-c-featured-hero__cta">
-        <a class="ft-button--dark" href="<?php echo $featured_permalink ?>">
+        <a class="mzp-c-button mzp-t-dark mzp-t-xl" href="<?php echo $featured_permalink ?>">
           Read more
         </a>
       </p>
