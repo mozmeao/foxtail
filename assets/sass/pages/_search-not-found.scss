@@ -1,0 +1,31 @@
+.no-results,
+.not-found {
+  padding: 80px 0px;
+  text-align: center;
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .search-submit {
+    @extend .mzp-c-button;
+    align-self: flex-start;
+    width: 100%;
+  }
+  .search-field {
+    margin: 0;
+    width: 100%;
+    min-width: 200px;
+  }
+
+  @media #{$mq-md} {
+    .search-form {
+      flex-direction: row;
+      width: auto;
+    }
+    .search-submit {
+      margin-left: 10px;
+      width: auto;
+    }
+  }
+}
