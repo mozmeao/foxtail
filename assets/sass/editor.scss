@@ -14,10 +14,12 @@ for the CMS/editor
 @import "../vendor/protocol/css/includes/fonts/inter";
 @import "../vendor/protocol/css/includes/fonts/metropolis";
 
+@import "utilities/mixins/typography";
 /*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
 @import "elements/protocol-elements";
+@import "elements/typography";
 
 /*--------------------------------------------------------------
 # Blocks

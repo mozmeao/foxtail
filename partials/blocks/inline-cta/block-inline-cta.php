@@ -3,19 +3,23 @@
   $image = get_field( 'block-inlinecta-image' );
   $text = get_field( 'block-inlinecta-text' );
   $cta = get_field( 'block-inlinecta-cta' );
-  $cta_url = $cta['url'];
-  $cta_title = $cta['title'];
+
+  if (!empty($cta)) {
+    $cta_url = $cta['url'];
+    $cta_title = $cta['title'];
+  }
 ?>
 
-<?php if ( !empty( $image) && !empty( $cta) && !empty( $text) ) { ?>
-<a class="ft-c-inline-cta" href=" <?php echo esc_url( $cta_url ); ?>">
+<a class="ft-c-inline-cta" href=" <?php if ( !empty($cta_url)) { echo esc_url( $cta_url ); } ?>">
   <div class="ft-c-inline-cta__media">
 
-    <?php echo wp_get_attachment_image( $image, '1x1' ); ?>
+    <?php if ( !empty($image)) {
+
+    echo wp_get_attachment_image( $image, '1x1' );
+  } ?>
   </div>
   <div class="ft-c-inline-cta__content">
-    <h6><?php echo $text ?></h6>
-    <span><?php echo $cta_title ?></span>
+    <?php if ( !empty($text)) { ?> <h6><?php echo $text ?></h6> <?php } ?>
+    <?php if ( !empty($cta_title)) { ?> <span><?php echo $cta_title ?></span> <?php } ?>
   </div>
 </a>
-<?php } ?>
