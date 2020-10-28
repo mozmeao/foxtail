@@ -72,8 +72,8 @@ assets/img/.DS_Store
 /haters
 css
 assets/css
-style.css
-style.min.css
+main.css
+main.min.css
 editor.csseditor.css.map
 editor.min.css
 assets/js/custom.min.js

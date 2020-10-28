@@ -125,7 +125,7 @@ function foxtail_scripts() {
 		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), '1.0', true );
 
 		// Minified and Concatenated styles.
-		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), '1.0', 'all' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
