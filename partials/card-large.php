@@ -14,7 +14,7 @@
       $item_excerpt = wp_trim_words( get_the_excerpt(), 55, ' ...' );
       echo '<p>' . $item_excerpt . '</p>' 
       ?>
-      <span class="ft-c-card__cta">View Collection</span>
+      <span class="ft-c-more">View Collection</span>
     </div>
   </a>
 </article>

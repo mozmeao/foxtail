@@ -1,5 +1,5 @@
 .ft-c-label {
-  @include text-body-xs;
+  @include ft-text-body-xs;
   letter-spacing: 0.15rem;
   color: $color-ink-80;
   text-transform: uppercase;
@@ -13,4 +13,17 @@
   &.ft-c-label--white {
     color: $color-white;
   }
+}
+
+// optional pill style label
+.ft-c-pill {
+  @include ft-text-body-xs;
+  color: $color-white;
+  background-color: $color-black;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 4px 8px;
+  align-self: flex-start;
+  font-weight: 400;
+  letter-spacing: 1px;
 }

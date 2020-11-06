@@ -72,7 +72,7 @@ endif;
           <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_1) ?></span>
           <a href="<?php echo $featured_secondary_1_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_1_title ?></h2>
-            <p class="ft-c-featured-secondary__readmore">Read More</p>
+            <span class="ft-c-more">Read More</span>
           </a>
         </div>
       </div>
@@ -83,7 +83,7 @@ endif;
           <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_2) ?></span>
           <a href="<?php echo $featured_secondary_2_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_2_title ?></h2>
-            <p class="ft-c-featured-secondary__readmore">Read More</p>
+            <span class="ft-c-more">Read More</span>
           </a>
         </div>
       </div>
@@ -94,7 +94,7 @@ endif;
           <span class="ft-c-label"><?php echo foxtail_get_cat($featured_secondary_3) ?></span>
           <a href="<?php echo $featured_secondary_3_link ?>">
             <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_3_title ?></h2>
-            <p class="ft-c-featured-secondary__readmore">Read More</p>
+            <span class="ft-c-more">Read More</span>
           </a>
         </div>
       </div>
@@ -103,7 +103,7 @@ endif;
   </div>
   <div class="ft-c-post-list__cta">
 
-    <a href="/latest" class="mzp-c-button mzp-t-neutral">
+    <a href="/latest" class="mzp-c-cta-link">
       View All Posts
     </a>
   </div>

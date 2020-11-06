@@ -44,7 +44,7 @@
         <div class="ft-c-hamburger"></div>
       </div>
       <div class="ft-c-header__logo">
-        <a href="<?php echo home_url() ?>">Firefox Blog</a>
+        <a href="<?php echo home_url() ?>">Mozilla Blog</a>
       </div>
       <div class="ft-c-header__search ft-c-header__search--mobile">
         <img class="ft-c-header__search-icon"
@@ -56,7 +56,7 @@
       <div class="ft-c-header__cta-wrap">
         <a id="nav-download"
           href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&amp;utm_medium=referral&amp;utm_campaign=blog-nav"
-          rel="external" class="ft-c-header__cta">Download Firefox</a>
+          rel="external" class="mzp-c-button mzp-t-product mzp-t-lg">Download Firefox</a>
       </div>
       <div class="ft-c-header__search">
         <img class="ft-c-header__search-icon"

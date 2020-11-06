@@ -29,7 +29,7 @@ endif
       <h3><?php echo $featured_extra_headline ?></h3>
       <?php echo $featured_extra_subhead ?>
       <div class="ft-c-featured-extra__ctas">
-        <a class="mzp-c-button mzp-t-dark" href="<?php echo $featured_extra_link_1['url'] ?>" target="
+        <a class="mzp-c-button mzp-t-secondary mzp-t-dark" href="<?php echo $featured_extra_link_1['url'] ?>" target="
           <?php $featured_extra_link_1['target'] ? $featured_extra_link_1['target'] : '_self';?>">
           <?php echo $featured_extra_cta_1 ?>
         </a>

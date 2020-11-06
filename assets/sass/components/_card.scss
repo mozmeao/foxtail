@@ -1,85 +1,66 @@
-// generic card with thumbnail over content
+// custom card that doen't use protocol
 
 .ft-c-card__link {
   text-decoration: none;
-  color: $color-ink-80;
+  display: flex;
+}
+
+.ft-c-card__link,
+.ft-c-card__link:hover,
+.ft-c-card__link:active,
+.ft-c-card__link:visited {
+  color: $color-black;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.ft-c-card__link:hover {
+  box-shadow: $box-shadow-md;
+  cursor: pointer;
+
+  .ft-c-card__title {
+    border-bottom: 2px solid $color-black;
+  }
 }
 
 .ft-c-card__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: $ft-border-radius;
     width: 100%;
+    max-width: none;
+    margin-bottom: 0;
+
+    @media #{$mq-md} {
+      max-width: 150px;
+      max-height: 150px;
+    }
   }
 }
 
 .ft-c-card__content {
-  display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-.ft-c-card__cta {
-  color: $color-light-gray-90;
-  letter-spacing: 0.1rem;
+  margin-left: 16px;
+  flex: 3;
 }
 
 .ft-c-card__title {
   @include ft-text-title-xs;
+  display: inline;
+  border-bottom: 2px solid transparent;
 }
 
-// Hover over a card
-.ft-c-card__link:hover {
-  .ft-c-card__image img {
-    box-shadow: $box-shadow-md;
-  }
-
-  .ft-c-card__title {
-    text-decoration: underline;
-  }
-}
-
-// styles for smaller card format
-// Thumbnail is on the left
-
-.ft-c-card--small {
-  .ft-c-card__link {
-    display: flex;
-  }
-
-  .ft-c-card__image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      max-width: none;
-      margin-bottom: 0;
-
-      @media #{$mq-md} {
-        max-width: 150px;
-        max-height: 150px;
-      }
-    }
-  }
-
-  .ft-c-card__content {
-    margin-top: 16px;
-    margin-left: 16px;
-    flex: 3;
-  }
-
-  .ft-c-card__title {
-    @include ft-text-title-xs;
-  }
-}
-
-// styles for smaller card format
-// Thumbnail is on the left
-
+// optional large card
 .ft-c-card--large {
   margin-bottom: 60px;
+
+  .ft-c-card__title {
+    display: inline-block;
+  }
 
   @media #{$mq-md} {
     display: block;
@@ -99,6 +80,7 @@
 
     img {
       max-width: none;
+      max-height: none;
       margin-bottom: 0;
     }
   }
@@ -114,5 +96,48 @@
 
   .ft-c-card__title {
     @include ft-text-title-xs;
+  }
+}
+
+// Styles that override the default protocol card
+.mzp-c-card {
+  .mzp-c-card-content {
+    padding: 0;
+  }
+  .ft-c-pill {
+    margin-bottom: 24px;
+  }
+
+  .mzp-c-card-title {
+    @include ft-text-title-sm;
+  }
+
+  .mzp-c-card-media-wrapper {
+    margin-bottom: 24px;
+  }
+}
+
+.mzp-c-card .mzp-c-card-block-link:hover,
+.mzp-c-card .mzp-c-card-block-link:active,
+.mzp-c-card .mzp-c-card-block-link:focus {
+  box-shadow: $box-shadow-md;
+}
+
+.mzp-c-card .mzp-c-card-block-link {
+  padding: 8px;
+}
+
+// readmore style. Consider breaking into separate component file
+.ft-c-more {
+  @include ft-text-body-md;
+  text-decoration: underline;
+  color: $color-marketing-gray-80;
+  display: block;
+  margin-top: 24px;
+
+  &:active,
+  &:visited,
+  &:hover {
+    color: $color-marketing-gray-80;
   }
 }

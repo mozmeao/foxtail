@@ -13,7 +13,7 @@
   display: none;
 
   img {
-    border-radius: 8px;
+    border-radius: $ft-border-radius;
     box-shadow: $box-shadow-lg;
     z-index: 10;
 
@@ -65,15 +65,20 @@
   justify-content: center;
   flex: 2;
 
+  h2,
+  h2:visited {
+    display: inline;
+    color: $color-black;
+  }
+
   a {
     text-decoration: none;
-    color: $color-ink-80;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
 
-      p {
-        color: inherit;
+      h2 {
+        border-bottom: 2px solid black;
       }
     }
   }

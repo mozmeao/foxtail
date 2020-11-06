@@ -39,7 +39,7 @@
   overflow: hidden;
   text-indent: 120%;
   white-space: nowrap;
-  background-image: url("/wp-content/themes/foxtail/assets/images/logo.png");
+  background-image: url("/wp-content/themes/foxtail/assets/images/moz-logo.svg");
   background-repeat: no-repeat;
   background-size: 165px 40px;
   height: 40px;
@@ -68,24 +68,6 @@
     align-items: center;
     height: 100%;
     float: right;
-  }
-}
-
-.ft-c-header__cta {
-  border: 2px solid $color-blue-50;
-  background-color: transparent;
-  color: $color-blue-50;
-  transition: all 0.3s ease;
-  font-weight: 800;
-  text-decoration: none;
-  padding: 6px 24px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-
-  &:hover,
-  &:focus {
-    background-color: $color-blue-50;
-    color: #ffffff;
   }
 }
 

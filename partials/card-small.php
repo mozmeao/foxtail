@@ -1,4 +1,4 @@
-<article class="ft-c-card ft-c-card--small">
+<article class="ft-c-card">
   <a class="ft-c-card__link" href="<?php the_permalink(); ?>">
     <div class="ft-c-card__image">
       <?php
@@ -10,7 +10,7 @@
     <div class="ft-c-card__content">
       <!-- <span class="ft-c-label">Mozilla Comunity</span> -->
       <h2 class="ft-c-card__title"><?php the_title(); ?></h2>
-      <span class="ft-c-card__cta">Read More</span>
+      <span class="ft-c-more">Read More</span>
     </div>
   </a>
 </article>
