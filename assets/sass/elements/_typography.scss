@@ -1,5 +1,10 @@
 body {
-  font-size: 18px;
+  @include ft-text-body-md;
+}
+
+
+.ft-header-xl {
+  @include ft-text-title-xl;
 }
 
 h1,
@@ -22,7 +27,3 @@ h4,
   @include ft-text-title-xs;
 }
 
-h5,
-.h5 {
-  @include ft-text-title-xxs;
-}
