@@ -2,9 +2,9 @@ body {
   @include ft-text-body-md;
 }
 
-
 .ft-header-xl {
   @include ft-text-title-xl;
+  font-family: $font-stack-mozilla;
 }
 
 h1,
@@ -26,4 +26,3 @@ h4,
 .h4 {
   @include ft-text-title-xs;
 }
-

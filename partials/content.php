@@ -24,16 +24,14 @@
 			} else {
 			the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
 			}
-    ?>
-    <span class="ft-c-label ft-c-single-post__category">
-      <?php $post->post_parent; ?>
-      <?php echo foxtail_get_cat($post) ?>
-    </span>
+		?>
+    <div class="ft-c-single-post__category">
+      <span class="ft-c-label ft-c-pill">
+        <?php $post->post_parent; ?>
+        <?php echo foxtail_get_cat($post) ?>
+      </span>
+    </div>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
-    <div class="ft-c-single-post__line"></div>
-  </div>
-
-  <div class="ft-c-single-post__body">
     <div class="ft-c-single-post__meta">
       <div class="ft-c-post-meta">
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/calendar.svg' ?>" alt="calendar" />
@@ -53,9 +51,11 @@
       </div>
       <?php } ?>
 
-
-      <hr />
     </div>
+  </div>
+
+  <div class="ft-c-single-post__body">
+
 
     <?php
 		the_content( sprintf(
