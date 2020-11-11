@@ -14,7 +14,7 @@ if ( get_field('select_mega_cta_type') === 'Custom' ) {
           <?php if ($megalabel) echo $megalabel  ?>
         </span>
         <h3><?php echo $megatitle ?></h3>
-        <a href="<?php echo esc_url($megalink['url']) ?>" class="ft-button-secondary--dark"
+        <a href="<?php echo esc_url($megalink['url']) ?>" class="mzp-c-button mzp-t-secondary mzp-t-dark"
           target="<?php echo esc_attr( $megalink['target'] ? $link['target'] : '_self' ) ?>">
           <?php echo esc_html($megalink['title']) ?>
         </a>

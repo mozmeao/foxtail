@@ -23,7 +23,7 @@
   flex: 1;
   transition: background-color 0.3s ease;
   text-decoration: none;
-  color: $color-ink-80;
+  color: $color-black;
   padding: 24px 0;
 
   &--left {
@@ -52,17 +52,22 @@ a.ft-c-post-nav__item:hover {
   margin-bottom: 0px;
   min-width: 80%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 
   @media #{$mq-md} {
     padding: 8px 60px;
-    text-align: left;
   }
 
   span {
     font-weight: bold;
     margin-bottom: 0;
+    display: block;
+    @include ft-text-body-sm;
     @media #{$mq-md} {
-      font-weight: normal;
+      font-weight: 200;
       margin-bottom: 16px;
     }
   }

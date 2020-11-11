@@ -9,7 +9,7 @@
       class="ft-c-post-nav__item ft-c-post-nav__item--left">
       <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/previous.svg' ?>" alt="previous" />
       <div class="ft-c-post-nav__item-content">
-        <span class="ft-c-label">Previous Post</span>
+        <span>Previous Post</span>
         <p>
           <?php echo apply_filters( 'the_title', $prev_post->post_title ); ?>
         </p>
@@ -21,7 +21,7 @@
     <?php if ( ! empty( $next_post ) ): ?>
     <a id="next-post" href="<?php echo get_permalink( $next_post->ID ); ?>" class="ft-c-post-nav__item">
       <div class="ft-c-post-nav__item-content">
-        <span class="ft-c-label">Next Post</span>
+        <span>Next Post</span>
         <p>
           <?php echo get_the_title( $next_post->ID ); ?>
         </p>

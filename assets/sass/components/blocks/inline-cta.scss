@@ -1,8 +1,8 @@
 .ft-c-inline-cta {
-  background-color: $color-orange-05;
+  background-color: $color-moz-dark-blue;
   padding: 20px;
   display: flex;
-  color: $color-ink-80;
+  color: $color-white;
   text-decoration: none;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -14,8 +14,13 @@
   }
 
   &:hover {
-    span {
+    box-shadow: $box-shadow-md;
+    color: $color-white;
+    h6 {
       text-decoration: underline;
+    }
+    span {
+      color: $color-white;
     }
   }
 
