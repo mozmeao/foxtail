@@ -71,7 +71,7 @@
     &:hover:after {
       content: "";
       height: 2px;
-      background: linear-gradient(71deg, #972ab8, #e22951 100%, #e22851 100%);
+      background: $color-black;
       display: block;
       border-radius: 5px;
       opacity: 1;
