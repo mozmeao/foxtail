@@ -12,11 +12,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('ft-c-single-post'); ?>>
   <div class="ft-c-single-post__header">
     <?php
-
-			// don't show anything if you aren't supposed to.
-			if ( post_password_required() || is_attachment() || ! has_post_thumbnail()) {
-				return;
-			}
 			
 			// show or hide featured image
 			if (!get_post_meta( get_the_ID(), 'show_featured_image', true )) {

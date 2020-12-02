@@ -1,7 +1,9 @@
+<?php $lang = 'en'; // getting ready for future changes ?>
+
 <section class="ft-c-post-list">
   <div class="ft-l-container">
     <span class="ft-c-label">Featured collection</span>
-    <h2 class="ft-c-post-list__title">Be smart. Shop Safe.</h2>
+    <h2 class="ft-c-post-list__title"><?php the_field('feature_collection_3_title_' . $lang, 'option') ?></h2>
     <div class="ft-c-post-list__wrap--three-column">
 
 
@@ -16,11 +18,11 @@ $args = array(
 );
 
 // Select posts based on either a category or a tag
-$categoryortag = get_field('feature_category_or_tag_3_en', 'option');
+$categoryortag = get_field('feature_category_or_tag_3_' . $lang, 'option');
 if ( $categoryortag === 'category' ):
-  $args['cat'] = get_field('featured_collection_3_category_en', 'option');
+  $args['cat'] = get_field('featured_collection_3_category_' . $lang, 'option');
 elseif ($categoryortag && $categoryortag === 'tag'):
-  $args['tag_id'] = get_field('featured_collection_3_tag_en', 'option');
+  $args['tag_id'] = get_field('featured_collection_3_tag_' . $lang, 'option');
 endif;
 
 
