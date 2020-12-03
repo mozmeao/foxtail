@@ -27,11 +27,13 @@ get_header();
 				'post_status' => 'publish',
 			);
 
-			$categoryortag = get_field(' collection_filter', 'option');
-			if ( $categoryortag === 'category' ):
-				$args['cat'] = get_field('collection_filter', 'option');
-			elseif ($categoryortag && $categoryortag === 'tag'):
-				$args['tag_id'] = get_field('collection_tag', 'option');
+			
+
+			$categoryortag = get_field('collection_filter');
+			if ( $categoryortag === 'Category' ):
+				$args['cat'] = get_field('collection_filter');
+			elseif ($categoryortag && $categoryortag === 'Tag'):
+				$args['tag_id'] = get_field('collection_tag');
 			endif;
 
 			$arr_posts = new WP_Query( $args );

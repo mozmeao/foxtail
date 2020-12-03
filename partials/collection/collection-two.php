@@ -1,33 +1,43 @@
-<?php $lang = 'en'; // getting ready for future changes ?>
+<?php 
+  $lang = 'en'; // getting ready for future changes
+
+  global $_displayed_posts;
+
+  $args = array(
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'posts_per_page' => 6,
+    'post__not_in' => $_displayed_posts,
+  );
+
+  // Select posts based on either a category or a tag
+  $categoryortag = get_field('feature_category_or_tag_2_' . $lang, 'option');
+  if ( $categoryortag === 'category' ):
+    $args['cat'] = get_field('featured_collection_2_category_' . $lang, 'option');
+  elseif ($categoryortag && $categoryortag === 'tag'):
+    $args['tag_id'] = get_field('featured_collection_2_tag_' . $lang, 'option');
+  endif;
+
+  $arr_posts = new WP_Query( $args );
+
+  // add a class if there are fewer than 6 posts
+  $num = $arr_posts->post_count;
+  $numclass = '';
+  if ($num < 6) {
+    $numclass= 'ft-p-lownum';
+  }
+?>
+
 
 <section class="ft-c-post-list">
   <div class="ft-l-container">
     <span class="ft-c-label">Featured collection</span>
     <h2 class="ft-c-post-list__title"><?php the_field('feature_collection_2_title_' . $lang, 'option') ?></h2>
-    <div class="ft-c-post-list__wrap--three-column">
+    <div class="ft-c-post-list__wrap--three-column <?php echo $numclass ?>">
 
 
 
       <?php
-      global $_displayed_posts;
-$args = array(
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'posts_per_page' => 6,
-    'post__not_in' => $_displayed_posts,
-);
-
-// Select posts based on either a category or a tag
-$categoryortag = get_field('feature_category_or_tag_2_' . $lang, 'option');
-if ( $categoryortag === 'category' ):
-  $args['cat'] = get_field('featured_collection_2_category_' . $lang, 'option');
-elseif ($categoryortag && $categoryortag === 'tag'):
-  $args['tag_id'] = get_field('featured_collection_2_tag_' . $lang, 'option');
-endif;
-
-
-
-$arr_posts = new WP_Query( $args );
  
 if ( $arr_posts->have_posts() ) :
   while ( $arr_posts->have_posts() ) :

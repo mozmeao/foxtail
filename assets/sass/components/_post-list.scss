@@ -84,6 +84,12 @@
     section:nth-child(n + 4) {
       display: block;
     }
+
+    &.ft-p-lownum {
+      section:nth-of-type(n + 4) {
+        display: none;
+      }
+    }
   }
 
   @media #{$mq-lg} {
