@@ -3,11 +3,11 @@
     "title": "Post Options",
     "fields": [
         {
-            "key": "field_5f23c92aeb60c",
-            "label": "Show Featured Image",
-            "name": "show_featured_image",
+            "key": "field_5fca8b8cce4ca",
+            "label": "Hide Featured Image",
+            "name": "hide_featured_image",
             "type": "true_false",
-            "instructions": "If turned on, then the featured image will not be displayed at the top of this post.",
+            "instructions": "If turned on, then the featured image will not be displayed at the top of this post. (shown by default)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,17 +16,36 @@
                 "id": ""
             },
             "message": "",
-            "default_value": 1,
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Hide",
+            "ui_off_text": "Show"
+        },
+        {
+            "key": "field_5fca8e9186963",
+            "label": "Hide Author",
+            "name": "hide_author",
+            "type": "true_false",
+            "instructions": "If turned on, the the author name will be be hidden on this post. (shown by default)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
             "ui": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide"
         },
         {
-            "key": "field_5f23c984f7f86",
-            "label": "Show Author",
-            "name": "show_author",
+            "key": "field_5fca8f6b3a14c",
+            "label": "Show Date",
+            "name": "show_date",
             "type": "true_false",
-            "instructions": "If turned on, the the author name will be displayed on this post.",
+            "instructions": "If turned on, the the date will be displayed on the post (off by default)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -58,5 +77,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1603744459
+    "modified": 1607110577
 }

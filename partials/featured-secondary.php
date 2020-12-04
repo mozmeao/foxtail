@@ -103,7 +103,8 @@ endif;
   </div>
   <div class="ft-c-post-list__cta">
 
-    <a href="/latest" class="mzp-c-cta-link">
+    <?php $url = site_url( '/latest/') ?>
+    <a href="<?php echo $url ?>" class="mzp-c-cta-link">
       View All Posts
     </a>
   </div>

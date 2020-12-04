@@ -14,7 +14,7 @@
     <?php
 			
 			// show or hide featured image
-			if (!get_post_meta( get_the_ID(), 'show_featured_image', true )) {
+			if (get_post_meta( get_the_ID(), 'hide_featured_image', true )) {
 			echo '';
 			} else {
 			the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
@@ -27,14 +27,19 @@
       </span>
     </div>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
+
     <div class="ft-c-single-post__meta">
+
+      <?php // show or hide date ?>
+      <?php if (get_post_meta( get_the_ID(), 'show_date', true )) { ?>
       <div class="ft-c-post-meta">
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/calendar.svg' ?>" alt="calendar" />
         <span><?php echo get_the_date(); ?></span>
       </div>
+      <?php } ?>
 
       <?php // show or hide author ?>
-      <?php if (get_post_meta( get_the_ID(), 'show_author', true )) { ?>
+      <?php if (!get_post_meta( get_the_ID(), 'hide_author', true )) { ?>
       <div class="ft-c-post-meta">
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/author.svg' ?>" alt="author" />
         <span>
