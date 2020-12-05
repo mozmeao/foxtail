@@ -10,7 +10,8 @@
   }
 }
 
-.ft-c-single-post__featured-image {
+.ft-c-single-post__featured-image,
+.ft-c-single-post__featured-video {
   margin-bottom: 32px;
 
   @supports (display: grid) {
@@ -92,7 +93,8 @@
     }
   }
 
-  > figure {
+  > .wp-block-image,
+  > .wp-block-embed-youtube {
     margin: 40px 0;
 
     @supports (display: grid) {

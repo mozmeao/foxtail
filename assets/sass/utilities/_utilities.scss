@@ -1,3 +1,18 @@
 .ft-u-center-text {
   text-align: center;
 }
+.video-responsive,
+.wp-block-embed-youtube .wp-block-embed__wrapper {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.video-responsive iframe,
+.wp-block-embed-youtube .wp-block-embed__wrapper iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

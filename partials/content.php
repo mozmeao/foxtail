@@ -12,11 +12,16 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('ft-c-single-post'); ?>>
   <div class="ft-c-single-post__header">
     <?php
-			
 			// show or hide featured image
-			if (get_post_meta( get_the_ID(), 'hide_featured_image', true )) {
+			if (get_post_meta( get_the_ID(), 'hide_featured_image', true ) || get_field('featured_at_top_of_post') == "Nothing") {
 			echo '';
-			} else {
+      } else if (get_field('featured_at_top_of_post') == "Video") {
+        echo '<div class="ft-c-single-post__featured-video video-responsive">';
+        // get the youtube ID from the URL and place it in the iframe youtube embed
+        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", get_field('post_featured_video'), $match);
+        echo '<iframe id="player" width="560" height="315" frameborder="2" src="http://www.youtube.com/embed/' . $match[0] . '" ></iframe>';
+        echo '</div>';
+      } else {
 			the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
 			}
 		?>

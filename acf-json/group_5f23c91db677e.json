@@ -58,6 +58,59 @@
             "ui": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide"
+        },
+        {
+            "key": "field_5fca9269f2eb5",
+            "label": "Featured at Top of Post",
+            "name": "featured_at_top_of_post",
+            "type": "select",
+            "instructions": "Choose what you'd like to feature in the hero of the post.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Image": "Image",
+                "Video": "Video",
+                "Nothing": "Nothing"
+            },
+            "default_value": "Image",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fca940a78894",
+            "label": "Post Featured Video",
+            "name": "post_featured_video",
+            "type": "text",
+            "instructions": "If you are featuring a video, please provide the YouTube Video URL",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fca9269f2eb5",
+                        "operator": "==",
+                        "value": "Video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "YouTube Video URL",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -77,5 +130,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1607110577
+    "modified": 1607129637
 }
