@@ -28,7 +28,9 @@
 
 .ft-c-featured-hero__title {
   margin-bottom: 24px;
-  @include text-title-md;
+  @include ft-text-title-lg;
+  font-family: $font-stack-mozilla;
+  color: $color-white;
 }
 
 .ft-c-featured-hero__desc {

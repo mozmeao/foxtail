@@ -52,6 +52,6 @@
     "updateProtocol": "gulp updateProtocol"
   },
   "dependencies": {
-    "@mozilla-protocol/core": "^12.1.0"
+    "@mozilla-protocol/core": "^13.0.0"
   }
 }

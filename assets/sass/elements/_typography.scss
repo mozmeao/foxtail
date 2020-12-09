@@ -10,19 +10,23 @@ body {
 h1,
 .h1 {
   @include ft-text-title-lg;
+  font-family: $font-stack-base;
 }
 
 h2,
 .h2 {
   @include ft-text-title-md;
+  font-family: $font-stack-base;
 }
 
 h3,
 .h3 {
   @include ft-text-title-sm;
+  font-family: $font-stack-base;
 }
 
 h4,
 .h4 {
   @include ft-text-title-xs;
+  font-family: $font-stack-base;
 }
