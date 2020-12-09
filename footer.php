@@ -25,181 +25,86 @@
 
       <div class="mzp-c-footer-sections">
         <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <h5 class="mzp-c-footer-heading">Mozilla</h5>
           <ul class="mzp-c-footer-list">
             <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+              <a
+                href="https://www.mozilla.org/about/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">About</a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+              <a
+                href="https://www.mozilla.org/contact/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Contact
+                Us</a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
+              <a
+                href="https://donate.mozilla.org/?presets=50,30,20,10&amount=30&currency=usd&utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Donate</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="mzp-c-footer-section">
+          <h5 class="mzp-c-footer-heading">Firefox</h5>
+          <ul class="mzp-c-footer-list">
+            <li>
+              <a
+                href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Download
+                Firefox</a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
+              <a
+                href="https://www.mozilla.org/firefox/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Desktop</a>
+            </li>
+            <li>
+              <a
+                href="https://www.mozilla.org/firefox/mobile/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Mobile</a>
+            </li>
+            <li>
+              <a
+                href="https://www.mozilla.org/firefox/features/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">
+                Features
               </a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
+              <a
+                href="https://www.mozilla.org/firefox/channel/desktop/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">
+                Beta, Nightly, Developer Edition
               </a>
             </li>
           </ul>
         </section>
 
         <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
+          <h5 class="mzp-c-footer-heading">Resources</h5>
           <ul class="mzp-c-footer-list">
             <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+              <a href="https://www.mozilla.org/privacy/">Privacy Hub</a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
+              <a href="https://www.mozilla.org/firefox/browsers/compare/">Browser Comparison</a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
-              </a>
+              <a
+                href="https://mozilla.design/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer&utm_content=resources">Brand
+                Standards</a>
             </li>
           </ul>
         </section>
 
         <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
-          <ul class="mzp-c-footer-list">
-            <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
+          <h5 class="mzp-c-footer-heading">Social</h5>
+          <p class="ft-c-footer-social-header">Follow @Firefox</p>
+          <ul class="ft-c-footer-social">
+            <li><a class="twitter" href="https://twitter.com/firefox">Twitter<span> (@mozilla)</span></a></li>
+            <li><a class="instagram" href="https://www.instagram.com/firefox/">Instagram<span> (@mozilla)</span></a>
             </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
-              </a>
-            </li>
+            <li><a class="youtube" href="https://www.youtube.com/user/firefoxchannel">YouTube<span>
+                  (@firefoxchannel)</span></a></li>
           </ul>
-        </section>
-
-        <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
-          <ul class="mzp-c-footer-list">
-            <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
-          <ul class="mzp-c-footer-list">
-            <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Topic</h5>
-          <ul class="mzp-c-footer-list">
-            <li>
-              <a href="https://www.mozilla.org/firefox/new/">Link One</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/">Link Two</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/mobile/">Link Three</a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/features/">
-                Link Four
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Long link just to mix things up and cause problems.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mozilla.org/firefox/channel/desktop/">
-                Link Six
-              </a>
+          <p class="ft-c-footer-social-header">Follow @Mozilla</p>
+          <ul class="ft-c-footer-social">
+            <li><a class="twitter" href="https://twitter.com/mozilla">Twitter<span> (@mozilla)</span></a></li>
+            <li><a class="instagram" href="https://www.instagram.com/mozilla/">Instagram<span> (@mozilla)</span></a>
             </li>
           </ul>
         </section>
@@ -207,19 +112,6 @@
     </nav>
 
     <nav class="mzp-c-footer-secondary">
-
-      <ul class="mzp-c-footer-links-social">
-        <li>
-          <a class="twitter" href="https://twitter.com/firefox">
-            Twitter<span> (@firefox)</span>
-          </a>
-        </li>
-        <li>
-          <a class="youtube" href="https://www.youtube.com/firefoxchannel">
-            YouTube<span> (firefoxchannel)</span>
-          </a>
-        </li>
-      </ul>
 
       <div class="mzp-c-footer-legal">
         <ul class="mzp-c-footer-terms">

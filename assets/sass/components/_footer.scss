@@ -1,0 +1,46 @@
+.ft-c-footer-social-header {
+  color: $color-white;
+  margin-bottom: 10px;
+}
+
+.ft-c-footer-social {
+  margin-bottom: 32px;
+
+  li {
+    padding: 0 24px 8px 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  li a {
+    background-size: 20px, 20px;
+    direction: ltr;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -9999px;
+    white-space: nowrap;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid transparent;
+    display: block;
+    height: 20px;
+    opacity: 0.5;
+    padding-bottom: 2px;
+    width: 20px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.twitter {
+      background-image: url("../vendor/protocol/img/icons/social/twitter/white.svg");
+    }
+    &.instagram {
+      background-image: url("../vendor/protocol/img/icons/social/instagram/white.svg");
+    }
+    &.youtube {
+      background-image: url("../vendor/protocol/img/icons/social/youtube/white.svg");
+    }
+  }
+}
