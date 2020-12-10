@@ -30,3 +30,8 @@ h4,
   @include ft-text-title-xs;
   font-family: $font-stack-base;
 }
+
+#content ul,
+#content ol {
+  @extend .mzp-u-list-styled;
+}

@@ -7,6 +7,7 @@ If an element is extended in any way, then it will have its own component file,
 and import the protocol component there.
 --------------------------------------------------------------*/
 
+@import "../../vendor/protocol/css/base/elements/common";
 @import "../../vendor/protocol/css/base/elements/details";
 @import "../../vendor/protocol/css/base/elements/document";
 @import "../../vendor/protocol/css/base/elements/forms";
