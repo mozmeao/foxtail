@@ -2,7 +2,7 @@
   font-family: $font-stack-base;
   display: flex;
   justify-content: center;
-  @include text-title-xs;
+  @include ft-text-title-xs;
 }
 
 .ft-c-pagination .page-numbers {
@@ -30,6 +30,7 @@
   &:after {
     position: absolute;
     left: calc(50% - 8px);
+    bottom: -0.4rem;
     display: block;
     width: 16px;
     border-bottom: 3px solid #000000;
@@ -57,19 +58,26 @@
 }
 
 .page-numbers.current {
-  color: $color-violet-60;
+  color: $color-moz-dark-purple;
 
   &:hover {
-    color: $color-violet-60;
+    color: $color-moz-dark-purple;
 
     &:after {
-      border-bottom: 3px solid $color-violet-60;
+      border-bottom: 3px solid $color-moz-dark-purple;
     }
   }
 
   &:after {
-    border-bottom: 3px solid $color-violet-60;
     opacity: 1;
+    position: absolute;
+    left: calc(50% - 8px);
+    bottom: -0.4rem;
+    display: block;
+    width: 16px;
+    border-bottom: 3px solid $color-moz-dark-purple;
+    border-radius: 3px;
+    content: "";
   }
 }
 
