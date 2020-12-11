@@ -1,15 +1,42 @@
 {
-    "key": "group_5f0e548fee6f8",
-    "title": "Featured Collection #3 (EN)",
+    "key": "group_5fd2ccc7428bb",
+    "title": "Featured Collection #5 (EN)",
     "fields": [
         {
-            "key": "field_5f0e548ff1155",
-            "label": "Feature Collection 3 Title (EN)",
-            "name": "feature_collection_3_title_en",
+            "key": "field_5fd2cdc412d2d",
+            "label": "Display 5th Collection",
+            "name": "display_collection_5_en",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5fd2ccc745791",
+            "label": "Featured Collection 5 Title (EN)",
+            "name": "feature_collection_5_title_en",
             "type": "text",
             "instructions": "This is the title displayed before showing this collection. Keep it short.",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd2cdc412d2d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -22,13 +49,21 @@
             "maxlength": ""
         },
         {
-            "key": "field_5f0e548ff115d",
+            "key": "field_5fd2ccc745799",
             "label": "Feature Category or Tag",
-            "name": "feature_category_or_tag_3_en",
+            "name": "feature_category_or_tag_5_en",
             "type": "radio",
             "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd2cdc412d2d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -46,16 +81,16 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_5f0e548ff1163",
-            "label": "Featured Collection 3 Category (EN)",
-            "name": "featured_collection_3_category_en",
+            "key": "field_5fd2ccc74579f",
+            "label": "Featured Collection 5 Category (EN)",
+            "name": "featured_collection_5_category_en",
             "type": "taxonomy",
             "instructions": "",
             "required": 1,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5f0e548ff115d",
+                        "field": "field_5fd2ccc745799",
                         "operator": "==",
                         "value": "category"
                     }
@@ -76,16 +111,16 @@
             "multiple": 0
         },
         {
-            "key": "field_5f0e548ff1168",
-            "label": "Featured Collection 3 Tag (EN)",
-            "name": "featured_collection_3_tag_en",
+            "key": "field_5fd2ccc7457a4",
+            "label": "Featured Collection 5 Tag (EN)",
+            "name": "featured_collection_5_tag_en",
             "type": "taxonomy",
             "instructions": "",
             "required": 1,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5f0e548ff115d",
+                        "field": "field_5fd2ccc745799",
                         "operator": "==",
                         "value": "tag"
                     }
@@ -106,13 +141,21 @@
             "multiple": 0
         },
         {
-            "key": "field_5f23d6d1dda6e",
-            "label": "Featured Collection 3 Link (EN)",
-            "name": "featured_collection_3_link_en",
+            "key": "field_5fd2ccc7457a9",
+            "label": "Featured Collection 5 Link (EN)",
+            "name": "featured_collection_5_link_en",
             "type": "link",
             "instructions": "",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd2cdc412d2d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -121,13 +164,21 @@
             "return_format": "array"
         },
         {
-            "key": "field_5fd2d5f836263",
+            "key": "field_5fd2d629a08a6",
             "label": "Limit displayed posts to 3",
-            "name": "limit_posts_3_en",
+            "name": "limit_posts_5_en",
             "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd2cdc412d2d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -160,5 +211,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1607652883
+    "modified": 1607656125
 }

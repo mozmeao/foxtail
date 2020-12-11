@@ -50,6 +50,10 @@
   justify-content: center;
   margin-top: 40px;
 
+  h3 {
+    color: $color-white;
+  }
+
   @media #{$mq-md} {
     margin-top: 0;
   }

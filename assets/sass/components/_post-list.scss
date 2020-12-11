@@ -81,7 +81,7 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    section:nth-child(n + 4) {
+    &.ft-c-post-list__wrap--frontpage section:nth-child(n + 4) {
       display: block;
     }
 

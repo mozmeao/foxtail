@@ -118,7 +118,26 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url"
+            "return_format": "array"
+        },
+        {
+            "key": "field_5fd2d528965c7",
+            "label": "Limit Displayed posts to 3",
+            "name": "limit_posts_2_en",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -136,7 +155,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1596186168
+    "modified": 1607655909
 }
