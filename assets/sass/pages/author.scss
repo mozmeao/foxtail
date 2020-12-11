@@ -1,0 +1,29 @@
+.author .ft-c-archive-header {
+  display: flex;
+  flex-direction: column;
+
+  @media #{$mq-md} {
+    flex-direction: row;
+  }
+
+  img {
+    border-radius: 50px;
+    margin-right: 20px;
+  }
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  .archive-description {
+    max-width: 400px;
+  }
+}
+
+.author .mzp-c-card {
+  margin-bottom: 40px;
+
+  @media #{$mq-md} {
+    margin-bottom: 0;
+  }
+}

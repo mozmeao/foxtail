@@ -151,3 +151,9 @@
   position: absolute;
   background-size: cover;
 }
+
+// a border for cards with exerpts and no images
+.ft-c-card--excerpt {
+  border-top: 2px solid $color-black;
+  padding-top: 10px;
+}
