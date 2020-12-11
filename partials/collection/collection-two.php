@@ -33,7 +33,7 @@
   <div class="ft-l-container">
     <span class="ft-c-label">Featured collection</span>
     <h2 class="ft-c-post-list__title"><?php the_field('feature_collection_2_title_' . $lang, 'option') ?></h2>
-    <div class="ft-c-post-list__wrap--three-column <?php echo $numclass ?>">
+    <div class="ft-c-post-list__wrap--three-column ft-c-post-list__wrap--frontpage <?php echo $numclass ?>">
 
 
 

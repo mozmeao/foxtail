@@ -56,7 +56,7 @@
     margin-bottom: 48px;
   }
 
-  section:nth-child(n + 4) {
+  &.ft-c-post-list__wrap--frontpage section:nth-child(n + 4) {
     display: none;
   }
 
