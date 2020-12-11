@@ -14,9 +14,10 @@
 
       <fieldset id="newsletter-content" class="mzp-c-newsletter-content">
         <header class="mzp-c-newsletter-header">
-          <h3 class="mzp-c-newsletter-title">Love the Web?</h3>
-          <p class="mzp-c-newsletter-tagline">Get the Mozilla
-            newsletter and help us keep it open and free.</p>
+          <h3 class="mzp-c-newsletter-title">Keep up with
+            all things Firefox.</h3>
+          <p class="mzp-c-newsletter-tagline">Get how-tos, advice and news to make your Firefox experience work best for
+            you.</p>
         </header>
         <div class="mzp-c-form-errors" id="newsletter-errors"></div>
 
