@@ -10,14 +10,10 @@
       <input type="hidden" id="newsletters" name="newsletters" value="mozilla-and-you">
       <input type="hidden" id="source_url" name="source_url" value="<?php foxtail_current_url(); ?>">
 
-
-
       <fieldset id="newsletter-content" class="mzp-c-newsletter-content">
         <header class="mzp-c-newsletter-header">
-          <h3 class="mzp-c-newsletter-title">Keep up with
-            all things Firefox.</h3>
-          <p class="mzp-c-newsletter-tagline">Get how-tos, advice and news to make your Firefox experience work best for
-            you.</p>
+          <h3 class="mzp-c-newsletter-title"><?php _e('Keep up with all things Firefox', 'foxtail'); ?></h3>
+          <p class="mzp-c-newsletter-tagline"><?php _e('Get how-tos, advice and news to make your Firefox experience work best for you.', 'foxtail'); ?></p>
         </header>
         <div class="mzp-c-form-errors" id="newsletter-errors"></div>
 
@@ -334,6 +330,7 @@
           <p>
             <label for="privacy" class="mzp-u-inline">
               <input type="checkbox" id="privacy" name="privacy" required aria-required="true">
+              <?php /* Translators: %s : link to mozilla.org/privacy/ */ ?>
               <?php printf(__('I’m okay with Mozilla handling my info as explained in this <a href="%s">Privacy Policy</a>.', 'foxtail'), 'https://www.mozilla.org/privacy/' ); ?>
             </label>
           </p>

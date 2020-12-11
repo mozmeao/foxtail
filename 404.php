@@ -16,14 +16,13 @@ get_header();
     <section class="ft-404 ft-l-content">
       <div class=" ft-l-container">
         <header class="page-header">
-          <h1 class="page-title"><?php esc_html_e( 'Sorry, we can&rsquo;t find that page.', 'foxtail' ); ?></h1>
-          <p>We’re all about a healthy internet but sometimes broken URLs happen.</p>
+          <h1 class="page-title"><?php _e('Sorry, we can’t find that page', 'foxtail'); ?></h1>
+          <p><?php _e('We’re all about a healthy internet but sometimes broken URLs happen.', 'foxtail'); ?></p>
         </header><!-- .page-header -->
         <div class="page-content">
           <a href="<?php echo home_url() ?>" class="ft-button-secondary">
-            Return Home
+            <?php _e('Return Home', 'foxtail'); ?>
           </a>
-
         </div><!-- .page-content -->
       </div>
     </section><!-- .error-404 -->

@@ -1,7 +1,7 @@
 <?php
-			$next_post = get_next_post();
-			$prev_post = get_previous_post();
-			?>
+  $next_post = get_next_post();
+  $prev_post = get_previous_post();
+?>
 <div class="ft-c-post-nav">
   <div class="ft-l-container ft-c-post__wrap">
     <?php if ( ! empty( $prev_post ) ): ?>
@@ -21,7 +21,7 @@
     <?php if ( ! empty( $next_post ) ): ?>
     <a id="next-post" href="<?php echo get_permalink( $next_post->ID ); ?>" class="ft-c-post-nav__item">
       <div class="ft-c-post-nav__item-content">
-        <span>Next Post</span>
+        <span><?php _e('Next Post', 'foxtail'); ?></span>
         <p>
           <?php echo get_the_title( $next_post->ID ); ?>
         </p>

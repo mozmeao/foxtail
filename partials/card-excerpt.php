@@ -10,8 +10,7 @@
         <?php } ?>
         <h2 class="mzp-c-card-title"><?php the_title(); ?></h2>
         <p class="mzp-c-card-desc"><?php echo wp_trim_words( get_the_excerpt(), 20, '...' );?></p>
-        <span class="ft-c-more">Read More</span>
-
+        <span class="ft-c-more"><?php _e('Read More', 'foxtail'); ?></span>
       </div>
     </div>
   </a>

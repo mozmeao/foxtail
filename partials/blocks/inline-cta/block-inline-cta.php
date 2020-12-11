@@ -1,5 +1,5 @@
 <?php
- // set up variables 
+ // set up variables
   $image = get_field( 'block-inlinecta-image' );
   $text = get_field( 'block-inlinecta-text' );
   $cta = get_field( 'block-inlinecta-cta' );
@@ -12,9 +12,7 @@
 
 <a class="ft-c-inline-cta" href=" <?php if ( !empty($cta_url)) { echo esc_url( $cta_url ); } ?>">
   <div class="ft-c-inline-cta__media">
-
-    <?php if ( !empty($image)) {
-
+  <?php if ( !empty($image)) {
     echo wp_get_attachment_image( $image, '1x1' );
   } ?>
   </div>
