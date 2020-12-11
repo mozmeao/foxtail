@@ -36,7 +36,8 @@
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.1.0",
-    "gulp-wp-pot": "^2.5.0"
+    "gulp-wp-pot": "^2.5.0",
+    "gulp-zip": "^5.0.2"
   },
   "scripts": {
     "start": "gulp",
@@ -49,7 +50,8 @@
     "clearCache": "gulp clearCache",
     "translate": "gulp translate",
     "protocolJS": "gulp protocolJS",
-    "updateProtocol": "gulp updateProtocol"
+    "updateProtocol": "gulp updateProtocol",
+    "buildTheme": "gulp buildTheme"
   },
   "dependencies": {
     "@mozilla-protocol/core": "^13.0.0"

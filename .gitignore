@@ -70,6 +70,7 @@ assets/img/.DS_Store
 
 # Other #
 /haters
+/build
 css
 assets/css
 main.css

@@ -63,6 +63,9 @@ const plumber = require( 'gulp-plumber' ); // Prevent pipe breaking caused by er
 const beep = require('beepbeep');
 var del = require('del'); // Used to delete files in a gulp task
 
+// Other
+const zip = require('gulp-zip');
+
 /**
  * Custom Error Handler.
  *
@@ -429,3 +432,40 @@ gulp.task('protocolCopy', () => {
 });
 
 gulp.task('updateProtocol', gulp.series('protocolClean', 'protocolCopy'));
+
+
+
+// Gulp tasks for buildin the theme
+
+// copies theme to a build folder
+gulp.task('copyTheme', () => {
+	const files = [
+		'**.{php,png,jpg,css}',
+		'acf-json/**/*',
+		'assets/**/*',
+		'!assets/sass/**/*',
+		'inc/**/*',
+		'page-templates/**/*',
+		'partials/**/*',
+	];
+
+	return gulp
+		.src(files, {base: './'})
+		.pipe(gulp.dest('./build/src'));
+});
+
+// deletes the build folder
+gulp.task('deleteBuildFolder', () => {
+	return del(['./build/**/*']);
+})
+
+// zips the theme
+gulp.task('zipTheme', () => {
+	return gulp
+		.src('build/src/*')
+		.pipe(zip('foxtailtheme.zip'))
+		.pipe(gulp.dest('build'))
+})
+
+// the main task for building a theme
+gulp.task('buildTheme', gulp.series('deleteBuildFolder', 'copyTheme', 'zipTheme'));
