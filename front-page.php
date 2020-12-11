@@ -49,7 +49,7 @@ set_query_var('featured_post', $featured_post);
 <?php
 if( get_field('display_collection_4_en', 'option') ) {
   get_template_part('partials/collection/collection-small-cards', null, array('collectionNum' => '4'));
-  <div class="ft-l-space-unrelated"></div>
+  echo '<div class="ft-l-space-unrelated"></div>';
 }
 ?>
 
@@ -58,7 +58,7 @@ if( get_field('display_collection_4_en', 'option') ) {
 <?php
 if( get_field('display_collection_5_en', 'option') ) {
   get_template_part('partials/collection/collection-large-cards', null, array('collectionNum' => '5'));
-  <div class="ft-l-space-unrelated"></div>
+  echo '<div class="ft-l-space-unrelated"></div>';
 }
 ?>
 
