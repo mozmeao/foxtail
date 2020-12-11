@@ -114,18 +114,21 @@ add_action( 'after_setup_theme', 'foxtail_content_width', 0 );
 /**
  * Enqueue scripts and styles.
  */
+
 function foxtail_scripts() {
+	$theme_data = wp_get_theme();
+	$themeVersion = $theme_data->get( 'Version' );  
 
 	// Frontend scripts.
 	if ( ! is_admin() ) {
 		// Enqueue vendors first.
-		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '1.0', true );
+		wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), $themeVersion, true );
 
 		// Enqueue custom JS after vendors.
-		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), '1.0', true );
+		wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), $themeVersion, true );
 
 		// Minified and Concatenated styles.
-		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), $themeVersion, 'all' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
