@@ -2,9 +2,12 @@
   <a class="mzp-c-card-block-link" href="<?php the_permalink(); ?>">
     <div class="mzp-c-card-media-wrapper">
       <?php
-      if ( has_post_thumbnail() ) :
+      if ( has_post_thumbnail() ) {
         the_post_thumbnail('1x1', array('class' => 'mzp-c-card-image'));
-      endif;
+      }
+      else {
+      get_template_part('partials/fallback-image'); 
+      }
       ?>
     </div>
     <div class="mzp-c-card-content">

@@ -28,6 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   img {
     border-radius: $ft-border-radius;
     width: 100%;
@@ -67,6 +68,7 @@
   }
 
   .ft-c-card__link {
+    min-height: 100%;
     @media #{$mq-md} {
       display: flex;
     }
@@ -140,4 +142,12 @@
   &:hover {
     color: $color-marketing-gray-80;
   }
+}
+
+// fallback image if none is chosen
+.ft-c-fallback {
+  padding-top: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover;
 }
