@@ -24,8 +24,9 @@
 .ft-c-mega-cta__content {
   margin-bottom: 24px;
 
-  h2 {
-    @include ft-text-title-lg;
+  h3 {
+    @include ft-text-title-md;
+    color: $color-white;
   }
 
   a {
