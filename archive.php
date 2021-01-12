@@ -23,46 +23,43 @@ if (class_exists('ACF')) {
       <?php if ( have_posts() ) : ?>
 
       <?php
-			if ($image_display == true) {
-				echo '<div class="ft-c-archive-header ftc-archive-header--has-image">';
-				$image = get_field('tax_featured_image', $term);
-				echo wp_get_attachment_image($image, '16x9');
-				echo '<div class="ft-u-center-text">';
-				echo '<h2>';
-				echo single_term_title();
-				echo '</h2>';
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				echo '</div>';
-			}
+      if ($image_display == true) {
+        echo '<div class="ft-c-archive-header ftc-archive-header--has-image">';
+        $image = get_field('tax_featured_image', $term);
+        echo wp_get_attachment_image($image, '16x9');
+        echo '<div class="ft-u-center-text">';
+        echo '<h2>';
+        echo single_term_title();
+        echo '</h2>';
+        the_archive_description( '<div class="archive-description">', '</div>' );
+        echo '</div>';
+      }
 
-			else {
-				echo '<div class="ft-c-archive-header">';
-				the_archive_title( '<h2>', '</h2>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-			}
-			
-			
-			?>
+      else {
+        echo '<div class="ft-c-archive-header">';
+        the_archive_title( '<h2>', '</h2>' );
+        the_archive_description( '<div class="archive-description">', '</div>' );
+      }
+      ?>
     </div><!-- .ft-c-archive-header -->
     <div class="ft-l-space-related"></div>
     <div class="ft-c-post-list__wrap--three-column">
 
       <?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-				
-				get_template_part('partials/card'); 
+      /* Start the Loop */
+      while ( have_posts() ) :
+        the_post();
 
-			endwhile;
+        get_template_part('partials/card');
 
+      endwhile;
 
-		else :
+    else :
 
-			get_template_part( 'partials/content', 'none' );
+      get_template_part( 'partials/content', 'none' );
 
-		endif;
-		?>
+    endif;
+    ?>
 
     </div>
     <?php foxtail_pagination(); ?>

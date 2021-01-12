@@ -49,9 +49,9 @@ get_header();
 			// END POST LOOP
 		?>
   </main><!-- #main -->
-  <?php			
-		endwhile; // End of the loop.
-	?>
+  <?php
+    endwhile; // End of the loop.
+  ?>
 
 </div><!-- #primary -->
 

@@ -1,5 +1,5 @@
-<?php 
-  $lang = 'en'; // getting ready for future changes 
+<?php
+  $lang = 'en'; // getting ready for future changes
   $collectionNum = ''; // this should have collectionNum passwed to it with a number as a string
 
   if ( $args['collectionNum'] ) {
@@ -35,23 +35,18 @@
 
 <section class="ft-c-post-list">
   <div class="ft-l-container">
-    <span class="ft-c-label">Featured collection</span>
+    <span class="ft-c-label"><?php _e('Featured Collection', 'foxtail'); ?></span>
     <h2 class="ft-c-post-list__title">
       <?php the_field('feature_collection_' . $collectionNum . '_title_' . $lang, 'option') ?></h2>
     <div class="ft-c-post-list__wrap--three-column ft-c-post-list__wrap--frontpage <?php echo $numclass ?>">
-
-      <?php
- 
-if ( $arr_posts->have_posts() ) :
-  while ( $arr_posts->have_posts() ) :
-    $arr_posts->the_post();
+    <?php
+      if ( $arr_posts->have_posts() ) :
+        while ( $arr_posts->have_posts() ) :
+          $arr_posts->the_post();
+          get_template_part('partials/card');
+        endwhile;
+      endif;
     ?>
-      <?php get_template_part('partials/card'); ?>
-
-      <?php
-    endwhile;
-endif;
-?>
     </div>
     <? $collection_link = get_field('featured_collection_' . $collectionNum . '_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">

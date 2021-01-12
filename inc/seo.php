@@ -4,20 +4,20 @@
   Usage: This function is called in functions.php and is then added to
   the header with <?php echo foxtail_seo(); ?>
 
-	Optional: add custom description, and/or title
-	to any post or page using these custom field keys:
+  Optional: add custom description, and/or title
+  to any post or page using these custom field keys:
 
-		ft_seo_desc
-		ft_seo_title
+    ft_seo_desc
+    ft_seo_title
 
-	To migrate from any SEO plugin, replace its custom field 
-	keys with those listed above. More information:
+  To migrate from any SEO plugin, replace its custom field
+  keys with those listed above. More information:
 
 */
 function foxtail_seo() {
 
   // SET UP VARIABLES
-	global $page, $paged, $post;
+  global $page, $paged, $post;
   $description = ''; // description
   $robots = ''; // robot preferences
   $page_title = ''; // page title
@@ -38,48 +38,48 @@ function foxtail_seo() {
     $seo_desc = get_post_meta($post->ID, 'ft_seo_desc', true);
     $pagedata = get_post($post->ID);
   }
-  
+
 
   if (is_home() || is_front_page()) {
     $description = $site_description;
   }
-	elseif (is_singular()) {
+  elseif (is_singular()) {
 
-		if (!empty($seo_desc)) {
-			$description = $seo_desc;
-    } 
+    if (!empty($seo_desc)) {
+      $description = $seo_desc;
+    }
     elseif (!empty($pagedata)) {
       $description = get_the_excerpt($pagedata);
-			$description = substr(trim(strip_tags($description)), 0, 155);
-			$description = preg_replace('#\n#', ' ', $description);
-			$description = preg_replace('#\s{2,}#', ' ', $description);
-			$description = trim($description);
-		} 
-  } 
+      $description = substr(trim(strip_tags($description)), 0, 155);
+      $description = preg_replace('#\n#', ' ', $description);
+      $description = preg_replace('#\s{2,}#', ' ', $description);
+      $description = trim($description);
+    }
+  }
   elseif ((is_category() || is_tag()) && get_the_archive_description()) {
     $description = get_the_archive_description();
     $description = substr(trim(strip_tags($description)), 0, 155);
     $description = preg_replace('#\n#', ' ', $description);
     $description = preg_replace('#\s{2,}#', ' ', $description);
     $description = trim($description);
-  }  
+  }
   else {
-		$description = $site_description;
-	}
+    $description = $site_description;
+  }
 
   // SET THE ROBOT META PROPERTY
-	if (is_category() || is_tag() || is_post_type_archive( 'collection' )) {
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		if ($paged > 1) {
+  if (is_category() || is_tag() || is_post_type_archive( 'collection' )) {
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    if ($paged > 1) {
       $robots = "noindex,follow";
-		} else {
+    } else {
       $robots = "index,follow";
-		}
-	} else if (is_home() || is_singular()) {
+    }
+  } else if (is_home() || is_singular()) {
     $robots = "index,follow";
-	} else {
+  } else {
     $robots = "noindex,follow";
-	}
+  }
 
   // SET THE TITLE
 
@@ -95,24 +95,24 @@ function foxtail_seo() {
   if ( get_post() ) {
     $title_custom = get_post_meta($post->ID, 'ft_seo_title', true);
   }
-	$url = ltrim(esc_url($_SERVER['REQUEST_URI']), '/');
-	$title = trim(wp_title('', false));
-	$cat = single_cat_title('', false);
-	$tag = single_tag_title('', false);
-	$search = get_search_query();
+  $url = ltrim(esc_url($_SERVER['REQUEST_URI']), '/');
+  $title = trim(wp_title('', false));
+  $cat = single_cat_title('', false);
+  $tag = single_tag_title('', false);
+  $search = get_search_query();
 
-	if (!empty($title_custom)) $title = $title_custom;
-	if ($paged >= 2 || $page >= 2) $page_number = ' | ' . sprintf('Page %s', max($paged, $page));
-	else $page_number = '';
+  if (!empty($title_custom)) $title = $title_custom;
+  if ($paged >= 2 || $page >= 2) $page_number = ' | ' . sprintf('Page %s', max($paged, $page));
+  else $page_number = '';
 
-	if (is_home() || is_front_page()) $seo_title = $name;
-	elseif (is_singular())            $seo_title = $title . ' | ' . $name;
-	elseif (is_tag())                 $seo_title = $tag . ' | ' . $name;
-	elseif (is_category())            $seo_title = $cat . ' | ' . $name;
-	elseif (is_archive())             $seo_title = $title . ' | ' . $name;
-	elseif (is_search())              $seo_title = 'Search: ' . $search . ' | ' . $name;
-	elseif (is_404())                 $seo_title = '404 - Not Found: ' . $url . ' | ' . $name;
-	else                              $seo_title = $name . ' | ' . $description;
+  if (is_home() || is_front_page()) $seo_title = $name;
+  elseif (is_singular())            $seo_title = $title . ' | ' . $name;
+  elseif (is_tag())                 $seo_title = $tag . ' | ' . $name;
+  elseif (is_category())            $seo_title = $cat . ' | ' . $name;
+  elseif (is_archive())             $seo_title = $title . ' | ' . $name;
+  elseif (is_search())              $seo_title = 'Search: ' . $search . ' | ' . $name;
+  elseif (is_404())                 $seo_title = '404 - Not Found: ' . $url . ' | ' . $name;
+  else                              $seo_title = $name . ' | ' . $description;
 
   $page_title = $seo_title . $page_number;
 
@@ -169,9 +169,7 @@ function foxtail_seo() {
 
   <?php $output = ob_get_clean();
 
- 
-
-	return $output;
+  return $output;
 }
 
 ?>

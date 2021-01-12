@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Get cat, tag, and set variables
 $orig_post = $post;
@@ -10,7 +10,7 @@ $categories = get_the_category($post->ID);
 if ($tags) {
   $tag_ids = array();
   foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
-  
+
   $args=array(
     'tag__in' => $tag_ids,
     'post__not_in' => array($post->ID),
@@ -33,25 +33,21 @@ elseif ($categories) {
 }
 
 if ($args) {
-  
+
   $my_query = new wp_query( $args );
-  
+
   if( $my_query->have_posts() ) {
     ?>
 <div class="ft-l-space-related"></div>
 <section id="related-articles" class="ft-c-post-list">
   <div class="ft-l-container">
-    <h2 class="ft-c-post-list__title">Related Articles</h2>
+    <h2 class="ft-c-post-list__title"><?php _e('Related Articles', 'foxtail'); ?></h2>
     <div class="ft-c-post-list__wrap--three-column">
-      <?php
-    
-
-    while( $my_query->have_posts() ) {
-      $my_query->the_post(); ?>
-
+    <?php
+      while( $my_query->have_posts() ) :
+        $my_query->the_post(); ?>
       <?php get_template_part('partials/card'); ?>
-      <?php } ?>
-
+    <?php endwhile; ?>
     </div>
   </div>
 </section>
@@ -63,6 +59,6 @@ if ($args) {
 
 $post = $orig_post;
 
-wp_reset_query(); 
+wp_reset_query();
 
 ?>

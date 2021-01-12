@@ -10,11 +10,11 @@
     <div class="ft-c-card__content">
       <!-- <span class="ft-c-label">Mozilla Comunity</span> -->
       <h2 class="ft-c-card__title"><?php the_title(); ?></h2>
-      <?php 
-      $item_excerpt = wp_trim_words( get_the_excerpt(), 55, ' ...' );
-      echo '<p>' . $item_excerpt . '</p>' 
+      <?php
+        $item_excerpt = wp_trim_words( get_the_excerpt(), 55, ' ...' );
+        echo '<p>' . $item_excerpt . '</p>'
       ?>
-      <span class="ft-c-more">View Collection</span>
+      <span class="ft-c-more"><?php _e('View Collection', 'foxtail'); ?></span>
     </div>
   </a>
 </article>

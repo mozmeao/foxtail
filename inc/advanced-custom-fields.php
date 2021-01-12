@@ -20,46 +20,46 @@
 
 // Add option pages
 if( function_exists('acf_add_options_page') ) {
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Content Settings',
-		'menu_title'	=> 'Content Settings',
-		'menu_slug' 	=> 'foxtail-content-settings',
-		'redirect'		=> 'foxtail-content-settings'
-	));
-	
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Front Page Settings (EN)',
-		'menu_title'	=> 'Front Page (EN)',
-		'parent_slug'	=> 'foxtail-content-settings',
-    ));
-    
-    acf_add_options_sub_page(array(
-		'page_title' 	=> 'Front Page Settings (DE)',
-		'menu_title'	=> 'Front Page (DE)',
-		'parent_slug'	=> 'foxtail-content-settings',
-	));
 
-	acf_add_options_page(array(
-		'page_title' 	=> 'Site Settings',
-		'menu_title'	=> 'Site Settings',
-		'menu_slug' 	=> 'foxtail-site-settings',
-		'redirect'		=> 'foxtail-site-settings'
-	));
-	
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Site Settings (EN)',
-		'menu_title'	=> 'Site Settings (EN)',
-		'parent_slug'	=> 'foxtail-site-settings',
+  acf_add_options_page(array(
+    'page_title'  => 'Content Settings',
+    'menu_title'  => 'Content Settings',
+    'menu_slug'   => 'foxtail-content-settings',
+    'redirect'    => 'foxtail-content-settings'
+  ));
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Front Page Settings (EN)',
+    'menu_title'  => 'Front Page (EN)',
+    'parent_slug' => 'foxtail-content-settings',
     ));
-    
+
     acf_add_options_sub_page(array(
-		'page_title' 	=> 'Site Settings (DE)',
-		'menu_title'	=> 'Site Setings (DE)',
-		'parent_slug'	=> 'foxtail-site-settings',
-	));
-	
-	
+    'page_title'  => 'Front Page Settings (DE)',
+    'menu_title'  => 'Front Page (DE)',
+    'parent_slug' => 'foxtail-content-settings',
+  ));
+
+  acf_add_options_page(array(
+    'page_title'  => 'Site Settings',
+    'menu_title'  => 'Site Settings',
+    'menu_slug'   => 'foxtail-site-settings',
+    'redirect'    => 'foxtail-site-settings'
+  ));
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Site Settings (EN)',
+    'menu_title'  => 'Site Settings (EN)',
+    'parent_slug' => 'foxtail-site-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+    'page_title'  => 'Site Settings (DE)',
+    'menu_title'  => 'Site Setings (DE)',
+    'parent_slug' => 'foxtail-site-settings',
+  ));
+
+
 }
 
 ?>

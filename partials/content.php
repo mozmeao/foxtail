@@ -22,9 +22,9 @@
         echo '<iframe id="player" width="560" height="315" frameborder="2" src="http://www.youtube.com/embed/' . $match[0] . '" ></iframe>';
         echo '</div>';
       } else {
-			the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
-			}
-		?>
+      the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
+      }
+    ?>
     <div class="ft-c-single-post__category">
       <span class="ft-c-label ft-c-pill">
         <?php $post->post_parent; ?>
@@ -49,9 +49,9 @@
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/author.svg' ?>" alt="author" />
         <span>
           <?php
-					echo sprintf(
-						'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>');
-					?>
+          echo sprintf(
+            '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>');
+          ?>
         </span>
       </div>
       <?php } ?>
@@ -60,27 +60,25 @@
   </div>
 
   <div class="ft-c-single-post__body">
-
-
     <?php
-		the_content( sprintf(
-			wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'foxtail' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
-			),
-			get_the_title()
-		) );
+    the_content( sprintf(
+      wp_kses(
+        /* translators: %s: Name of current post. Only visible to screen readers */
+        __('Continue reading<span class="screen-reader-text"> “%s”</span>', 'foxtail'),
+        array(
+          'span' => array(
+            'class' => array(),
+          ),
+        )
+      ),
+      get_the_title()
+    ) );
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'foxtail' ),
-			'after'  => '</div>',
-		) );
-		?>
+    wp_link_pages( array(
+      'before' => '<div class="page-links">' . esc_html__('Pages:', 'foxtail'),
+      'after'  => '</div>',
+    ) );
+    ?>
   </div>
 
 </article><!-- #post-<?php the_ID(); ?> -->
