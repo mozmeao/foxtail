@@ -6,13 +6,11 @@
 
   if ($lang):
     $featured_post = get_field('post_to_feature_' . $lang, 'option');
-    
+
     // add to array that tracks displayed posts on homepage
     global $_displayed_posts;
     $_displayed_posts[] = $featured_post->ID;
   endif;
-
-
 
   // set up variables
   if( $featured_post ):
@@ -27,7 +25,7 @@
       <?php echo $featured_image ?>
     </div>
     <div class="ft-c-featured-hero__body">
-      <span class="ft-c-label ft-c-label--dark">Featured Article</span>
+      <span class="ft-c-label ft-c-label--dark"><?php _e('Featured Article', 'foxtail'); ?></span>
       <h1 class="ft-c-featured-hero__title">
         <?php echo esc_html( $featured_post->post_title ); ?>
       </h1>
@@ -40,7 +38,7 @@
 
       <p class="ft-c-featured-hero__cta">
         <a class="mzp-c-button mzp-t-dark mzp-t-xl" href="<?php echo $featured_permalink ?>">
-          Read more
+          <?php _e('Read More', 'foxtail'); ?>
         </a>
       </p>
     </div>

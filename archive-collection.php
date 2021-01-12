@@ -26,16 +26,17 @@ $image_display = get_field('tax_featured_image_display', $term);
 				$image = get_field('tax_featured_image', $term);
 				echo wp_get_attachment_image($image, '16x9');
 				echo '<div class="ft-u-center-text">';
-				echo '<h2>Collections</h2>';
+				echo '<h2>' . __('Collections', 'foxtail') . '</h2>';
 				echo '</div>';
 			}
 
 			else {
 				echo '<div class="ft-c-archive-header">';
-				echo '<h2>Collections</h2>';
+				echo '<h2>' . __('Collections', 'foxtail') . '</h2>';
+
 			}
-			
-			
+
+
 			?>
     </div><!-- .ft-c-archive-header -->
     <div class="ft-l-space-related"></div>
@@ -45,8 +46,8 @@ $image_display = get_field('tax_featured_image_display', $term);
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-				
-				get_template_part('partials/card-large'); 
+
+				get_template_part('partials/card-large');
 
 			endwhile;
 

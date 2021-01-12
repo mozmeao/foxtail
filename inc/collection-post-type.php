@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
 * Function for adding custom post type
@@ -16,7 +16,7 @@ function create_collection_type() {
     'view_item'          => __( 'View Collection' ),
     'search_items'       => __( 'Search Collections' ),
     'not_found'          => __( 'No collection found' ),
-    'not_found_in_trash' => __( 'No collections found in the Trash' ), 
+    'not_found_in_trash' => __( 'No collections found in the Trash' ),
     'menu_name'          => 'Collections'
   );
   $args = array(
@@ -28,7 +28,7 @@ function create_collection_type() {
     'supports'      => array( 'title', 'thumbnail', 'excerpt', 'editor' ),
     'has_archive'   => true,
   );
-  register_post_type( 'collection', $args ); 
+  register_post_type( 'collection', $args );
 }
 add_action( 'init', 'create_collection_type' );
 

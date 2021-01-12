@@ -19,9 +19,9 @@ get_header();
       <header>
         <h2>
           <?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'foxtail' ), '<span>' . get_search_query() . '</span>' );
-					?>
+          /* translators: %s: search query. */
+          printf( esc_html__('Search Results for: %s', 'foxtail'), '<span>' . get_search_query() . '</span>' );
+          ?>
         </h2>
       </header><!-- .page-header -->
 
@@ -29,21 +29,20 @@ get_header();
       <div class="ft-c-post-list__wrap--three-column">
 
         <?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-				
-				get_template_part('partials/card'); 
+      /* Start the Loop */
+      while ( have_posts() ) :
+        the_post();
 
-			endwhile;
+        get_template_part('partials/card');
 
+      endwhile;
 
-		else :
+    else :
 
-			get_template_part( 'partials/content', 'none' );
+      get_template_part( 'partials/content', 'none' );
 
-		endif;
-		?>
+    endif;
+    ?>
       </div>
       <?php foxtail_pagination(); ?>
     </div>

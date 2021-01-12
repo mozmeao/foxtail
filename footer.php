@@ -20,7 +20,7 @@
   <div class="mzp-l-content">
     <nav class="mzp-c-footer-primary">
       <div class="mzp-c-footer-primary-logo">
-        <a href="https://www.mozilla.org/">Mozilla</a>
+        <a href="https://www.mozilla.org/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Mozilla</a>
       </div>
 
       <div class="mzp-c-footer-sections">
@@ -28,17 +28,13 @@
           <h5 class="mzp-c-footer-heading">Mozilla</h5>
           <ul class="mzp-c-footer-list">
             <li>
-              <a
-                href="https://www.mozilla.org/about/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">About</a>
+              <a href="https://www.mozilla.org/about/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('About', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://www.mozilla.org/contact/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Contact
-                Us</a>
+              <a href="https://www.mozilla.org/contact/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Contact Us', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://donate.mozilla.org/?presets=50,30,20,10&amount=30&currency=usd&utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Donate</a>
+              <a href="https://donate.mozilla.org/?presets=50,30,20,10&amount=30&currency=usd&utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Donate', 'foxtail'); ?></a>
             </li>
           </ul>
         </section>
@@ -47,99 +43,66 @@
           <h5 class="mzp-c-footer-heading">Firefox</h5>
           <ul class="mzp-c-footer-list">
             <li>
-              <a
-                href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Download
-                Firefox</a>
+              <a href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Download Firefox', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://www.mozilla.org/firefox/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Desktop</a>
+              <a href="https://www.mozilla.org/firefox/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Desktop', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://www.mozilla.org/firefox/mobile/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">Mobile</a>
+              <a href="https://www.mozilla.org/firefox/mobile/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Mobile', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://www.mozilla.org/firefox/features/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">
-                Features
-              </a>
+              <a href="https://www.mozilla.org/firefox/features/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Features', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://www.mozilla.org/firefox/channel/desktop/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral">
-                Beta, Nightly, Developer Edition
-              </a>
+              <a href="https://www.mozilla.org/firefox/channel/desktop/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Beta, Nightly, Developer Edition', 'foxtail'); ?></a>
             </li>
           </ul>
         </section>
 
         <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Resources</h5>
+          <h5 class="mzp-c-footer-heading"><?php _e('Resources', 'foxtail'); ?></h5>
           <ul class="mzp-c-footer-list">
             <li>
-              <a href="https://www.mozilla.org/privacy/">Privacy Hub</a>
+              <a href="https://www.mozilla.org/privacy/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Privacy Hub', 'foxtail'); ?></a>
             </li>
             <li>
-              <a href="https://www.mozilla.org/firefox/browsers/compare/">Browser Comparison</a>
+              <a href="https://www.mozilla.org/firefox/browsers/compare/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Browser Comparison', 'foxtail'); ?></a>
             </li>
             <li>
-              <a
-                href="https://mozilla.design/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer&utm_content=resources">Brand
-                Standards</a>
+              <a href="https://mozilla.design/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Brand Standards', 'foxtail'); ?></a>
             </li>
           </ul>
         </section>
 
         <section class="mzp-c-footer-section">
-          <h5 class="mzp-c-footer-heading">Social</h5>
-          <p class="ft-c-footer-social-header">Follow @Firefox</p>
+          <h5 class="mzp-c-footer-heading"><?php _e('Social', 'foxtail'); ?></h5>
+          <p class="ft-c-footer-social-header"><?php _e('Follow @Firefox', 'foxtail'); ?></p>
           <ul class="ft-c-footer-social">
             <li><a class="twitter" href="https://twitter.com/firefox">Twitter<span> (@mozilla)</span></a></li>
-            <li><a class="instagram" href="https://www.instagram.com/firefox/">Instagram<span> (@mozilla)</span></a>
-            </li>
-            <li><a class="youtube" href="https://www.youtube.com/user/firefoxchannel">YouTube<span>
-                  (@firefoxchannel)</span></a></li>
+            <li><a class="instagram" href="https://www.instagram.com/firefox/">Instagram<span> (@mozilla)</span></a></li>
+            <li><a class="youtube" href="https://www.youtube.com/user/firefoxchannel">YouTube<span> (@firefoxchannel)</span></a></li>
           </ul>
-          <p class="ft-c-footer-social-header">Follow @Mozilla</p>
+          <p class="ft-c-footer-social-header"><?php _e('Follow @Mozilla', 'foxtail'); ?></p>
           <ul class="ft-c-footer-social">
             <li><a class="twitter" href="https://twitter.com/mozilla">Twitter<span> (@mozilla)</span></a></li>
-            <li><a class="instagram" href="https://www.instagram.com/mozilla/">Instagram<span> (@mozilla)</span></a>
-            </li>
+            <li><a class="instagram" href="https://www.instagram.com/mozilla/">Instagram<span> (@mozilla)</span></a></li>
           </ul>
         </section>
       </div>
     </nav>
 
     <nav class="mzp-c-footer-secondary">
-
       <div class="mzp-c-footer-legal">
         <ul class="mzp-c-footer-terms">
           <li>
-            <a href="https://www.mozilla.org/privacy/websites/">
-              Website Privacy Notice
-            </a>
+            <a href="https://www.mozilla.org/privacy/websites/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Website Privacy Notice', 'foxtail'); ?></a>
           </li>
           <li>
-            <a href="https://www.mozilla.org/privacy/websites/#cookies">
-              Cookies
-            </a>
+            <a href="https://www.mozilla.org/privacy/websites/#cookies?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Cookies', 'foxtail'); ?></a>
           </li>
           <li>
-            <a href="https://www.mozilla.org/about/legal/">Legal</a>
-          </li>
-          <li>
-            <a href="https://www.mozilla.org/privacy/websites/">
-              Website Privacy Notice
-            </a>
-          </li>
-          <li>
-            <a href="https://www.mozilla.org/privacy/websites/#cookies">
-              Cookies
-            </a>
-          </li>
-          <li>
-            <a href="https://www.mozilla.org/about/legal/">Legal</a>
+            <a href="https://www.mozilla.org/about/legal/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Legal', 'foxtail'); ?></a>
           </li>
         </ul>
       </div>

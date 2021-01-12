@@ -25,8 +25,8 @@ get_header();
 				echo '<h2>' .  get_the_author() . '</h2>';
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				echo '</div>';
-			
-			
+
+
 			?>
     </div><!-- .ft-c-archive-header -->
     <div class="ft-l-space-related"></div>
@@ -36,8 +36,8 @@ get_header();
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-				
-				get_template_part('partials/card-excerpt'); 
+
+				get_template_part('partials/card-excerpt');
 
 			endwhile;
 
