@@ -11,7 +11,9 @@ get_header();
 
 
 $term = get_queried_object();
-$image_display = get_field('tax_featured_image_display', $term);
+if (class_exists('ACF')) {
+  $image_display = get_field('tax_featured_image_display', $term);
+}
 
 ?>
 <div class="ft-l-content">

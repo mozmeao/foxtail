@@ -28,8 +28,9 @@ get_header();
 			);
 
 			
-
-			$categoryortag = get_field('collection_filter');
+			if (class_exists('ACF')) {
+				$categoryortag = get_field('collection_filter');
+			}
 			if ( $categoryortag === 'Category' ):
 				$args['cat'] = get_field('collection_filter');
 			elseif ($categoryortag && $categoryortag === 'Tag'):

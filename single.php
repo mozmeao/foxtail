@@ -25,7 +25,7 @@ get_header();
   <?php
 
 	
-			if( get_field('display_mega_cta') == true ) {
+			if(class_exists('ACF') && get_field('display_mega_cta') == true ) {
     		get_template_part( 'partials/single-mega-cta' );
 			}
 			

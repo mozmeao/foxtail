@@ -24,7 +24,7 @@ get_header();
 			if ( is_home() && ! is_front_page() ) :
 				?>
       <header>
-        <h2>Latest Posts</h2>
+        <h2><?php _e('Latest Posts', 'foxtail'); ?></h2>
         <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
         <?php if ($paged && $paged > 1) { ?>
 
@@ -39,7 +39,7 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				get_template_part('partials/card'); 
+				get_template_part('partials/card');
 
 			endwhile;
 
