@@ -1,20 +1,29 @@
 <?php
-  $lang = 'en'; // getting ready for future changes
-  $collectionNum = ''; // this should have collectionNum passwed to it with a number as a string
+  $lang = get_query_var('lang');
+  $collectionNum = ''; // this should have collectionNum passed to it with a number as a string
 
   if ( $args['collectionNum'] ) {
     $collectionNum = $args['collectionNum'];
   }
+
+  global $_displayed_posts;
+
+  if ($lang):
+    $group = get_field($lang . '_featured_collection_' . $collectionNum, 'option');
+    $categoryortag = $group['category_or_tag'];
+    $category = $group['category'];
+    $tag = $group['tag'];
+    $collection_link = $group['link'];
+    $title = $group['title'];
+  endif;
 ?>
 
 <section class="ft-c-post-list">
   <div class="ft-l-container">
     <span class="ft-c-label"><?php _e('Featured Collection', 'foxtail'); ?></span>
-    <h2 class="ft-c-post-list__title">
-      <?php the_field('feature_collection_' . $collectionNum . '_title_' . $lang, 'option') ?></h2>
+    <h2 class="ft-c-post-list__title"><?php echo $title ?></h2>
     <div class="ft-c-post-list__wrap--two-column">
     <?php
-      global $_displayed_posts;
 
       $args = array(
         'post_type' => 'post',
@@ -24,11 +33,10 @@
       );
 
       // Select posts based on either a category or a tag
-      $categoryortag = get_field('feature_category_or_tag_' . $collectionNum . '_' . $lang, 'option');
       if ( $categoryortag === 'category' ):
-        $args['cat'] = get_field('featured_collection_' . $collectionNum . '_category_' . $lang, 'option');
+        $args['cat'] = $category;
       elseif ($categoryortag && $categoryortag === 'tag'):
-        $args['tag_id'] = get_field('featured_collection_' . $collectionNum . '_tag_' . $lang, 'option');
+        $args['tag_id'] = $tag;
       endif;
 
       $arr_posts = new WP_Query( $args );
@@ -42,7 +50,6 @@
     ?>
 
     </div>
-    <? $collection_link = get_field('featured_collection_' . $collectionNum . '_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">
       <a href="<?php if ($collection_link) echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link">
         <?php echo $collection_link['title'] ?>

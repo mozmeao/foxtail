@@ -37,9 +37,10 @@ $lang = get_query_var('lang');
 
 // set the post object according to what langauge is set
 if ($lang):
-  $featured_video_url = get_field('featured_video_url_' . $lang, 'option');
-  $featured_video_image = get_field('featured_video_image_' . $lang, 'option');
-  $featured_video_title = get_field('featured_video_title_' . $lang, 'option');
+  $group = get_field($lang . '_featured_video', 'option');
+  $featured_video_url = $group['url'];
+  $featured_video_image = $group['image'];
+  $featured_video_title = $group['title'];
 endif;
 
 ?>

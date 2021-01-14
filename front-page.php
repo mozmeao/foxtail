@@ -4,7 +4,14 @@
  */
 
 get_header();
-set_query_var('lang', 'en');
+
+// get the current language
+if ( function_exists('icl_object_id') ) {
+  $currentLang = apply_filters( 'wpml_current_language', NULL );
+  set_query_var('lang', $currentLang);
+} else {
+  set_query_var('lang', 'en');
+}
 
 global $_displayed_posts;
 $_displayed_posts = array();
@@ -47,7 +54,8 @@ set_query_var('featured_post', $featured_post);
 
 <!-- Collection #4 -->
 <?php
-if( get_field('display_collection_4_en', 'option') ) {
+$collection4 = get_field($currentLang . '_featured_collection_4', 'option');
+if( $collection4['display'] ) {
   get_template_part('partials/collection/collection-small-cards', null, array('collectionNum' => '4'));
   echo '<div class="ft-l-space-unrelated"></div>';
 }
@@ -56,7 +64,8 @@ if( get_field('display_collection_4_en', 'option') ) {
 
 <!-- Collection #5 -->
 <?php
-if( get_field('display_collection_5_en', 'option') ) {
+$collection5 = get_field($currentLang . '_featured_collection_5', 'option');
+if( $collection5['display'] ) {
   get_template_part('partials/collection/collection-large-cards', null, array('collectionNum' => '5'));
   echo '<div class="ft-l-space-unrelated"></div>';
 }
