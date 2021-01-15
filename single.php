@@ -23,11 +23,10 @@ get_header();
     ?>
   </main><!-- #main -->
   <?php
-
-
-      if( get_field('display_mega_cta') == true ) {
-        get_template_part( 'partials/single-mega-cta' );
-      }
+	
+			if(class_exists('ACF') && get_field('display_mega_cta') == true ) {
+    		get_template_part( 'partials/single-mega-cta' );
+			}
 
       get_template_part('partials/single-navigation');
 

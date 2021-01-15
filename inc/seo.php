@@ -29,7 +29,9 @@ function foxtail_seo() {
   // use the field set in our option page, but fall back to wordpress desc if needed
   $site_description = ''; // temporary variable
   $description_wp = get_bloginfo('description', 'display'); // set in wordpress options
-  $description_ft = get_field('site_description_' . $lang, 'option'); // set in custom option page
+  if (class_exists('ACF')) {
+    $description_ft = get_field('site_description_' . $lang, 'option'); // set in custom option page
+  }
   $description_ft ? $site_description = $description_ft : $site_description = $description_wp;
 
   if ( get_post() ) {
@@ -84,7 +86,10 @@ function foxtail_seo() {
   // use the field set in our option page, but fall back to wordpress desc if needed
   $name = '';
   $name_wp = get_bloginfo('name', 'display'); // set in wordpress options
-  $name_ft = get_field('site_name_' . $lang, 'option'); // set in custom panel
+  if (class_exists('ACF')) {
+    $name_ft = get_field('site_name_' . $lang, 'option'); // set in custom panel
+  }
+  
   $name = $name_ft ? $name_ft : $name_wp;
 
   if ( get_post() ) {
@@ -113,7 +118,9 @@ function foxtail_seo() {
 
   // SET THE IMAGE
 
-  $site_image = get_field('site_image_' . $lang, 'option');
+  if (class_exists('ACF')) {
+    $site_image = get_field('site_image_' . $lang, 'option');
+  }
   $site_image = wp_get_attachment_url($site_image, '3x2');
 
   if (is_singular()) {
@@ -122,7 +129,9 @@ function foxtail_seo() {
   }
   elseif (is_category() || is_tag()) {
     $term = get_queried_object();
-    $image_display = get_field('tax_featured_image', $term);
+    if (class_exists('ACF')) {
+      $image_display = get_field('tax_featured_image', $term);
+    }
     $image = $image_display ? wp_get_attachment_image_url($image_display, '3x2') : $site_image;
   }
   else {
