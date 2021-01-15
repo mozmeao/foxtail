@@ -12,9 +12,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('ft-c-single-post'); ?>>
   <div class="ft-c-single-post__header">
     <?php
-      // show or hide featured image
-      if (get_post_meta( get_the_ID(), 'hide_featured_image', true ) || get_field('featured_at_top_of_post') == "Nothing") {
-      echo '';
+			// show or hide featured image
+			if (get_post_meta( get_the_ID(), 'hide_featured_image', true ) || !class_exists('ACF') || get_field('featured_at_top_of_post') == "Nothing") {
+			echo '';
       } else if (get_field('featured_at_top_of_post') == "Video") {
         echo '<div class="ft-c-single-post__featured-video video-responsive">';
         // get the youtube ID from the URL and place it in the iframe youtube embed
