@@ -5,14 +5,15 @@ $lang = get_query_var('lang');
 
 // set the post object according to what langauge is set
 if ($lang):
-  $featured_extra_headline = get_field('featured_extra_headline_' . $lang, 'option');
-  $featured_extra_subhead = get_field('featured_extra_subhead_' . $lang, 'option');
-  $featured_extra_image = get_field('featured_extra_image_' . $lang, 'option');
-  $featured_extra_cta_1 = get_field('featured_extra_cta_1_' . $lang, 'option');
-  $featured_extra_link_1 = get_field('featured_extra_link_1_' . $lang, 'option');
-  $featured_extra_cta_2 = get_field('featured_extra_cta_2_' . $lang, 'option');
-  $featured_extra_link_2 = get_field('featured_extra_link_2_' . $lang, 'option');
-  $featured_extra_label = get_field('featured_extra_label_' . $lang, 'option');
+  $group = get_field($lang . '_featured_extra', 'option');
+  $featured_extra_headline = $group['headline'];
+  $featured_extra_subhead = $group['subheading'];
+  $featured_extra_image = $group['featured_image'];
+  $featured_extra_cta_1 = $group['cta_1_text'];
+  $featured_extra_link_1 = $group['cta_1_link'];
+  $featured_extra_cta_2 = $group['cta_2_text'];
+  $featured_extra_link_2 = $group['cta_2_link'];
+  $featured_extra_label = $group['label'];
 endif
 
 ?>

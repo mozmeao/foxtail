@@ -28,9 +28,10 @@ $lang = get_query_var('lang');
 
 // set the post object according to what langauge is set
 if ($lang):
-  $featured_secondary_1 = get_field('featured_secondary_1_' . $lang, 'option');
-  $featured_secondary_2 = get_field('featured_secondary_2_' . $lang, 'option');
-  $featured_secondary_3 = get_field('featured_secondary_3_' . $lang, 'option');
+  $group = get_field($lang . '_secondary_featured_group', 'option');
+  $featured_secondary_1 = $group['first'];
+  $featured_secondary_2 = $group['second'];
+  $featured_secondary_3 = $group['third'];
 
   // Add these posts to this array so that they aren't duplicated on front page
   global $_displayed_posts;

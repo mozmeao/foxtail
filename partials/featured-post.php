@@ -5,12 +5,14 @@
   $lang = get_query_var('lang');
 
   if ($lang):
-    $featured_post = get_field('post_to_feature_' . $lang, 'option');
+    $group = get_field($lang . '_top_featured_post', 'option');
+    $featured_post = $group['post'];
 
     // add to array that tracks displayed posts on homepage
     global $_displayed_posts;
     $_displayed_posts[] = $featured_post->ID;
   endif;
+  
 
   // set up variables
   if( $featured_post ):
