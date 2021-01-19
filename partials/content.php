@@ -28,7 +28,8 @@
     <div class="ft-c-single-post__category">
       <span class="ft-c-label ft-c-pill">
         <?php $post->post_parent; ?>
-        <?php echo foxtail_get_cat($post) ?>
+        <?php 
+        echo foxtail_primary_cat($post) ?>
       </span>
     </div>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
