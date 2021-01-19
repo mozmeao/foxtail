@@ -1,38 +1,17 @@
-# Copyright (C) 2020 Mozilla
-# This file is distributed under the GNU General Public License v2 or later.
+# Copyright (C) 2021 Mozilla
+# This file is distributed under the same license as the Mozilla package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Foxtail 0.5.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/foxtail\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Mozilla\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-16T16:30:15+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
-"X-Domain: foxtail\n"
-
-#. Theme Name of the theme
-msgid "Foxtail"
-msgstr ""
-
-#. Theme URI of the theme
-msgid "TBD"
-msgstr ""
-
-#. Description of the theme
-msgid "Theme for the new Firefox content portal"
-msgstr ""
-
-#. Author of the theme
-msgid "Mozilla"
-msgstr ""
-
-#. Author URI of the theme
-msgid "https://www.mozilla.org/"
-msgstr ""
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 404.php:19
 msgid "Sorry, we can’t find that page"
@@ -46,14 +25,8 @@ msgstr ""
 msgid "Return Home"
 msgstr ""
 
-#: archive-collection.php:29
-#: archive-collection.php:35
+#: archive-collection.php:38, archive-collection.php:32
 msgid "Collections"
-msgstr ""
-
-#. translators: 1: title.
-#: comments.php:35
-msgid "One thought on “%1$s”"
 msgstr ""
 
 #. translators: 1: comment count number, 2: title.
@@ -64,7 +37,11 @@ msgid_plural "%1$s thoughts on “%2$s”"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:66
+#: comments.php:35
+msgid "One thought on “%1$s”"
+msgstr ""
+
+#: comments.php:66, build/src/comments.php:66
 msgid "Comments are closed."
 msgstr ""
 
@@ -80,8 +57,7 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: footer.php:46
-#: header.php:58
+#: footer.php:46, header.php:58
 msgid "Download Firefox"
 msgstr ""
 
@@ -141,8 +117,7 @@ msgstr ""
 msgid "Legal"
 msgstr ""
 
-#: header.php:40
-#: Z__header.php:25
+#: header.php:40, z_archive/Z__header.php:25, build/src/header.php:40, build/src/Z__header.php:25
 msgid "Skip to content"
 msgstr ""
 
@@ -150,19 +125,38 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
+#: index.php:27
+msgid "Latest Posts"
+msgstr ""
+
+#. translators: %s: search query.
+#. translators: %s: search query.
+#: search.php:23, build/src/search.php:23
+msgid "Search Results for: %s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:60, build/src/inc/template-tags.php:60
+msgid ", "
+msgstr ""
+
 #. translators: 1: list of categories.
-#: inc/template-tags.php:63
+#. translators: 1: list of categories.
+#: inc/template-tags.php:63, build/src/inc/template-tags.php:63
 msgid "Posted in %1$s"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:67
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:67, build/src/inc/template-tags.php:67
 msgctxt "list item separator"
 msgid ", "
 msgstr ""
 
 #. translators: 1: list of tags.
-#: inc/template-tags.php:70
+#. translators: 1: list of tags.
+#: inc/template-tags.php:70, build/src/inc/template-tags.php:70
 msgid "Tagged %1$s"
 msgstr ""
 
@@ -176,17 +170,7 @@ msgstr ""
 msgid "Edit<span class=\"screen-reader-text\">“%s”</span>"
 msgstr ""
 
-#: index.php:27
-msgid "Latest Posts"
-msgstr ""
-
-#: partials/card-excerpt.php:13
-#: partials/card-small.php:14
-#: partials/card.php:22
-#: partials/featured-post.php:41
-#: partials/featured-secondary.php:75
-#: partials/featured-secondary.php:86
-#: partials/featured-secondary.php:97
+#: partials/card-excerpt.php:13, partials/card-small.php:14, partials/card.php:22, partials/featured-post.php:43, partials/featured-secondary.php:76, partials/featured-secondary.php:87, partials/featured-secondary.php:98
 msgid "Read More"
 msgstr ""
 
@@ -194,38 +178,30 @@ msgstr ""
 msgid "View Collection"
 msgstr ""
 
-#: partials/collection/collection-large-cards.php:38
-#: partials/collection/collection-small-cards.php:12
-msgid "Featured Collection"
-msgstr ""
-
 #. translators: %s: Name of current post. Only visible to screen readers
-#: partials/content-collection.php:27
-#: partials/content.php:67
+#. translators: %s: Name of current post. Only visible to screen readers
+#: partials/content-collection.php:27, partials/content.php:67
 msgid "Continue reading<span class=\"screen-reader-text\"> “%s”</span>"
 msgstr ""
 
-#: partials/content-collection.php:38
-#: partials/content-page.php:24
-#: partials/content.php:78
+#: partials/content-collection.php:38, partials/content-page.php:24, partials/content.php:78, z_archive/content copy.php:50, build/src/partials/content-collection.php:39, build/src/partials/content-page.php:24, build/src/partials/content.php:80
 msgid "Pages:"
 msgstr ""
 
-#: partials/content-none.php:14
+#: partials/content-none.php:14, build/src/partials/content-none.php:14
 msgid "Nothing Found"
-msgstr ""
-
-#. translators: 1: link to WP admin new post page.
-#: partials/content-none.php:24
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: partials/content-none.php:37
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
 #: partials/content-none.php:45
 msgid "It seems we can’t find what you’re looking for. Perhaps searching can help."
+msgstr ""
+
+#: partials/content-none.php:37, build/src/partials/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: partials/content-none.php:24, build/src/partials/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
 #. translators: %s: Name of current post. Only visible to screen readers
@@ -233,11 +209,11 @@ msgstr ""
 msgid "Edit<span class=\"screen-reader-text\"> “%s”</span>"
 msgstr ""
 
-#: partials/featured-post.php:28
+#: partials/featured-post.php:30
 msgid "Featured Article"
 msgstr ""
 
-#: partials/featured-secondary.php:107
+#: partials/featured-secondary.php:108
 msgid "View All Posts"
 msgstr ""
 
@@ -249,32 +225,32 @@ msgstr ""
 msgid "Get how-tos, advice and news to make your Firefox experience work best for you."
 msgstr ""
 
-#: partials/newsletter.php:21
+#: partials/newsletter.php:21, build/src/partials/newsletter.php:25
 msgid "Your e-mail address"
 msgstr ""
 
-#: partials/newsletter.php:24
+#: partials/newsletter.php:24, build/src/partials/newsletter.php:28
 msgid "yourname"
 msgstr ""
 
-#: partials/newsletter.php:30
+#: partials/newsletter.php:30, build/src/partials/newsletter.php:34
 msgid "- select -"
 msgstr ""
 
-#. Translators: %s : link to mozilla.org/privacy
-#: partials/newsletter.php:334
+#. translators: %s : link to mozilla.org/privacy/
+#: partials/newsletter.php:334, build/src/partials/newsletter.php:337
 msgid "I’m okay with Mozilla handling my info as explained in this <a href=\"%s\">Privacy Policy</a>."
 msgstr ""
 
-#: partials/newsletter.php:347
+#: partials/newsletter.php:347, build/src/partials/newsletter.php:350
 msgid "Thanks!"
 msgstr ""
 
-#: partials/newsletter.php:349
+#: partials/newsletter.php:349, build/src/partials/newsletter.php:352
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so."
 msgstr ""
 
-#: partials/newsletter.php:350
+#: partials/newsletter.php:350, build/src/partials/newsletter.php:353
 msgid "Please check your inbox or your spam filter for an e-mail from us."
 msgstr ""
 
@@ -290,11 +266,48 @@ msgstr ""
 msgid "Related Articles"
 msgstr ""
 
-#. translators: %s: search query.
-#: search.php:23
-msgid "Search Results for: %s"
+#. translators: %s: Name of current post. Only visible to screen readers
+#. translators: %s: Name of current post. Only visible to screen readers
+#. translators: %s: Name of current post. Only visible to screen readers
+#: z_archive/content copy.php:39, build/src/partials/content-collection.php:28, build/src/partials/content.php:69
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
 
-#: Z__header.php:48
+#: z_archive/Z__header.php:48, build/src/Z__header.php:48
 msgid "Primary Menu"
+msgstr ""
+
+#: build/src/404.php:19
+msgid "Sorry, we can&rsquo;t find that page."
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: build/src/comments.php:41
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/src/comments.php:35
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: partials/collection/collection-large-cards.php:47, partials/collection/collection-small-cards.php:23
+msgid "Featured Collection"
+msgstr ""
+
+#. translators: %s: post title
+#: build/src/inc/template-tags.php:80
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#. translators: %s: Name of current post. Only visible to screen readers
+#: build/src/inc/template-tags.php:97, build/src/partials/content-page.php:37
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: build/src/partials/content-none.php:46
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
