@@ -5,7 +5,7 @@
         <?php $post->post_parent; ?>
         <?php if (!is_search()) { ?>
         <div class="ft-c-pill__wrap">
-          <div class="ft-c-pill"><?php echo foxtail_get_cat($post) ?></div>
+          <div class="ft-c-pill"><?php echo foxtail_primary_cat($post) ?></div>
         </div>
         <?php } ?>
         <h2 class="mzp-c-card-title"><?php the_title(); ?></h2>
