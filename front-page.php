@@ -25,8 +25,6 @@ set_query_var('featured_post', $featured_post);
 
 // if there is no ACF, then just show a basic loop
 if (!class_exists('ACF')) {
-  echo '<h1> WHAT</h1>';
-
   get_template_part('partials/basic-loop'); 
 
 // otherwise show a custom static homepage thta is set by ACF
