@@ -40,8 +40,8 @@ function foxtail_primary_cat($post_id) {
       if ( is_wp_error( $term ) ) {
 
         // Default to first category (not Yoast) if an error is returned
-        $category_display = $category[0]->name;
-        $category_slug = $category[0]->slug;
+        $category_display = $categories[0]->name;
+        $category_slug = $categories[0]->slug;
 
       } else {
 
