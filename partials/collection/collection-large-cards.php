@@ -56,7 +56,6 @@
       endif;
     ?>
     </div>
-    <? $collection_link = get_field('featured_collection_' . $collectionNum . '_link_' . $lang, 'option') ?>
     <div class="ft-c-post-list__cta">
       <a href="<?php if ($collection_link) echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link">
         <?php echo $collection_link['title'] ?>
