@@ -42,8 +42,8 @@
         },
         {
             "key": "field_5fca8f6b3a14c",
-            "label": "Show Date",
-            "name": "show_date",
+            "label": "Hide Date",
+            "name": "hide_date",
             "type": "true_false",
             "instructions": "If turned on, the the date will be displayed on the post (off by default)",
             "required": 0,
@@ -130,5 +130,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1607129637
+    "modified": 1621279559
 }

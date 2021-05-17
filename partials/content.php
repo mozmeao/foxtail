@@ -37,7 +37,7 @@
     <div class="ft-c-single-post__meta">
 
       <?php // show or hide date ?>
-      <?php if (get_post_meta( get_the_ID(), 'show_date', true )) { ?>
+      <?php if (!get_post_meta( get_the_ID(), 'hide_date', true )) { ?>
       <div class="ft-c-post-meta">
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/calendar.svg' ?>" alt="calendar" />
         <span><?php echo get_the_date(); ?></span>
