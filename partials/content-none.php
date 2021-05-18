@@ -21,7 +21,7 @@
       printf(
         '<p>' . wp_kses(
           /* translators: 1: link to WP admin new post page. */
-          esc_html_e('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'foxtail'),
+          esc_html_e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'foxtail'),
           array(
             'a' => array(
               'href' => array(),

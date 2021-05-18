@@ -4,7 +4,6 @@
  */
 
 get_header();
-
 // get the current language
 if ( function_exists('icl_object_id') ) {
   $currentLang = apply_filters( 'wpml_current_language', NULL );
@@ -22,9 +21,9 @@ if (class_exists('ACF')) {
 
 set_query_var('featured_post', $featured_post);
 
-
 // if there is no ACF, then just show a basic loop
-if (!class_exists('ACF')) {
+// for now, show all non-en pages the basic loop
+if (!class_exists('ACF') || $currentLang != 'en') {
   get_template_part('partials/basic-loop'); 
 
 // otherwise show a custom static homepage thta is set by ACF

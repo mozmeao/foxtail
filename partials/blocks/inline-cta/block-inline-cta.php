@@ -17,7 +17,7 @@
   } ?>
   </div>
   <div class="ft-c-inline-cta__content">
-    <?php if ( !empty($text)) { ?> <h6><?php echo $text ?></h6> <?php } ?>
+    <?php if ( !empty($text)) { ?> <h3><?php echo $text ?></h3> <?php } ?>
     <?php if ( !empty($cta_title)) { ?> <span><?php echo $cta_title ?></span> <?php } ?>
   </div>
 </a>

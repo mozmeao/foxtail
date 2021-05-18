@@ -49,10 +49,14 @@
       <div class="ft-c-post-meta">
         <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/author.svg' ?>" alt="author" />
         <span>
-          <?php
-          echo sprintf(
-            '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>');
-          ?>
+        <?php
+          if ( function_exists( 'coauthors_posts_links' ) ) {
+            coauthors_posts_links(null, ' & ');
+          } else {
+            the_author_posts_link();
+          }
+        ?>
+    
         </span>
       </div>
       <?php } ?>

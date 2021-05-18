@@ -1,5 +1,6 @@
 .ft-c-inline-cta {
-  background-color: $color-moz-dark-blue;
+  background-color: $color-marketing-gray-90;
+  background-color: #595cf3;
   padding: 20px;
   display: flex;
   color: $color-white;
@@ -13,10 +14,16 @@
     letter-spacing: 1px;
   }
 
+  h3 {
+    color: $color-white;
+    font-family: $font-stack-mozilla;
+    font-weight: 600;
+  }
+
   &:hover {
     box-shadow: $box-shadow-md;
     color: $color-white;
-    h6 {
+    h3 {
       text-decoration: underline;
     }
     span {
