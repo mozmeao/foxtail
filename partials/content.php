@@ -26,11 +26,24 @@
       }
     ?>
     <div class="ft-c-single-post__category">
-      <span class="ft-c-label ft-c-pill">
-        <?php $post->post_parent; ?>
-        <?php 
-        echo foxtail_primary_cat($post) ?>
-      </span>
+      <?php
+
+        // Get current ID
+        $category_current = foxtail_primary_cat($post);
+
+        // Get the ID of a given category
+        $category_id = get_cat_ID( $category_current );
+ 
+        // Get the URL of this category
+        $category_link = get_category_link( $category_id );
+
+        echo '<a href="' . esc_url( $category_link ) . '" >';
+      ?>
+        <span class="ft-c-label ft-c-pill">
+          <?php $post->post_parent; ?>
+          <?php echo $category_current ?>
+        </span>
+      </a>
     </div>
     <?php the_title( '<h1 class="ft-c-single-post__title">', '</h1>' ); ?>
 
