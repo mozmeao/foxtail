@@ -1,7 +1,7 @@
 {
   "name": "foxtail",
   "description": "A wordpres theme for the Firefox content hub",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Dan Brown (dbrown@mozila.com)",
   "repository": {
     "type": "git",
