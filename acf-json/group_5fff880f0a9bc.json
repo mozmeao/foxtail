@@ -192,6 +192,21 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_60a6b6b92dfbc",
+                    "label": "More Videos Link",
+                    "name": "cta",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
                 }
             ]
         },
@@ -1252,5 +1267,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610593447
+    "modified": 1621539635
 }

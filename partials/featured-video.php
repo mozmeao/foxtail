@@ -41,6 +41,7 @@ if ($lang):
   $featured_video_url = $group['url'];
   $featured_video_image = $group['image'];
   $featured_video_title = $group['title'];
+  $featured_video_cta = $group['cta'];
 endif;
 
 ?>
@@ -64,9 +65,10 @@ endif;
   </div>
   <div class="ft-l-container">
     <div class="ft-c-featured-video__cta">
-      <a href="https://www.youtube.com/firefox" class="mzp-c-cta-link">
-        Watch more videos
-      </a>
+      <a class="mzp-c-cta-link" href="<?php echo $featured_video_cta['url'] ?>" target="
+          <?php $featured_video_cta['target'] ? $featured_video_cta['target'] : '_self';?>">
+          <?php echo $featured_video_cta['title'] ?>
+        </a>
     </div>
   </div>
 </section>
