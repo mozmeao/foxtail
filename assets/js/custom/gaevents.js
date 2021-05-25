@@ -1,6 +1,6 @@
 // Analyze All The Things
 if (typeof gtag === 'function') {
-  const searchOpen = document.querySelector('ft-c-header__search-icon');
+  const searchOpen = document.querySelector('.ft-c-header__search-icon');
   const searchField = document.querySelector('.search-field');
   const searchSubmit = document.querySelector('.search-submit');
   const prev = document.querySelector('#previous-post');
@@ -9,6 +9,9 @@ if (typeof gtag === 'function') {
   const blogname = document.querySelector('body').getAttribute('data-blogname'); 
   const related = document.querySelectorAll('#related-articles a');
   const navDownload = document.querySelector('#nav-download');
+  const megaCta = document.querySelector('.ft-c-mega-cta__content a')
+  const pageTitle = document.title;
+  const inlineCtas = document.querySelectorAll('.ft-c-inline-cta')
 
   // Track clicks on the main top nav
 
@@ -38,6 +41,25 @@ if (typeof gtag === 'function') {
     })
   })
 
+  // Mega CTA
+  if (megaCta) {
+    megaCta.addEventListener('click', event => {
+      gtag('event', 'Mega CTA Click', {
+        'event_category': blogname + ' Interactions',
+        'event_label': 'Page: ' + pageTitle,
+      });
+    });
+  }
+
+  // Inline CTA
+  inlineCtas.forEach(item => {
+    item.addEventListener('click', event => {
+      gtag('event', 'Inline CTA Click', {
+        'event_category': blogname + ' Interactions',
+        'event_label': 'CTA Text: ' + item.querySelector('.ft-c-inline-cta__content h3').innerHTML,
+      })
+    })
+  })
 
   // Previous article
   if (prev) {
@@ -67,7 +89,6 @@ if (typeof gtag === 'function') {
         'event_category': blogname + ' Interactions',
         'event_label': 'Related: ' + item.querySelector('.ft-c-card__title').innerHTML,
       })
-
     })
   })
 

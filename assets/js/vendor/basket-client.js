@@ -82,7 +82,7 @@
           // Count signups in Google Analytics
           if (typeof gtag === 'function') {
             gtag('event', 'newsletter subscription', {
-              'event_category': blogName + ' /interactions',
+              'event_category': blogName + ' Interactions',
               'event_label': newsletter
             });
 
