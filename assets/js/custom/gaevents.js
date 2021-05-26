@@ -1,5 +1,5 @@
 // Analyze All The Things
-if (typeof gtag === 'function') {
+if (typeof ga === 'function') {
   const searchOpen = document.querySelector('.ft-c-header__search-icon');
   const searchField = document.querySelector('.search-field');
   const searchSubmit = document.querySelector('.search-submit');
@@ -17,13 +17,15 @@ if (typeof gtag === 'function') {
 
   mainNavLinks.forEach(item => {
     item.addEventListener('click', event => {
-      gtag('event', 'nav click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Global nav: ' + item.innerHTML
-      });
-
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'nav click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'Global nav: ' + item.innerHTML
+      });  
     })
   })
+
 
 
   // Click on search icon
@@ -35,39 +37,47 @@ if (typeof gtag === 'function') {
 
   // Search
   searchSubmit.addEventListener('click', event => {
-    gtag('event', 'search', {
-      'event_category': blogname + ' Interactions',
-      'event_label': 'Search: ' + searchField.value,
-    })
+    ga('send', {
+      hitType: 'event',
+      eventAction: 'search',
+      eventCategory: blogname + ' Interactions',
+      eventLabel: 'Search: ' + searchField.value,
+    }); 
   })
 
   // Mega CTA
   if (megaCta) {
     megaCta.addEventListener('click', event => {
-      gtag('event', 'Mega CTA Click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Page: ' + pageTitle,
-      });
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'Mega CTA Click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'Page: ' + pageTitle,
+      }); 
     });
   }
 
   // Inline CTA
   inlineCtas.forEach(item => {
     item.addEventListener('click', event => {
-      gtag('event', 'Inline CTA Click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'CTA Text: ' + item.querySelector('.ft-c-inline-cta__content h3').innerHTML,
-      })
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'Inline CTA Click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'CTA Text: ' + item.querySelector('.ft-c-inline-cta__content h3').innerHTML,
+      }); 
     })
   })
 
   // Previous article
   if (prev) {
     prev.addEventListener('click', event => {
-      gtag('event', 'adjacent click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Previous: ' + prev.querySelector('div p').innerHTML,
-      })
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'adjacent click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'Previous: ' + prev.querySelector('div p').innerHTML,
+      }); 
     })
   }
 
@@ -75,31 +85,37 @@ if (typeof gtag === 'function') {
   // Next article
   if (next) {
     next.addEventListener('click', event => {
-      gtag('event', 'adjacent click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Next: ' + next.querySelector('div p').innerHTML,
-      })
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'adjacent click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'event_label': 'Next: ' + next.querySelector('div p').innerHTML,
+      });
     })
   }
 
   // Related Articles
   related.forEach(item => {
     item.addEventListener('click', event => {
-      gtag('event', 'related click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Related: ' + item.querySelector('.ft-c-card__title').innerHTML,
-      })
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'related click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'Related: ' + item.querySelector('.ft-c-card__title').innerHTML,
+      });
     })
   })
 
   // Count download clicks in the navbar
   navDownload.addEventListener('click', event => {
-    gtag('event', 'Firefox Download', {
-      'event_category': blogname + ' Interactions',
-      'event_label': 'Firefox for Desktop',
-      'dimension15': 'nav cta',
-      'dimension1': blogname,
-    });
+    ga('send', {
+      hitType: 'event',
+      eventAction: 'Firefox Download',
+      eventCategory: blogname + ' Interactions',
+      eventLabel: 'Firefox for Desktop',
+      dimension15: 'nav cta',
+      dimension1: blogname
+  });
 
   })
 }

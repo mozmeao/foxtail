@@ -11,10 +11,12 @@
 
     // send of a GA event for opening
     if (searchArea.classList.contains('ft-j-active')) {
-      gtag('event', 'click', {
-        'event_category': blogname + ' Interactions',
-        'event_label': 'Click on search label',
-      })
+      ga('send', {
+        hitType: 'event',
+        eventAction: 'click',
+        eventCategory: blogname + ' Interactions',
+        eventLabel: 'Click on search label',
+      });
     }
   }
 
