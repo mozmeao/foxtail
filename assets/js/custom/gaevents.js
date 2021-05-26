@@ -89,7 +89,7 @@ if (typeof ga === 'function') {
         hitType: 'event',
         eventAction: 'adjacent click',
         eventCategory: blogname + ' Interactions',
-        eventLabel: 'event_label': 'Next: ' + next.querySelector('div p').innerHTML,
+        eventLabel: 'Next: ' + next.querySelector('div p').innerHTML,
       });
     })
   }
