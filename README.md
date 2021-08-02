@@ -4,7 +4,7 @@
 
 To run locally on your machine, you'll need to do a few things.
 
-1. You need a local instance of Wordpress. [Try local by flywheel](https://localwp.com/meh)
+1. You need a local instance of Wordpress. [Try local by flywheel](https://localwp.com)
 2. For browsersync to work, you will need to have this Wordpress instance running at foxtail.local
 3. You will need to place this theme inside the wp-content/themes folder
 4. Once the above is done, you'll need to run the following from this theme directory in order to set up gulp
