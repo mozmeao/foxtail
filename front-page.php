@@ -9,7 +9,8 @@ if ( function_exists('icl_object_id') ) {
   $currentLang = apply_filters( 'wpml_current_language', NULL );
   set_query_var('lang', $currentLang);
 } else {
-  set_query_var('lang', 'en');
+  $currentLang = 'en';
+  set_query_var('lang', $currentLang);
 }
 
 global $_displayed_posts;
