@@ -80,14 +80,23 @@
           newsletterWrapper.style.display = 'none';
 
           // Count signups in Google Analytics
-          if (typeof gtag === 'function') {
+          // UA
+          if (typeof ga === 'function' && blogName) {
             ga('send', {
-              hitType: 'event',
-              eventAction: 'newsletter subscription',
-              eventCategory: blogname + ' Interactions',
-              eventLabel: newsletter,
+                hitType: 'event',
+                eventCategory: blogName + ' /interactions',
+                eventAction: 'newsletter subscription',
+                eventLabel: newsletter
             });
-
+          }
+          // GA4
+          if (typeof gtag === 'function') {
+              if (typeof gtag === 'function') {
+                  // GA4
+                  gtag("event", "newsletter_subscribe", {
+                      newsletter_id: newsletter
+                  });
+              }
           }
         }
         else {
