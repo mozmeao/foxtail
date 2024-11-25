@@ -20,7 +20,7 @@ get_header();
       <?php
 
 				echo '<div class="ft-c-archive-header">';
-				echo get_avatar( get_the_author_meta('ID'), 100);
+				echo '<div>' . get_avatar( get_the_author_meta('ID'), 100) . '</div>';
 				echo '<div>';
 				echo '<h2>' .  get_the_author() . '</h2>';
 				the_archive_description( '<div class="archive-description">', '</div>' );
