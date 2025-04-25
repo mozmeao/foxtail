@@ -55,6 +55,6 @@
     "buildTheme": "gulp buildTheme"
   },
   "dependencies": {
-    "@mozilla-protocol/core": "^13.0.0"
+    "@mozilla-protocol/core": "^20.0.0"
   }
 }

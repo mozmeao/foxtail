@@ -17,7 +17,8 @@
 /*--------------------------------------------------------------
 # Setup
 --------------------------------------------------------------*/
-@import "config";
+@use "config" as *;
+@import "../vendor/protocol/css/includes/lib";
 
 // Fonts
 @import "../vendor/protocol/css/includes/fonts/inter";

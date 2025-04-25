@@ -4,7 +4,7 @@ body {
 
 .ft-header-xl {
   @include ft-text-title-xl;
-  font-family: $font-stack-mozilla;
+  font-family: $font-stack-mozilla-headline;
 }
 
 h1,
