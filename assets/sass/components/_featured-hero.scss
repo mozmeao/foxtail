@@ -1,3 +1,7 @@
+@use '../_config' as config;
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+
 .ft-c-featured-hero {
   background-color: $color-black;
   color: $color-white;
@@ -29,7 +33,7 @@
 .ft-c-featured-hero__title {
   margin-bottom: 24px;
   @include ft-text-title-lg;
-  font-family: $font-stack-mozilla;
+  font-family: $font-stack-mozilla-headline;
   color: $color-white;
 }
 
@@ -49,6 +53,6 @@
   }
 
   img {
-    border-radius: $ft-border-radius;
+    border-radius: config.$ft-border-radius;
   }
 }

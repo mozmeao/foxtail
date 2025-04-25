@@ -1,49 +1,22 @@
 {
-  "_from": "@mozilla-protocol/assets@^3.0.2",
-  "_id": "@mozilla-protocol/assets@3.0.2",
-  "_inBundle": false,
-  "_integrity": "sha512-X/6SHdyji69BXB0PeIVqG8/7vxfknlijsW8J1T0PYLZy9OzMLMJmvGXovpxJFHpmYPwRTpScOQHsXiwCr9g3KQ==",
-  "_location": "/@mozilla-protocol/assets",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "@mozilla-protocol/assets@^3.0.2",
-    "name": "@mozilla-protocol/assets",
-    "escapedName": "@mozilla-protocol%2fassets",
-    "scope": "@mozilla-protocol",
-    "rawSpec": "^3.0.2",
-    "saveSpec": null,
-    "fetchSpec": "^3.0.2"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/@mozilla-protocol/assets/-/assets-3.0.2.tgz",
-  "_shasum": "c1ac52efa6340957b0d4f71c5a8b1ef4495ee78e",
-  "_spec": "@mozilla-protocol/assets@^3.0.2",
-  "_where": "/Users/ccook/Sites/protocol",
-  "author": {
-    "name": "Mozilla"
-  },
-  "bugs": {
-    "url": "https://github.com/mozilla/protocol-assets/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
-  "description": "Variables for Mozilla's icons, logos, and images",
-  "homepage": "https://github.com/mozilla/protocol-assets#readme",
-  "keywords": [
-    "mozilla",
-    "assets",
-    "svg"
-  ],
-  "license": "MPL-2.0",
-  "main": "icons/protocol-icons.scss",
   "name": "@mozilla-protocol/assets",
+  "version": "6.0.1",
+  "description": "Files for Mozilla's logos, icons, and other images",
+  "main": "icons/protocol-icons.scss",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mozilla/protocol-assets.git"
   },
-  "version": "3.0.2"
+  "keywords": [
+    "mozilla",
+    "firefox",
+    "assets",
+    "svg"
+  ],
+  "author": "Mozilla",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mozilla/protocol-assets/issues"
+  },
+  "homepage": "https://github.com/mozilla/protocol-assets#readme"
 }

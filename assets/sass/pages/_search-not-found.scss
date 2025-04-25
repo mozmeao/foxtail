@@ -1,3 +1,6 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../../vendor/protocol/css/components/button" as *;
+
 .no-results,
 .not-found {
   padding: 80px 0px;

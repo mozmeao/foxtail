@@ -1,3 +1,5 @@
+@use '../../../vendor/protocol/css/includes/lib' as *;
+
 .ft-c-inline-cta {
   background-color: $color-marketing-gray-90;
   background-color: #595cf3;
@@ -16,7 +18,7 @@
 
   h3 {
     color: $color-white;
-    font-family: $font-stack-mozilla;
+    font-family: $font-stack-mozilla-headline;
     font-weight: 600;
   }
 

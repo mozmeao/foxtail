@@ -1,3 +1,97 @@
+# 6.0.1
+
+* **logos** Remove padding from updated logo files
+
+## migration tips
+
+* The new Mozilla wordmark files are the same height but longer. If you are explicitly declaring a width for them, you should update it (Tip: check your CSS background images too.)
+* The logo files are no longer square, so check their dimensions too.
+
+
+# 6.0.0
+
+* **logos** Update Mozilla logo and icon files. Adds the logo lockup. (#100)
+
+## migration tips
+
+* The new Mozilla wordmark files are the same height but longer. If you are explicitly declaring a width for them, you should update it (Tip: check your CSS background images too.)
+
+# 5.4.0
+
+* **logos** Update Firefox Monitor -> Mozilla Monitor (#95)
+* **logos** Update Relay Logo to purple (#87)
+* **icons** Fix highlight icon crop #96 
+
+## migration tips
+
+* The Monitor logos remain in the Firefox folder, no action is necessary for this update
+* If you have been over-riding the Relay logos locally to get the purple one on light backgrounds, you can remove that code
+
+# 5.3.0
+
+**icons** Add social icon for X (formerly Twitter) (#90)
+
+# 5.2.0
+
+**icons** Add social icon for Mastodon
+**icons** Add social icons for LinkedIn, TikTok, Spotify (#84)
+
+# 5.1.0
+
+**logos** Add Firefox Relay logos (#79)
+
+# 5.0.0
+
+* **logos** Update Firefox Focus logo [#73]
+* **logos** Add wordmark assets for Firefox Klar (#60)
+* **logos** (breaking) Remove PNG assets for logos and wordmarks (#65)
+* **logos** (breaking) Remove Firefox Send assets
+* **icons** Re-rendered and optimized social icons
+
+## migration tips
+
+* The Firefox Send logo and wordmark assets have been removed because that product has been discontinued. Update any references to those assets.
+* All PNG logo and wordmark assets have been removed in favor of SVG. Update any references to the PNG assets. If you require a PNG logo for some reason (e.g. for older browsers that don't support SVG) you'll need to find an alternative source.
+
+
+# 4.2.0
+
+* **logos** Renamed and added Pocket wordmark SVGs to fully support dark theme and monochromatic brand guidelines (Fix #61)
+* **logos** Re-rendered Mozilla VPN logo and wordmark SVGs
+* **logos** Re-rendered Firefox Focus logo and wordmark SVGs
+
+# 4.1.0
+
+* **logos** Remove transparent whitespace to right of Pocket wordmark PNGs (Fix #59)
+
+## migration tips
+
+* The Pocket wordmark PNGs have changed dimensions. If you've specified a size where this wordmark appears, update to the new width.
+
+# 4.0.0
+
+* **logos** Add VPN assets (#49)
+* **logos** Add Focus assets (Fix #51)
+* **logos** (breaking) Add full size options to Mozilla assets (Fix #54)
+* **logos** (breaking) Update Pocket logo sizes (Fix #55)
+
+## migration tips
+
+* Updated Mozilla file names
+    * black.svg -> logo-word-hor.svg (the dimensions has increased, check you have coded a width where used)
+    * white.svg -> logo-word-hor-white.svg (the dimensions has increased, check you have coded a width where used)
+    * black.png -> logo-word-hor-xs.png
+    * black@2x.png -> logo-word-hor-sm.png
+    * black@3x.png -> logo-word-hor-md.png
+    * white.png -> logo-word-hor-white-xs.png
+    * white@2x.png -> logo-word-hor-white-sm.png
+    * white@3x.png -> logo-word-hor-white-md.png
+* Updated Pocket file names
+    * logo-word-horz-white.svg -> logo-word-hor-white.svg
+    * logo-word-horz.svg -> logo-word-hor.svg
+    * pocket.svg -> logo.svg
+    * the dimensions have increased for all SVG files, check you have coded a width where used
+
 # 3.0.2
 
 * **icons** Add a set of brand icons/spot illustration in a variety of colors (#47)

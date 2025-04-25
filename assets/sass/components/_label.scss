@@ -1,3 +1,6 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+
 .ft-c-label {
   @include ft-text-body-xs;
   letter-spacing: 0.15rem;

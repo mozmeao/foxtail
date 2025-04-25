@@ -17,84 +17,87 @@
 /*--------------------------------------------------------------
 # Setup
 --------------------------------------------------------------*/
-@import "config";
+@use '_config' as config;
+@use '../vendor/protocol/css/includes/lib' as * with ($type-scale: config.$type-scale, $font-path: config.$font-path , $image-path: config.$image-path);
+@use '../vendor/protocol/css/includes/themes';
 
 // Fonts
-@import "../vendor/protocol/css/includes/fonts/inter";
-@import "../vendor/protocol/css/includes/fonts/metropolis";
+@use "../vendor/protocol/css/includes/fonts/mozilla-headline";
+@use "../vendor/protocol/css/includes/fonts/mozilla-text";
+@use "../vendor/protocol/css/includes/fonts/inter";
+@use "../vendor/protocol/css/includes/fonts/metropolis";
 
 /*--------------------------------------------------------------
 # Generic - Ground-zero styles (resets, box-sizing, etc.)
 --------------------------------------------------------------*/
-@import "generic/box-sizing";
-@import "../vendor/protocol/css/base/elements/reset";
+@use "generic/box-sizing";
+@use "../vendor/protocol/css/base/elements/reset";
 
 /*--------------------------------------------------------------
 # Utilities - helpers, etc
 --------------------------------------------------------------*/
-@import "utilities/utilities";
-@import "utilities/mixins/typography";
+@use "utilities/utilities" as *;
+@use "utilities/mixins/typography" as *;
 
 /*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
-@import "elements/protocol-elements";
-@import "elements/typography";
+@use "elements/protocol-elements";
+@use "elements/typography";
 
 /*--------------------------------------------------------------
 # Layout- unstyled. Has to do with layout
 --------------------------------------------------------------*/
-@import "layouts/content";
+@use "layouts/content";
 
 /*--------------------------------------------------------------
 # Objects - Rules that focus only on structure and layout.
 --------------------------------------------------------------*/
-@import "objects/container";
-@import "objects/spacing";
-@import "objects/responsive-video";
+@use "objects/container";
+@use "objects/spacing";
+@use "objects/responsive-video";
 
 /*--------------------------------------------------------------
 # Components - specific UI components.
 --------------------------------------------------------------*/
-@import "components/protocol-components";
-@import "components/header";
-@import "components/featured-hero";
-@import "components/label";
-@import "components/button";
-@import "components/featured-secondary";
-@import "components/featured-video";
-@import "components/post-list";
-@import "components/card";
-@import "components/featured-extra";
-@import "components/single-post";
-@import "components/post-meta";
-@import "components/mega-cta";
-@import "components/post-nav";
-@import "components/post-share";
-@import "components/pagination";
-@import "components/primary_nav";
-@import "components/hamburger";
-@import "components/search";
-@import "components/footer";
+@use "components/protocol-components";
+@use "components/header";
+@use "components/featured-hero";
+@use "components/label";
+@use "components/featured-secondary";
+@use "components/featured-video";
+@use "components/post-list";
+@use "components/card";
+@use "components/featured-extra";
+@use "components/single-post";
+@use "components/post-meta";
+@use "components/mega-cta";
+@use "components/post-nav";
+@use "components/post-share";
+@use "components/pagination";
+@use "components/primary_nav";
+@use "components/hamburger";
+@use "components/search";
+@use "components/footer";
 
 // Block Comonents
-@import "components/blocks/inline-cta";
+@use "components/blocks/inline-cta";
 
 /*--------------------------------------------------------------
 # Wordpres Core - Required classes for Wordpress
 --------------------------------------------------------------*/
-@import "wp-core/wp-core";
+@use "wp-core/wp-core";
 
 /*--------------------------------------------------------------
 # Pages - Page specific styles (use sparingly)
 --------------------------------------------------------------*/
-@import "pages/archive";
-@import "pages/author";
-@import "pages/collection";
-@import "pages/404";
-@import "pages/search-not-found";
+@use "pages/archive";
+@use "pages/author";
+@use "pages/collection";
+@use "pages/404" as fourohfor;
+@use "pages/search-not-found";
 
 /*--------------------------------------------------------------
 # SHAAAAME! - The stuff that shouldn't exist..but...does
 --------------------------------------------------------------*/
-@import "shame.scss";
+@use "shame.scss";

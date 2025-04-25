@@ -1,9 +1,11 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+
 .ft-404 {
   min-height: 80vh;
   text-align: center;
   padding: 80px 0;
 
-  .ft-button-secondary {
+  .page-content {
     margin-top: 40px;
   }
 
