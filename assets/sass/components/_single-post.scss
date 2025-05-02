@@ -1,3 +1,6 @@
+@use "../utilities/mixins/typography" as *;
+@use '../../vendor/protocol/css/includes/lib' as *;
+
 .ft-c-single-post__header {
   img {
     width: 100%;

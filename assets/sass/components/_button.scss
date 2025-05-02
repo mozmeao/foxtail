@@ -1,4 +1,6 @@
-@import "../../vendor/protocol/css/components/button";
+@use '../_config' as config;
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../../vendor/protocol/css/components/button" as *;
 
 .ft-button--dark,
 a.ft-button--dark {

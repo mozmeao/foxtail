@@ -1,3 +1,7 @@
+@use '../_config' as config;
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+
 .ft-c-featured-secondary__wrap {
   @media #{$mq-lg} {
     @supports (display: grid) {
@@ -13,7 +17,7 @@
   display: none;
 
   img {
-    border-radius: $ft-border-radius;
+    border-radius: config.$ft-border-radius;
     box-shadow: $box-shadow-lg;
     z-index: 10;
 

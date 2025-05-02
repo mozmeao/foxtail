@@ -4,6 +4,7 @@ Wordpress Core
 This covers Wordpress generated classes
 see: https://codex.wordpress.org/CSS
 --------------------------------------------------------------*/
+@use '../../vendor/protocol/css/includes/lib' as *;
 
 .alignnone {
   margin: 5px 20px 20px 0;

@@ -1,5 +1,10 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+@use "..//vendor/protocol/css/base/elements/_lists.scss" as *;
+
 body {
   @include ft-text-body-md;
+  font-family: $font-stack-base;
 }
 
 .ft-header-xl {
