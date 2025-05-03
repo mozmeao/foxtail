@@ -42,7 +42,7 @@
       <div class="ft-c-header__cta-wrap">
         <a id="nav-download"
           href="https://www.mozilla.org/firefox/new/?utm_source=blog.mozilla.org&amp;utm_medium=referral&amp;utm_campaign=blog-nav"
-          rel="external" class="mzp-c-button mzp-t-product mzp-t-lg"><?php _e('Download Firefox', 'foxtail'); ?></a>
+          rel="external" class="mzp-c-button mzp-t-product mzp-t-xl"><?php _e('Download Firefox', 'foxtail'); ?></a>
       </div>
       <div class="ft-c-header__search">
         <img class="ft-c-header__search-icon" src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg' ?>" alt="search" />

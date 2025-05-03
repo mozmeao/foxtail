@@ -7,21 +7,21 @@ If a component is extended in any way, then it will have its own component file,
 and import the protocol component there.
 --------------------------------------------------------------*/
 
-// @import "../../vendor/protocol/css/components/article";
-// @import "../../vendor/protocol/css/components/billboard";
-@import "../../vendor/protocol/css/components/button";
-// @import "../../vendor/protocol/css/components/call-out";
-@import "../../vendor/protocol/css/components/card";
-// @import "../../vendor/protocol/css/components/emphasis-box";
-// @import "../../vendor/protocol/css/components/feature-card";
-@import "../../vendor/protocol/css/components/footer";
-// @import "../../vendor/protocol/css/components/hero";
-// @import "../../vendor/protocol/css/components/inline-list";
-// @import "../../vendor/protocol/css/components/modal";
-// @import "../../vendor/protocol/css/components/menu-list";
-// @import "../../vendor/protocol/css/components/menu-list";
-// @import "../../vendor/protocol/css/components/notification-bar";
-@import "../../vendor/protocol/css/components/newsletter-form";
-// @import "../../vendor/protocol/css/components/picto-card";
-// @import "../../vendor/protocol/css/components/sidebar-menu";
-// @import "../../vendor/protocol/css/components/zap";
+// @use "../../vendor/protocol/css/components/article";
+// @use "../../vendor/protocol/css/components/billboard";
+@use "../../vendor/protocol/css/components/button";
+// @use "../../vendor/protocol/css/components/call-out";
+@use "../../vendor/protocol/css/components/card";
+// @use "../../vendor/protocol/css/components/emphasis-box";
+// @use "../../vendor/protocol/css/components/feature-card";
+@use "../../vendor/protocol/css/components/footer";
+// @use "../../vendor/protocol/css/components/hero";
+// @use "../../vendor/protocol/css/components/inline-list";
+// @use "../../vendor/protocol/css/components/modal";
+// @use "../../vendor/protocol/css/components/menu-list";
+// @use "../../vendor/protocol/css/components/menu-list";
+// @use "../../vendor/protocol/css/components/notification-bar";
+@use "../../vendor/protocol/css/components/newsletter-form";
+// @use "../../vendor/protocol/css/components/picto-card";
+// @use "../../vendor/protocol/css/components/sidebar-menu";
+// @use "../../vendor/protocol/css/components/zap";

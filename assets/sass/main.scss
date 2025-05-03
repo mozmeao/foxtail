@@ -18,7 +18,8 @@
 # Setup
 --------------------------------------------------------------*/
 @use '_config' as config;
-@use '../vendor/protocol/css/includes/lib' as * with ($brand-theme: config.$brand-theme, $type-scale: config.$type-scale, $font-path: config.$font-path , $image-path: config.$image-path);
+@use '../vendor/protocol/css/includes/lib' as * with ($type-scale: config.$type-scale, $font-path: config.$font-path , $image-path: config.$image-path);
+@use '../vendor/protocol/css/includes/themes';
 
 // Fonts
 @use "../vendor/protocol/css/includes/fonts/mozilla-headline";
@@ -63,7 +64,6 @@
 @use "components/header";
 @use "components/featured-hero";
 @use "components/label";
-@use "components/button";
 @use "components/featured-secondary";
 @use "components/featured-video";
 @use "components/post-list";

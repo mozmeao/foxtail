@@ -8,9 +8,9 @@ and import the protocol component there.
 --------------------------------------------------------------*/
 
 // Global Partials (nav, footer, etc)
-// @import "../../vendor/protocol/css/components/footer"
-// @import "../../vendor/protocol/css/components/navigation-form";
+// @use "../../vendor/protocol/css/components/footer"
+// @use "../../vendor/protocol/css/components/navigation-form";
 
 // Wrappers and other layouts
-// @import "../../vendor/protocol/css/templates/card-layout";
-// @import "../../vendor/protocol/css/templates/main-with-sidebar";
+// @use "../../vendor/protocol/css/templates/card-layout";
+// @use "../../vendor/protocol/css/templates/main-with-sidebar";
