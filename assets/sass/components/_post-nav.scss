@@ -1,3 +1,7 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+
+
 .ft-c-post-nav {
   background-color: $color-light-gray-20;
 

@@ -8,23 +8,25 @@ for the CMS/editor
 /*--------------------------------------------------------------
 # Setup
 --------------------------------------------------------------*/
-@import "config";
+@use '_config' as config;
+@use '../vendor/protocol/css/includes/lib' as * with ($type-scale: config.$type-scale, $font-path: config.$font-path , $image-path: config.$image-path);
+@use '../vendor/protocol/css/includes/themes';
 
 // Fonts
-@import "../vendor/protocol/css/includes/fonts/inter";
-@import "../vendor/protocol/css/includes/fonts/metropolis";
+@use "../vendor/protocol/css/includes/fonts/inter";
+@use "../vendor/protocol/css/includes/fonts/metropolis";
 
-@import "utilities/mixins/typography";
+@use "utilities/mixins/typography" as *;
 /*--------------------------------------------------------------
 # Elements - Unclassed HTML elements.
 --------------------------------------------------------------*/
-@import "elements/protocol-elements";
-@import "elements/typography";
+@use "elements/protocol-elements";
+@use "elements/typography";
 
 /*--------------------------------------------------------------
 # Blocks
 --------------------------------------------------------------*/
-@import "components/blocks/inline-cta";
+@use "components/blocks/inline-cta";
 
 /*--------------------------------------------------------------
 # Other

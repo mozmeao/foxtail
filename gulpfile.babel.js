@@ -34,7 +34,7 @@ const config = require( './wpgulp.config.js' );
 const gulp = require( 'gulp' ); // Gulp of-course.
 
 // CSS related plugins.
-const sass = require( 'gulp-sass' ); // Gulp plugin for Sass compilation.
+const sass = require('gulp-sass')(require('sass')); // Gulp plugin for Sass compilation.
 const minifycss = require( 'gulp-uglifycss' ); // Minifies CSS files.
 const autoprefixer = require( 'gulp-autoprefixer' ); // Autoprefixing magic.
 // const mmq = require( 'gulp-merge-media-queries' ); // Combine matching media queries into one.
@@ -307,7 +307,7 @@ gulp.task( 'images', () => {
 					imagemin.mozjpeg({ progressive: true }),
 					imagemin.optipng({ optimizationLevel: 3 }), // 0-7 low-high.
 					imagemin.svgo({
-						plugins: [ { removeViewBox: true }, { cleanupIDs: false } ]
+						plugins: [ { removeViewBox: false }, { cleanupIDs: false } ]
 					})
 				])
 			)
@@ -359,12 +359,12 @@ gulp.task( 'translate', () => {
  */
 gulp.task(
 	'default',
-	gulp.parallel( 'styles', 'vendorsJS', 'customJS', 'images', browsersync, () => {
+	gulp.parallel( 'styles', 'vendorsJS', 'customJS', 'images',  browsersync, () => {
 		gulp.watch( config.watchPhp, reload ); // Reload on PHP file changes.
 		gulp.watch( config.watchStyles, gulp.parallel( 'styles' ) ); // Reload on SCSS file changes.
 		gulp.watch( config.watchJsVendor, gulp.series( 'vendorsJS', reload ) ); // Reload on vendorsJS file changes.
 		gulp.watch( config.watchJsCustom, gulp.series( 'customJS', reload ) ); // Reload on customJS file changes.
-		gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on customJS file changes.
+		gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on image file changes.
 	})
 );
 
@@ -435,7 +435,7 @@ gulp.task('updateProtocol', gulp.series('protocolClean', 'protocolCopy'));
 
 
 
-// Gulp tasks for buildin the theme
+// Gulp tasks for building the theme
 
 // copies theme to a build folder
 gulp.task('copyTheme', () => {

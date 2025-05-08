@@ -1,5 +1,9 @@
 // custom card that doen't use protocol
 
+@use '../_config' as config;
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+
 .ft-c-card__link {
   text-decoration: none;
   display: flex;
@@ -30,7 +34,7 @@
   align-items: center;
   position: relative;
   img {
-    border-radius: $ft-border-radius;
+    border-radius: config.$ft-border-radius;
     width: 100%;
     max-width: none;
     margin-bottom: 0;
