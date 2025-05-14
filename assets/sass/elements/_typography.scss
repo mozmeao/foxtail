@@ -1,10 +1,20 @@
+@use '../../vendor/protocol/css/includes/lib' as *;
+@use "../utilities/mixins/typography" as *;
+@use "..//vendor/protocol/css/base/elements/_lists.scss" as *;
+
+
+:root {
+  --title-font-weight: 700;
+}
+
 body {
   @include ft-text-body-md;
+  font-family: $font-stack-base;
 }
 
 .ft-header-xl {
   @include ft-text-title-xl;
-  font-family: $font-stack-mozilla;
+  font-family: $font-stack-mozilla-headline;
 }
 
 h1,

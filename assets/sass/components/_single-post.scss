@@ -1,3 +1,6 @@
+@use "../utilities/mixins/typography" as *;
+@use '../../vendor/protocol/css/includes/lib' as *;
+
 .ft-c-single-post__header {
   img {
     width: 100%;
@@ -42,7 +45,7 @@
 
 .ft-c-single-post__title {
   @include ft-text-title-lg;
-  font-family: $font-stack-mozilla;
+  font-family: $font-stack-mozilla-headline;
   margin-bottom: 24px;
 
   @supports (display: grid) {
