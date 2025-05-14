@@ -387,10 +387,10 @@ gulp.task('protocolJsClean', () => {
 
 gulp.task('protocolJsCopy', () => {
 	const files = [
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-footer.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-navigation.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-newsletter.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-base.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/footer.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/navigation.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/newsletter.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/base.js',
 	];
 
 	return gulp
