@@ -34,7 +34,7 @@
               <a href="https://www.mozilla.org/contact/?utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Contact Us', 'foxtail'); ?></a>
             </li>
             <li>
-              <a href="https://donate.mozilla.org/?presets=50,30,20,10&amount=30&currency=usd&utm_source=blog.mozilla.org&utm_campaign=footer&utm_medium=referral"><?php _e('Donate', 'foxtail'); ?></a>
+              <a href="https://mozillafoundation.org/?form=blog-footer"><?php _e('Donate', 'foxtail'); ?></a>
             </li>
           </ul>
         </section>
