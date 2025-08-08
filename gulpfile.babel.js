@@ -34,7 +34,7 @@ const config = require( './wpgulp.config.js' );
 const gulp = require( 'gulp' ); // Gulp of-course.
 
 // CSS related plugins.
-const sass = require( 'gulp-sass' ); // Gulp plugin for Sass compilation.
+const sass = require( 'gulp-sass' )(require('sass')); // Gulp plugin for Sass compilation.
 const minifycss = require( 'gulp-uglifycss' ); // Minifies CSS files.
 const autoprefixer = require( 'gulp-autoprefixer' ); // Autoprefixing magic.
 // const mmq = require( 'gulp-merge-media-queries' ); // Combine matching media queries into one.
@@ -387,10 +387,10 @@ gulp.task('protocolJsClean', () => {
 
 gulp.task('protocolJsCopy', () => {
 	const files = [
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-footer.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-navigation.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-newsletter.js',
-		'./node_modules/@mozilla-protocol/core/protocol/js/protocol-base.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/footer.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/navigation.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/newsletter.js',
+		'./node_modules/@mozilla-protocol/core/protocol/js/base.js',
 	];
 
 	return gulp
@@ -418,16 +418,34 @@ gulp.task('protocolClean', () => {
 })
 
 gulp.task('protocolCopy', () => {
-	const files = [
+	// CSS and fonts - copy everything
+	const cssAndFonts = [
 		'./node_modules/@mozilla-protocol/core/protocol/css/base/**/*',
 		'./node_modules/@mozilla-protocol/core/protocol/css/components/**/*',
 		'./node_modules/@mozilla-protocol/core/protocol/css/includes/**/*',
-		'./node_modules/@mozilla-protocol/core/protocol/img/**/*',
 		'./node_modules/@mozilla-protocol/core/protocol/fonts/**/*',
 	];
 
+	// Images - only copy specific logos we need
+	const images = [
+		// Mozilla logos
+		'./node_modules/@mozilla-protocol/core/protocol/img/logos/mozilla/**/*',
+		// Firefox browser logos (main release, not beta/developer/nightly variants)
+		'./node_modules/@mozilla-protocol/core/protocol/img/logos/firefox/browser/*.svg',
+		'./node_modules/@mozilla-protocol/core/protocol/img/logos/firefox/browser/og.png',
+		// Icons (keep all icons as they're small and commonly used)
+		'./node_modules/@mozilla-protocol/core/protocol/img/icons/**/*',
+		// Other essential images
+		'./node_modules/@mozilla-protocol/core/protocol/img/*.{svg,png,jpg}',
+		'./node_modules/@mozilla-protocol/core/protocol/img/CHANGELOG.md',
+		'./node_modules/@mozilla-protocol/core/protocol/img/README.md',
+		'./node_modules/@mozilla-protocol/core/protocol/img/package.json',
+	];
+
+	const allFiles = [...cssAndFonts, ...images];
+
 	return gulp
-		.src(files, {base: './node_modules/@mozilla-protocol/core/protocol'})
+		.src(allFiles, {base: './node_modules/@mozilla-protocol/core/protocol'})
 		.pipe(gulp.dest('./assets/vendor/protocol'));
 });
 

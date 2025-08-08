@@ -17,7 +17,7 @@
     "del": "^6.0.0",
     "eslint": "^7.11.0",
     "eslint-config-wordpress": "^2.0.0",
-    "gulp": "^5.0.0",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.0.2",
@@ -31,7 +31,8 @@
     "gulp-remember": "^1.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-rtlcss": "^1.4.1",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.87.0",
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
@@ -54,6 +55,6 @@
     "buildTheme": "gulp buildTheme"
   },
   "dependencies": {
-    "@mozilla-protocol/core": "^13.0.0"
+    "@mozilla-protocol/core": "^21.1.0"
   }
 }

@@ -15,7 +15,7 @@
           <h3 class="mzp-c-newsletter-title"><?php _e('Keep up with all things Firefox', 'foxtail'); ?></h3>
           <p class="mzp-c-newsletter-tagline"><?php _e('Get how-tos, advice and news to make your Firefox experience work best for you.', 'foxtail'); ?></p>
         </header>
-        <div class="mzp-c-form-errors" id="newsletter-errors"></div>
+        <div class="mzp-c-form-errors hidden" id="newsletter-errors"></div>
 
         <div>
           <label for="email"><?php _e('Your e-mail address', 'foxtail'); ?></label>
@@ -343,7 +343,7 @@
         </p>
       </fieldset>
 
-      <div id="newsletter-thanks" class="thanks" style="display: none">
+      <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden">
         <h2><?php _e('Thanks!', 'foxtail'); ?></h2>
         <p>
           <?php _e('If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so.', 'foxtail'); ?>

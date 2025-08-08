@@ -4,12 +4,6 @@ Configuration
 Variables, configurations, etc
 --------------------------------------------------------------*/
 
-// Protocol Variables
-$font-path: "../vendor/protocol/fonts" !default;
-$image-path: "../vendor/protocol/img";
-
-$brand-theme: "mozilla";
-
-$type-scale: "condensed";
+// Protocol Variables are now defined in main.scss before imports
 
 $ft-border-radius: 2px;

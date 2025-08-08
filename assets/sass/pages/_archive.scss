@@ -1,5 +1,7 @@
 // This needs to be cleaned up
 
+@use "../../vendor/protocol/css/includes/lib" as *;
+
 .ft-c-archive-header.ftc-archive-header--has-image {
   @media #{$mq-md} {
     max-width: 80%;
