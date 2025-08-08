@@ -7,14 +7,14 @@ If an element is extended in any way, then it will have its own component file,
 and import the protocol component there.
 --------------------------------------------------------------*/
 
-@import "../../vendor/protocol/css/base/elements/common";
-@import "../../vendor/protocol/css/base/elements/details";
-@import "../../vendor/protocol/css/base/elements/document";
-@import "../../vendor/protocol/css/base/elements/forms";
-@import "../../vendor/protocol/css/base/elements/links";
-@import "../../vendor/protocol/css/base/elements/lists";
-@import "../../vendor/protocol/css/base/elements/quotes";
-@import "../../vendor/protocol/css/base/elements/sections";
-@import "../../vendor/protocol/css/base/elements/tables";
-@import "../../vendor/protocol/css/base/elements/titles";
-@import "../../vendor/protocol/css/base/includes/animations";
+@use "../../vendor/protocol/css/base/elements/common";
+@use "../../vendor/protocol/css/base/elements/containers";
+@use "../../vendor/protocol/css/base/elements/details";
+@use "../../vendor/protocol/css/base/elements/document";
+@use "../../vendor/protocol/css/base/elements/forms";
+@use "../../vendor/protocol/css/base/elements/links";
+@use "../../vendor/protocol/css/base/elements/lists";
+@use "../../vendor/protocol/css/base/elements/quotes";
+@use "../../vendor/protocol/css/base/elements/tables";
+@use "../../vendor/protocol/css/base/elements/titles";
+@use "../../vendor/protocol/css/base/includes/animations";

@@ -1,3 +1,7 @@
+@use "../../vendor/protocol/css/includes/lib" as *;
+@use "../config" as *;
+@use "../utilities/mixins/typography" as *;
+
 // custom card that doen't use protocol
 
 .ft-c-card__link {

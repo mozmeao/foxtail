@@ -1,5 +1,7 @@
 // Note: some of these class names are set by Wordpress
 
+@use "../../vendor/protocol/css/includes/lib" as *;
+
 .ft-c-search {
   background-color: $color-light-gray-20;
   position: sticky;
