@@ -36,7 +36,16 @@ const gulp = require( 'gulp' ); // Gulp of-course.
 // CSS related plugins.
 const sass = require( 'gulp-sass' )(require('sass')); // Gulp plugin for Sass compilation.
 const minifycss = require( 'gulp-uglifycss' ); // Minifies CSS files.
-const autoprefixer = require( 'gulp-autoprefixer' ); // Autoprefixing magic.
+// const autoprefixer = require( 'gulp-autoprefixer' ); // Autoprefixing magic.
+let autoprefixer; // Will be loaded dynamically
+
+// Helper function to load autoprefixer
+async function loadAutoprefixer() {
+	if (!autoprefixer) {
+		autoprefixer = (await import('gulp-autoprefixer')).default;
+	}
+	return autoprefixer;
+}
 // const mmq = require( 'gulp-merge-media-queries' ); // Combine matching media queries into one.
 const rtlcss = require( 'gulp-rtlcss' ); // Generates RTL stylesheet.
 
@@ -116,7 +125,8 @@ const reload = done => {
  *    6. Minifies the CSS file and generates style.min.css
  *    7. Injects CSS or reloads the browser via browserSync
  */
-gulp.task( 'styles', () => {
+gulp.task( 'styles', async () => {
+	const autoprefixerPlugin = await loadAutoprefixer();
 	return gulp
 		.src([config.styleSRC, config.styleEditorSRC], { allowEmpty: true})
 		.pipe( plumber( errorHandler ) )
@@ -131,7 +141,7 @@ gulp.task( 'styles', () => {
 		.on( 'error', sass.logError )
 		.pipe( sourcemaps.write({ includeContent: false }) )
 		.pipe( sourcemaps.init({ loadMaps: true }) )
-		.pipe( autoprefixer( config.BROWSERS_LIST ) )
+		.pipe( autoprefixerPlugin( config.BROWSERS_LIST ) )
 		.pipe( sourcemaps.write( './' ) )
 		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 		.pipe( gulp.dest( config.styleDestination ) )
@@ -162,7 +172,8 @@ gulp.task( 'styles', () => {
  *    8. Minifies the CSS file and generates style-rtl.min.css
  *    9. Injects CSS or reloads the browser via browserSync
  */
-gulp.task( 'stylesRTL', () => {
+gulp.task( 'stylesRTL', async () => {
+	const autoprefixerPlugin = await loadAutoprefixer();
 	return gulp
 		.src( config.styleSRC, { allowEmpty: true })
 		.pipe( plumber( errorHandler ) )
@@ -177,7 +188,7 @@ gulp.task( 'stylesRTL', () => {
 		.on( 'error', sass.logError )
 		.pipe( sourcemaps.write({ includeContent: false }) )
 		.pipe( sourcemaps.init({ loadMaps: true }) )
-		.pipe( autoprefixer( config.BROWSERS_LIST ) )
+		.pipe( autoprefixerPlugin( config.BROWSERS_LIST ) )
 		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 		.pipe( rename({ suffix: '-rtl' }) ) // Append "-rtl" to the filename.
 		.pipe( rtlcss() ) // Convert to RTL.
