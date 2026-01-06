@@ -17,28 +17,28 @@
     "del": "^6.0.0",
     "eslint": "^7.11.0",
     "eslint-config-wordpress": "^2.0.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-concat": "^2.5.2",
     "gulp-filter": "^6.0.0",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^9.2.0",
     "gulp-line-ending-corrector": "^1.0.1",
     "gulp-merge-media-queries": "^0.2.1",
-    "gulp-notify": "^3.0.0",
+    "gulp-notify": "^5.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-remember": "^1.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-rtlcss": "^2.0.0",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.87.0",
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.1.0",
     "gulp-wp-pot": "^2.5.0",
-    "gulp-zip": "^5.0.2"
+    "gulp-zip": "^5.0.2",
+    "sass": "^1.87.0"
   },
   "scripts": {
     "start": "gulp",
@@ -56,5 +56,11 @@
   },
   "dependencies": {
     "@mozilla-protocol/core": "^21.1.0"
+  },
+  "overrides": {
+    "cross-spawn": "7.0.5",
+    "got": "12.1.0",
+    "semver-regex": "4.0.3",
+    "trim-newlines": "4.0.1"
   }
 }
