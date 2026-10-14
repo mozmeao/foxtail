@@ -1,0 +1,63 @@
+# Deploys the theme to WP Engine. See "Deploying" in README.md.
+#
+#   develop -> Development
+#   stage   -> Staging
+#   prod    -> Production (waits for approval in the "production" environment)
+#
+# Runs on push to those branches, or from Actions -> "Deploy theme" ->
+# Run workflow, picking the branch under "Use workflow from".
+#
+# The WP Engine install is a multisite network. Every deploy is limited to
+# wp-content/themes/foxtail/; nothing outside that folder is touched.
+
+name: Deploy theme
+
+on:
+  push:
+    branches: [develop, stage, prod]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy ${{ github.ref_name }}
+    if: contains(fromJSON('["develop", "stage", "prod"]'), github.ref_name)
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'prod' && 'production' || (github.ref_name == 'stage' && 'staging' || 'development') }}
+    steps:
+      - name: Check environment configuration
+        env:
+          WPE_ENV: ${{ vars.WPE_ENV }}
+          HAS_KEY: ${{ secrets.WPE_SSHG_KEY_PRIVATE != '' }}
+        run: |
+          if [ -z "$WPE_ENV" ]; then
+            echo "::error::The WPE_ENV variable is not set for this GitHub environment."
+            exit 1
+          fi
+          if [ "$HAS_KEY" != "true" ]; then
+            echo "::error::The WPE_SSHG_KEY_PRIVATE secret is not set."
+            exit 1
+          fi
+          echo "Deploying ${GITHUB_REF_NAME} (${GITHUB_SHA::7}) to WP Engine install: $WPE_ENV"
+
+      - uses: actions/checkout@v4
+
+      - name: Deploy to WP Engine
+        # Pinned to v3.2.9. The repository only allows approved actions, so this
+        # exact commit must be on its allowed list (Settings -> Actions -> General).
+        uses: wpengine/github-action-wpe-site-deploy@7bdbfb62eb657ae92afb91cb889d9c3fb36ef6c0 # v3.2.9
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ vars.WPE_ENV }}
+          REMOTE_PATH: wp-content/themes/foxtail/
+          PHP_LINT: TRUE
+          # --delete removes files that are no longer in the repo, but only
+          # inside REMOTE_PATH. Excluded paths are never deleted on the server.
+          FLAGS: -azvr --checksum --inplace --delete --exclude=.* --exclude-from=.deployignore
+          CACHE_CLEAR: TRUE

@@ -20,7 +20,7 @@ get_header();
           <p><?php _e('We’re all about a healthy internet but sometimes broken URLs happen.', 'foxtail'); ?></p>
         </header><!-- .page-header -->
         <div class="page-content">
-          <a href="<?php echo home_url() ?>" class="mzp-c-button mzp-t-neutral mzp-t-xl">
+          <a href="<?php echo home_url() ?>" class="ft-button-secondary">
             <?php _e('Return Home', 'foxtail'); ?>
           </a>
         </div><!-- .page-content -->

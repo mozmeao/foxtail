@@ -142,7 +142,7 @@ function foxtail_seo() {
   <!-- Basic meta & SEO -->
   <title><?php echo $page_title ?></title>
   <meta name="description" content="<?php echo esc_attr($description) ?>" />
-  <meta name="robots" content="<? echo esc_attr($robots)?>">
+  <meta name="robots" content="<?php echo esc_attr($robots) ?>">
 
    <!-- OpenGraph -->
   <meta property="og:title" content="<?php echo esc_attr($page_title) ?>" />

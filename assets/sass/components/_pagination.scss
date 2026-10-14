@@ -1,6 +1,3 @@
-@use "../../vendor/protocol/css/includes/lib" as *;
-@use "../utilities/mixins/typography" as *;
-
 .ft-c-pagination {
   font-family: $font-stack-base;
   display: flex;

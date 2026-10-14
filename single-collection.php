@@ -32,7 +32,7 @@ get_header();
 				$categoryortag = get_field('collection_filter');
 			}
 			if ( $categoryortag === 'Category' ):
-				$args['cat'] = get_field('collection_filter');
+				$args['cat'] = get_field('collection_category');
 			elseif ($categoryortag && $categoryortag === 'Tag'):
 				$args['tag_id'] = get_field('collection_tag');
 			endif;

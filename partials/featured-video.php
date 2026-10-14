@@ -65,8 +65,7 @@ endif;
   </div>
   <div class="ft-l-container">
     <div class="ft-c-featured-video__cta">
-      <a class="mzp-c-cta-link" href="<?php echo $featured_video_cta['url'] ?>" target="
-          <?php $featured_video_cta['target'] ? $featured_video_cta['target'] : '_self';?>">
+      <a class="mzp-c-cta-link" href="<?php echo $featured_video_cta['url'] ?>" target="<?php echo esc_attr( $featured_video_cta['target'] ? $featured_video_cta['target'] : '_self' ) ?>">
           <?php echo $featured_video_cta['title'] ?>
         </a>
     </div>

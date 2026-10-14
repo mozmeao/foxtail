@@ -1,0 +1,20 @@
+# Paths the deploy workflow never copies to WP Engine (rsync --exclude-from).
+# A leading / anchors to the theme root. Dotfiles are always excluded.
+# Excluded paths are also never deleted on the server.
+
+# Dependencies and build tooling
+node_modules/
+/package.json
+/package-lock.json
+/gulpfile*.js
+/wpgulp.config.js
+
+# Build sources (only the compiled assets/css and assets/js/*.min.js are loaded)
+/assets/sass/
+/assets/vendor/protocol/css/
+/assets/js/custom/
+/assets/js/vendor/
+*.map
+
+# Docs
+/README.md

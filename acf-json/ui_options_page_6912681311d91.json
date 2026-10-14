@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_6912681311d91",
+    "title": "Visibility Settings",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Visibility Settings",
+    "menu_slug": "visibility-settings",
+    "parent_slug": "foxtail-content-settings",
+    "advanced_configuration": false,
+    "icon_url": "",
+    "menu_title": "",
+    "position": null,
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": false,
+    "modified": 1762813971
+}
