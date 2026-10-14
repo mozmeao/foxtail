@@ -15,16 +15,15 @@ jobs:
   php-lint:
     name: PHP lint (${{ matrix.php }})
     runs-on: ubuntu-latest
+    # Official PHP images, so no third-party setup action is needed
+    # (the repository only allows approved actions).
+    container: php:${{ matrix.php }}-cli
     strategy:
       matrix:
         # 7.4 matches WP Engine today; 8.2 catches problems ahead of a PHP upgrade.
         php: ["7.4", "8.2"]
     steps:
       - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: none
       - name: Lint every PHP file
         run: |
           find . -name '*.php' -not -path './node_modules/*' -print0 \

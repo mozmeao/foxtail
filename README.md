@@ -69,7 +69,8 @@ These steps need admin access to the GitHub repository and the WP Engine User Po
 5. **Protect production.** In the `production` environment:
    - Deployment branches and tags: Selected branches → `prod` only.
    - Required reviewers: add the people who approve production deploys.
-6. **Protect branches** (Settings → Rules → Rulesets, or Branches):
+6. **Allow the WP Engine action.** The repository only runs approved actions. In Settings → Actions → General, add `wpengine/github-action-wpe-site-deploy@<commit>` using the commit pinned in `.github/workflows/deploy.yml`. If that setting is locked, ask the Mozilla GitHub org admins. When upgrading the action, update the pin and the allowed entry together.
+7. **Protect branches** (Settings → Rules → Rulesets, or Branches):
    - `master`: require a pull request and the "PHP lint" checks; block force pushes and deletion.
    - `prod`: the same, plus the "Prod changes come from master" check.
 
