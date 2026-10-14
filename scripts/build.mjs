@@ -1,16 +1,19 @@
 // Builds the theme's CSS and JS. See "Building CSS and JS" in README.md.
 //
-//   node scripts/build.mjs          build everything once
-//   node scripts/build.mjs --watch  rebuild when sources change
+//   node scripts/build.mjs          build CSS and JS, then assemble build/foxtail/
+//   node scripts/build.mjs --watch  rebuild CSS and JS when sources change
 //
 // CSS: assets/sass/{main,editor}.scss -> Sass -> Lightning CSS (prefixes for
 //      the package.json browserslist, minify) -> assets/css/{main,editor}.min.css
 // JS:  assets/js/custom/*.js and assets/js/vendor/**/*.js are joined in
 //      alphabetical order (as the old gulp build did) and minified with
 //      esbuild -> assets/js/custom.min.js and assets/js/vendor.min.js
+// build/foxtail/: the theme exactly as deployed, copied with rsync using
+//      .deployignore. Deploys (CI or manual) upload this folder.
 
+import { spawnSync } from 'node:child_process';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
-import { watch } from 'node:fs';
+import { rmSync, watch } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as sass from 'sass';
@@ -70,12 +73,22 @@ async function buildJs({ out, dir }) {
   return `assets/js/${out} (${files.length} files)`;
 }
 
-async function build(what = 'all') {
+function assembleTheme() {
+  const out = at('build', 'foxtail');
+  rmSync(out, { recursive: true, force: true });
+  const args = ['-a', '--exclude=.*', `--exclude-from=${at('.deployignore')}`, `${root}/`, `${out}/`];
+  const result = spawnSync('rsync', args, { stdio: 'inherit' });
+  if (result.status !== 0) throw new Error('rsync failed while assembling build/foxtail/');
+  return 'build/foxtail/ (deploy-ready theme)';
+}
+
+async function build(what = 'all', { assemble = false } = {}) {
   const started = Date.now();
   const jobs = [];
   if (what !== 'js') jobs.push(...cssEntries.map(buildCss));
   if (what !== 'css') jobs.push(...jsBundles.map(buildJs));
   const built = await Promise.all(jobs);
+  if (assemble) built.push(assembleTheme());
   console.log(`Built in ${Date.now() - started}ms:\n  ${built.join('\n  ')}`);
 }
 
@@ -90,5 +103,5 @@ if (process.argv.includes('--watch')) {
   for (const { dir } of jsBundles) watch(at(dir), { recursive: true }, () => rebuild('js'));
   console.log('Watching assets/sass and assets/js for changes...');
 } else {
-  await build();
+  await build('all', { assemble: true });
 }

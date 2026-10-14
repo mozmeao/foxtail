@@ -48,10 +48,19 @@ Deploys are done by the **Deploy theme** GitHub workflow (`.github/workflows/dep
 
 What a deploy does:
 
-- Copies the theme into `wp-content/themes/foxtail/` on the chosen environment, and nothing outside that folder.
-- Deletes files in that folder that are no longer in the repo.
-- Skips everything listed in `.deployignore` (build tooling, sources, docs) and all dotfiles. Excluded paths are never deleted on the server either.
+- Runs `npm run build`, which assembles `build/foxtail/`: the theme without build tooling, sources, docs and dotfiles (see `.deployignore`).
+- Copies `build/foxtail/` into `wp-content/themes/foxtail/` on the chosen environment, and nothing outside that folder.
+- Deletes files in that folder that aren't in `build/foxtail/`.
 - Clears the WP Engine page cache when it's done.
+
+### Deploying by hand
+
+If the workflow can't run, deploy the same folder over SFTP:
+
+1. Check out the commit to deploy and run `npm ci --ignore-scripts && npm run build`.
+2. Upload `build/foxtail/` to `wp-content/themes/` on the environment as `foxtail-new` (use one SFTP connection; WP Engine blocks IPs that open too many).
+3. Rename `foxtail` to `foxtail-old`, then immediately `foxtail-new` to `foxtail`. Don't delete the old folder first: while the active theme's folder is missing, WordPress can switch the site to a default theme.
+4. Clear the cache in the WP Engine portal. Delete `foxtail-old` once the site checks out; renaming it back is the rollback.
 
 **Rolling back:** revert the change on `master`, then ship it to `prod` as normal. For anything urgent, WP Engine backups (User Portal → Backups) restore an environment, but a full restore also rolls back the database.
 
@@ -123,6 +132,8 @@ npm run build                 # build once
 npm run watch                 # rebuild when SCSS or JS changes
 ```
 
+`npm run build` also assembles `build/foxtail/`, the theme exactly as it is deployed. `build/` is ignored by git.
+
 | Source | Output |
 |---|---|
 | `assets/sass/main.scss`, `assets/sass/editor.scss` | `assets/css/main.min.css`, `assets/css/editor.min.css` |
@@ -148,7 +159,5 @@ To serve the homepage at `/en/` during an outage:
 2. When WPML is working again, set the page back to draft.
 
 ## Housekeeping
-
-Excluded files are never deleted by a deploy, so these older copies remain on WP Engine and can be removed once over SFTP if you want: `assets/css/*.css.map`, and the out-of-date sources in `assets/sass/`, `assets/js/custom/` and `assets/js/vendor/`. Nothing loads them.
 
 After the theme with `_customizer.scss` is live, empty Appearance → Customize → Additional CSS on production.

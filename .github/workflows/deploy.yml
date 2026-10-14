@@ -53,14 +53,15 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      # The deploy deletes server files that aren't in the workspace, so a
-      # build that fails or skips a file must stop here.
-      - name: Build CSS and JS
+      # Builds CSS and JS and assembles build/foxtail/, the folder that gets
+      # deployed. The deploy deletes server files that aren't in that folder,
+      # so a build that fails or skips a file must stop here.
+      - name: Build
         run: |
           npm ci --ignore-scripts
           npm run build
-          for f in assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js; do
-            test -s "$f" || { echo "::error::The build did not produce $f"; exit 1; }
+          for f in style.css functions.php assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js; do
+            test -s "build/foxtail/$f" || { echo "::error::build/foxtail/$f is missing"; exit 1; }
           done
 
       - name: Deploy to WP Engine
@@ -70,9 +71,10 @@ jobs:
         with:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: ${{ vars.WPE_ENV }}
+          SRC_PATH: build/foxtail/
           REMOTE_PATH: wp-content/themes/foxtail/
           PHP_LINT: TRUE
-          # --delete removes files that are no longer in the repo, but only
-          # inside REMOTE_PATH. Excluded paths are never deleted on the server.
-          FLAGS: -azvr --checksum --inplace --delete --exclude=.* --exclude-from=.deployignore
+          # --delete removes server files that aren't in build/foxtail/, but only
+          # inside REMOTE_PATH. --checksum compares contents, not timestamps.
+          FLAGS: -azvr --checksum --inplace --delete --exclude=.*
           CACHE_CLEAR: TRUE
