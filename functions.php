@@ -115,20 +115,27 @@ add_action( 'after_setup_theme', 'foxtail_content_width', 0 );
  * Enqueue scripts and styles.
  */
 
-function foxtail_scripts() {
-    $theme_data = wp_get_theme();
-    $themeVersion = $theme_data->get( 'Version' );
+/**
+ * Version an asset by its modification time, so every deploy busts browser
+ * and CDN caches without a theme version bump. Falls back to the theme version.
+ */
+function foxtail_asset_version( $path ) {
+    $file = get_template_directory() . $path;
 
+    return file_exists( $file ) ? (string) filemtime( $file ) : wp_get_theme()->get( 'Version' );
+}
+
+function foxtail_scripts() {
     // Frontend scripts.
     if ( ! is_admin() ) {
         // Enqueue vendors first.
-        wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), $themeVersion, true );
+        wp_enqueue_script( 'foxtail-vendorjs', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), foxtail_asset_version( '/assets/js/vendor.min.js' ), true );
 
         // Enqueue custom JS after vendors.
-        wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), $themeVersion, true );
+        wp_enqueue_script( 'foxtail-customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), foxtail_asset_version( '/assets/js/custom.min.js' ), true );
 
         // Minified and Concatenated styles.
-        wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), $themeVersion, 'all' );
+        wp_enqueue_style( 'foxtail-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), foxtail_asset_version( '/assets/css/main.min.css' ), 'all' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'foxtail_scripts' );
