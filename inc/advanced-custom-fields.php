@@ -62,4 +62,14 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
+// External item URLs (homepage hero, secondary slots, curated collections) must be http:// or https://.
+// The field is cloned, so match the original field's key inside the clone's key.
+add_filter('acf/validate_value/type=url', function( $valid, $value, $field ) {
+  if ( $valid !== true || $value === '' || strpos( $field['key'], 'field_6a0f1c01d2e4f' ) === false ) {
+    return $valid;
+  }
+
+  return foxtail_is_http_url( $value ) ? true : __( 'Enter a full link starting with https://', 'foxtail' );
+}, 10, 3);
+
 ?>

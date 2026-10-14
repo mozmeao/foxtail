@@ -24,21 +24,6 @@ class walker_texas_ranger extends Walker_Nav_Menu {
       );
     }
 
-    // Return the host of a link that leaves this site, or false for internal links.
-    // Relative URLs and links to the blog's own host (with or without www.) are internal.
-    function external_host($url) {
-      $host = wp_parse_url($url, PHP_URL_HOST);
-
-      if (empty($host)) {
-        return false;
-      }
-
-      $host = preg_replace('/^www\./', '', strtolower($host));
-      $own_host = preg_replace('/^www\./', '', strtolower(wp_parse_url(home_url(), PHP_URL_HOST)));
-
-      return $host === $own_host ? false : $host;
-    }
-
     // Check for children
 
     function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
@@ -82,7 +67,7 @@ class walker_texas_ranger extends Walker_Nav_Menu {
       $suffix = $this->item_css_class_suffixes;
 
       // Links to other sites get a modifier class, rel="external" and a screen reader label
-      $external_host = $this->external_host($item->url);
+      $external_host = foxtail_external_host($item->url);
 
       // Item classes
       $item_classes =  array(

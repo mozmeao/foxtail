@@ -152,6 +152,21 @@
   background-size: cover;
 }
 
+// fallback <img> for homepage hero and secondary items whose image is missing (inc/featured-items.php)
+.ft-c-fallback-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.ft-c-fallback-img--3x2 {
+  aspect-ratio: 3 / 2;
+}
+
+.ft-c-fallback-img--1x1 {
+  aspect-ratio: 1 / 1;
+}
+
 // a border for cards with exerpts and no images
 .ft-c-card--excerpt {
   border-top: 2px solid $color-black;

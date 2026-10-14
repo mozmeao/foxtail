@@ -45,24 +45,30 @@ if (!class_exists('ACF') || $currentLang != 'en') {
   <div class="ft-l-space-unrelated"></div>
 
   <!-- Collection #1 -->
+<?php if ( foxtail_collection_visible( get_field($currentLang . '_featured_collection_1', 'option') ) ) : ?>
   <?php get_template_part('partials/collection/collection-small-cards', null, array('collectionNum' => '1')); ?>
 
   <div class="ft-l-space-unrelated"></div>
+<?php endif; ?>
 
   <!-- Collection #2 -->
+<?php if ( foxtail_collection_visible( get_field($currentLang . '_featured_collection_2', 'option') ) ) : ?>
   <?php get_template_part('partials/collection/collection-large-cards', null, array('collectionNum' => '2')); ?>
 
   <div class="ft-l-space-unrelated"></div>
+<?php endif; ?>
 
   <!-- Collection #3 -->
+<?php if ( foxtail_collection_visible( get_field($currentLang . '_featured_collection_3', 'option') ) ) : ?>
   <?php get_template_part('partials/collection/collection-large-cards', null, array('collectionNum' => '3')); ?>
 
   <div class="ft-l-space-unrelated"></div>
+<?php endif; ?>
 
 <!-- Collection #4 -->
 <?php
 $collection4 = get_field($currentLang . '_featured_collection_4', 'option');
-if( $collection4['display'] ) {
+if( foxtail_collection_visible( $collection4, false ) ) {
   get_template_part('partials/collection/collection-small-cards', null, array('collectionNum' => '4'));
   echo '<div class="ft-l-space-unrelated"></div>';
 }
@@ -72,7 +78,7 @@ if( $collection4['display'] ) {
 <!-- Collection #5 -->
 <?php
 $collection5 = get_field($currentLang . '_featured_collection_5', 'option');
-if( $collection5['display'] ) {
+if( foxtail_collection_visible( $collection5, false ) ) {
   get_template_part('partials/collection/collection-large-cards', null, array('collectionNum' => '5'));
   echo '<div class="ft-l-space-unrelated"></div>';
 }
