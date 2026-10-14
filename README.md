@@ -25,6 +25,8 @@ The WordPress theme for [blog.mozilla.org](https://blog.mozilla.org), built on [
 3. **Rehearse (optional):** open a pull request from `master` into `stage`, and check Staging.
 4. **Ship:** open a pull request from `master` into `prod`. Merging it starts the Production deploy, which waits for approval (see below).
 
+**Merge methods:** squash is fine for pull requests into `master`. Pull requests from `master` into `stage` or `prod` must use **Create a merge commit**: a squash creates a new commit that `master` doesn't have, so the branches drift apart and later promotions show old changes again or conflict. The `prod` ruleset only allows merge commits.
+
 **Urgent fix:** branch from `master`, open a pull request into `master`, then ship it. Afterwards, merge `master` into `stage` and `develop` so they stay current.
 
 `develop` is scratch space. It can be reset to `master` when it fills up with experiments.
@@ -63,7 +65,7 @@ These steps need admin access to the GitHub repository and the WP Engine User Po
    ssh-keygen -t ed25519 -C "foxtail-github-deploy" -f ~/.ssh/foxtail_wpe_deploy
    ```
 
-2. **Add the public key to WP Engine.** In the User Portal, add the contents of `~/.ssh/foxtail_wpe_deploy.pub` as an SSH Gateway key. The key can reach every install its WP Engine user can reach, so prefer a dedicated portal user that only has access to this install.
+2. **Add the public key to WP Engine.** In the User Portal, open your profile → **SSH keys** (not a site's GitPush page) and add the contents of `~/.ssh/foxtail_wpe_deploy.pub`. Paste the key itself (it starts with `ssh-ed25519`), not its `SHA256:` fingerprint. The key can reach every install its WP Engine user can reach, so prefer a dedicated portal user that only has access to this install.
 3. **Add the private key to GitHub.** Repository → Settings → Secrets and variables → Actions → New repository secret. Name: `WPE_SSHG_KEY_PRIVATE`. Value: the contents of `~/.ssh/foxtail_wpe_deploy` (the file without `.pub`). After that, delete the private key from your machine or keep it in a password manager.
 4. **Create three GitHub environments** (Settings → Environments): `development`, `staging` and `production`. In each one, add a variable named `WPE_ENV` set to that environment's WP Engine install name, as shown under Sites in the User Portal (for example `mozilladev` for Development).
 5. **Protect production.** In the `production` environment:
@@ -97,7 +99,8 @@ These steps need admin access to the GitHub repository and the WP Engine User Po
 
    Network-activated plugins (single sign-on, Duo, Post SMTP, domain mapping) don't load in this setup, so the normal WordPress login works. Use `wp user update <you> --prompt=user_pass` to set a local-only password.
 3. **Turn off anything that could reach the outside world:** `wp plugin deactivate post-smtp wp-all-export-pro wp-all-import-pro`. Local catches other mail in Mailpit.
-4. **Point the local theme at this repo:**
+4. **Build the CSS and JS** in this repo (see [Building CSS and JS](#building-css-and-js)).
+5. **Point the local theme at this repo:**
 
    ```bash
    mv "<local site>/app/public/wp-content/themes/foxtail" "<local site>/app/public/wp-content/themes/foxtail.pulled"
@@ -105,22 +108,35 @@ These steps need admin access to the GitHub repository and the WP Engine User Po
    ```
 
    The local site now runs whatever branch is checked out.
-5. **Never push from Local** to WP Engine. Before pulling again, remove the `foxtail` symlink first, or Local will write the server's files into this repo.
+6. **Never push from Local** to WP Engine. Before pulling again, remove the `foxtail` symlink first, or Local will write the server's files into this repo.
 
 Expected local differences: `/` is blank (production redirects it to `/en/` before WordPress runs), so start at `/en/`. Older images are missing if you skipped media.
 
 ## Building CSS and JS
 
-The compiled files (`assets/css/main.min.css`, `assets/css/editor.min.css`, `assets/js/custom.min.js`, `assets/js/vendor.min.js`) are committed and deployed as they are. **Don't rebuild them for now:** the old gulp build no longer runs, and a replacement that reproduces the live files exactly is in progress. Until then, a CSS or JS change means editing the source and the compiled file to match.
+The compiled CSS and JS are **not in git**. CI builds them for every deploy, and you build them locally:
 
-Sources:
+```bash
+nvm use                       # Node version from .nvmrc
+npm ci --ignore-scripts       # install the 4 build tools, without running package install scripts
+npm run build                 # build once
+npm run watch                 # rebuild when SCSS or JS changes
+```
 
-- `assets/sass/`: theme SCSS, entry points `main.scss` and `editor.scss`
-- `assets/vendor/protocol/`: a fixed copy of Mozilla Protocol's SCSS, images and fonts
-- `assets/js/custom/*.js`: joined and minified into `custom.min.js`
-- `assets/js/vendor/**/*.js`: joined and minified into `vendor.min.js`
+| Source | Output |
+|---|---|
+| `assets/sass/main.scss`, `assets/sass/editor.scss` | `assets/css/main.min.css`, `assets/css/editor.min.css` |
+| `assets/js/custom/*.js` | `assets/js/custom.min.js` |
+| `assets/js/vendor/**/*.js` | `assets/js/vendor.min.js` |
 
-Some site styling also lives in Appearance → Customize → Additional CSS. It's being moved into the theme.
+How it works (`scripts/build.mjs`):
+
+- **CSS:** Dart Sass compiles the SCSS, then Lightning CSS adds vendor prefixes for the browsers in `package.json` → `browserslist` and minifies.
+- **JS:** the files in each folder are joined in alphabetical order and minified with esbuild. They are plain scripts, not modules, so order matters.
+- `assets/vendor/protocol/` is a fixed copy of Mozilla Protocol's SCSS, images and fonts (an old version, not the npm package). It has small Dart Sass compatibility patches, each marked `Foxtail patch`.
+- `assets/sass/_customizer.scss` holds the rules that used to live in Appearance → Customize → Additional CSS. Keep it imported last.
+
+The build tools are pinned to exact versions in `package.json`. When updating them, rebuild and compare the output before shipping.
 
 ## WPML outage fallback
 
@@ -134,3 +150,5 @@ To serve the homepage at `/en/` during an outage:
 ## Housekeeping
 
 Excluded files are never deleted by a deploy, so these older copies remain on WP Engine and can be removed once over SFTP if you want: `assets/css/*.css.map`, and the out-of-date sources in `assets/sass/`, `assets/js/custom/` and `assets/js/vendor/`. Nothing loads them.
+
+After the theme with `_customizer.scss` is live, empty Appearance → Customize → Additional CSS on production.
