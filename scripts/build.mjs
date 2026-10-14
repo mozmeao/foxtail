@@ -13,7 +13,7 @@
 
 import { spawnSync } from 'node:child_process';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
-import { rmSync, watch } from 'node:fs';
+import { mkdirSync, rmSync, watch } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as sass from 'sass';
@@ -76,6 +76,7 @@ async function buildJs({ out, dir }) {
 function assembleTheme() {
   const out = at('build', 'foxtail');
   rmSync(out, { recursive: true, force: true });
+  mkdirSync(out, { recursive: true }); // rsync won't create missing parent folders
   const args = ['-a', '--exclude=.*', `--exclude-from=${at('.deployignore')}`, `${root}/`, `${out}/`];
   const result = spawnSync('rsync', args, { stdio: 'inherit' });
   if (result.status !== 0) throw new Error('rsync failed while assembling build/foxtail/');
