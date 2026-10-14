@@ -25,35 +25,44 @@
     <div class="ft-c-post-list__wrap--two-column">
     <?php
 
-      $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'posts_per_page' => 6,
-        'post__not_in' => $_displayed_posts,
-      );
+      // "External (curated)": up to 6 hand-entered items, no query (see inc/featured-items.php)
+      if ( $categoryortag === 'external' ) :
+        foreach ( foxtail_collection_items($group) as $item ) :
+          get_template_part('partials/card', 'small', array('item' => $item));
+        endforeach;
+      else :
+        $args = array(
+          'post_type' => 'post',
+          'post_status' => 'publish',
+          'posts_per_page' => 6,
+          'post__not_in' => $_displayed_posts,
+        );
 
-      // Select posts based on either a category or a tag
-      if ( $categoryortag === 'category' ):
-        $args['cat'] = $category;
-      elseif ($categoryortag && $categoryortag === 'tag'):
-        $args['tag_id'] = $tag;
-      endif;
+        // Select posts based on either a category or a tag
+        if ( $categoryortag === 'category' ):
+          $args['cat'] = $category;
+        elseif ($categoryortag && $categoryortag === 'tag'):
+          $args['tag_id'] = $tag;
+        endif;
 
-      $arr_posts = new WP_Query( $args );
+        $arr_posts = new WP_Query( $args );
 
-      if ( $arr_posts->have_posts() ) :
-        while ( $arr_posts->have_posts() ) :
-          $arr_posts->the_post();
-          get_template_part('partials/card', 'small');
-        endwhile;
+        if ( $arr_posts->have_posts() ) :
+          while ( $arr_posts->have_posts() ) :
+            $arr_posts->the_post();
+            get_template_part('partials/card', 'small');
+          endwhile;
+        endif;
       endif;
     ?>
 
     </div>
+<?php if ( ! empty( $collection_link['url'] ) ) : $link_host = foxtail_external_host( $collection_link['url'] ); ?>
     <div class="ft-c-post-list__cta">
-      <a href="<?php if ($collection_link) echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link">
-        <?php echo $collection_link['title'] ?>
+      <a href="<?php echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link"<?php if ( $link_host ) echo ' rel="external"' ?>>
+        <?php echo $collection_link['title'] ?><?php echo foxtail_external_marker( $link_host ) ?>
       </a>
     </div>
+<?php endif; ?>
   </div>
 </section>

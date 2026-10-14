@@ -208,6 +208,12 @@ require get_template_directory() . '/inc/collection-post-type.php';
 require get_template_directory() . '/inc/helpers.php';
 
 /**
+ * Homepage items from a post or an External item (hero, secondary slots, collections)
+ */
+
+require get_template_directory() . '/inc/featured-items.php';
+
+/**
  * Halt the main query in the case of an empty search
  */
 add_filter( 'posts_search', function( $search, \WP_Query $q )

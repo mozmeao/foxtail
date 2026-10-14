@@ -1,22 +1,25 @@
 <!-- First, some JS that handles the mouseover hover -->
 <script type="text/javascript" async>
 function secondaryFeatured() {
-  document.querySelector(".ft-c-featured-secondary__image--1").classList.add("is-active");
-  document.getElementById("ft-js-first").addEventListener("mouseover", function() {
-    document.querySelector(".ft-c-featured-secondary__image--1").classList.add("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--2").classList.remove("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--3").classList.remove("is-active");
-  })
-  document.getElementById("ft-js-second").addEventListener("mouseover", function() {
-    document.querySelector(".ft-c-featured-secondary__image--1").classList.remove("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--2").classList.add("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--3").classList.remove("is-active");
-  })
-  document.getElementById("ft-js-third").addEventListener("mouseover", function() {
-    document.querySelector(".ft-c-featured-secondary__image--1").classList.remove("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--2").classList.remove("is-active");
-    document.querySelector(".ft-c-featured-secondary__image--3").classList.add("is-active");
-  })
+  var images = [1, 2, 3].map(function(n) {
+    return document.querySelector(".ft-c-featured-secondary__image--" + n);
+  });
+  function activate(n) {
+    images.forEach(function(image, i) {
+      if (image) {
+        image.classList.toggle("is-active", i === n - 1);
+      }
+    });
+  }
+  activate(1);
+  ["first", "second", "third"].forEach(function(id, i) {
+    var item = document.getElementById("ft-js-" + id);
+    if (item) {
+      item.addEventListener("mouseover", function() {
+        activate(i + 1);
+      });
+    }
+  });
 }
 window.addEventListener("load", secondaryFeatured, false);
 </script>
@@ -26,79 +29,51 @@ window.addEventListener("load", secondaryFeatured, false);
 // Get the language for the page this is being used on
 $lang = get_query_var('lang');
 
-// set the post object according to what langauge is set
+// Each slot is a WordPress post or an External item, see inc/featured-items.php
+$slots = array(1 => 'first', 2 => 'second', 3 => 'third');
+$items = array();
+$images = array(1 => '', 2 => '', 3 => '');
+
 if ($lang):
   $group = get_field($lang . '_secondary_featured_group', 'option');
-  $featured_secondary_1 = $group['first'];
-  $featured_secondary_2 = $group['second'];
-  $featured_secondary_3 = $group['third'];
 
-  // Add these posts to this array so that they aren't duplicated on front page
-  global $_displayed_posts;
-  $_displayed_posts[] = $featured_secondary_1->ID;
-  $_displayed_posts[] = $featured_secondary_2->ID;
-  $_displayed_posts[] = $featured_secondary_3->ID;
-endif;
+  foreach ($slots as $n => $slot) {
+    $items[$n] = foxtail_featured_item($group, $slot, $slot . '_source', $slot . '_external', array('raw_title' => true));
 
-// set up variables
-if ($featured_secondary_1):
-  $featured_secondary_1_image = get_the_post_thumbnail($featured_secondary_1, '1x1', array('class' => 'ft-c-featured-secondary__image--1'));
-  $featured_secondary_1_link = get_permalink($featured_secondary_1->ID);
-  $featured_secondary_1_title = esc_html($featured_secondary_1->post_title);
-endif;
-if ($featured_secondary_2):
-  $featured_secondary_2_image = get_the_post_thumbnail($featured_secondary_2, '1x1', array('class' => 'ft-c-featured-secondary__image--2'));
-  $featured_secondary_2_link = get_permalink($featured_secondary_2->ID);
-  $featured_secondary_2_title = esc_html($featured_secondary_2->post_title);
-endif;
-if ($featured_secondary_3):
-  $featured_secondary_3_image = get_the_post_thumbnail($featured_secondary_3, '1x1', array('class' => 'ft-c-featured-secondary__image--3'));
-  $featured_secondary_3_link = get_permalink( $featured_secondary_3->ID );
-  $featured_secondary_3_title = esc_html($featured_secondary_3->post_title);
+    // Add posts to this array so that they aren't duplicated on front page
+    foxtail_mark_displayed($items[$n]);
+
+    if ($items[$n]) {
+      $image_class = 'ft-c-featured-secondary__image--' . $n;
+      $images[$n] = foxtail_item_image($items[$n], '1x1', array('class' => $image_class), 'img');
+    }
+  }
 endif;
 ?>
 
 <section class="ft-c-featured-secondary">
   <div class="ft-c-featured-secondary__wrap ft-l-container">
     <div class="ft-c-featured-secondary__media">
-      <?php echo $featured_secondary_1_image ?>
-      <?php echo $featured_secondary_2_image ?>
-      <?php echo $featured_secondary_3_image ?>
+      <?php echo $images[1] ?>
+      <?php echo $images[2] ?>
+      <?php echo $images[3] ?>
     </div>
     <div class="ft-c-featured-secondary__item-list">
+<?php foreach ($slots as $n => $slot) : if (empty($items[$n])) continue; $item = $items[$n]; ?>
 
-      <div class="ft-c-featured-secondary__item-wrap" id="ft-js-first">
-        <?php echo $featured_secondary_1_image ?>
+      <div class="ft-c-featured-secondary__item-wrap" id="ft-js-<?php echo $slot ?>">
+        <?php echo $images[$n] ?>
         <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label"><?php echo foxtail_primary_cat($featured_secondary_1) ?></span>
-          <a href="<?php echo $featured_secondary_1_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_1_title ?></h2>
-            <span class="ft-c-more"><?php _e('Read More', 'foxtail'); ?></span>
+<?php if ($item['label'] !== '') : ?>
+          <span class="ft-c-label"><?php echo $item['label'] ?></span>
+<?php endif; ?>
+          <a href="<?php echo esc_url($item['url']) ?>"<?php echo foxtail_item_rel($item) ?>>
+            <h2 class="ft-c-featured-secondary__title"><?php echo $item['title'] ?></h2>
+            <span class="ft-c-more"><?php _e('Read More', 'foxtail'); ?><?php echo foxtail_external_marker($item['external_host']) ?></span>
           </a>
         </div>
       </div>
-
-      <div class="ft-c-featured-secondary__item-wrap" id="ft-js-second">
-        <?php echo $featured_secondary_2_image ?>
-        <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label"><?php echo foxtail_primary_cat($featured_secondary_2) ?></span>
-          <a href="<?php echo $featured_secondary_2_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_2_title ?></h2>
-            <span class="ft-c-more"><?php _e('Read More', 'foxtail'); ?></span>
-          </a>
-        </div>
-      </div>
-
-      <div class="ft-c-featured-secondary__item-wrap" id="ft-js-third">
-        <?php echo $featured_secondary_3_image ?>
-        <div class="ft-c-featured-secondary__item">
-          <span class="ft-c-label"><?php echo foxtail_primary_cat($featured_secondary_3) ?></span>
-          <a href="<?php echo $featured_secondary_3_link ?>">
-            <h2 class="ft-c-featured-secondary__title"><?php echo $featured_secondary_3_title ?></h2>
-            <span class="ft-c-more"><?php _e('Read More', 'foxtail'); ?></span>
-          </a>
-        </div>
-      </div>
+<?php endforeach; ?>
 
     </div>
   </div>

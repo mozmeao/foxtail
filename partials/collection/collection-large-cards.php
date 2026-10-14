@@ -18,24 +18,36 @@
     $limit = $group['limit_posts'];
   endif;
 
-  $args = array(
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'posts_per_page' => 6,
-    'post__not_in' => $_displayed_posts,
-  );
+  // "External (curated)": up to 6 hand-entered items, no query (see inc/featured-items.php)
+  $curated = $categoryortag === 'external';
 
-  // Select posts based on either a category or a tag
-  if ( $categoryortag === 'category' ):
-    $args['cat'] = $category;
-  elseif ($categoryortag && $categoryortag === 'tag'):
-    $args['tag_id'] = $tag;
+  if ( $curated ):
+    $items = foxtail_collection_items($group);
+    // like posts below: a full second row of 3 or nothing. Trimmed here instead of hidden with CSS
+    if ( count($items) < 6 || $limit ) {
+      $items = array_slice($items, 0, 3);
+    }
+    $num = count($items);
+  else:
+    $args = array(
+      'post_type' => 'post',
+      'post_status' => 'publish',
+      'posts_per_page' => 6,
+      'post__not_in' => $_displayed_posts,
+    );
+
+    // Select posts based on either a category or a tag
+    if ( $categoryortag === 'category' ):
+      $args['cat'] = $category;
+    elseif ($categoryortag && $categoryortag === 'tag'):
+      $args['tag_id'] = $tag;
+    endif;
+
+    $arr_posts = new WP_Query( $args );
+    $num = $arr_posts->post_count;
   endif;
 
-  $arr_posts = new WP_Query( $args );
-
   // add a class if there are fewer than 6 posts
-  $num = $arr_posts->post_count;
   $numclass = '';
   if ($num < 6 || $limit) {
     $numclass= 'ft-p-lownum';
@@ -48,7 +60,11 @@
     <h2 class="ft-c-post-list__title"><?php echo $title ?></h2>
     <div class="ft-c-post-list__wrap--three-column ft-c-post-list__wrap--frontpage <?php echo $numclass ?>">
     <?php
-      if ( $arr_posts->have_posts() ) :
+      if ( $curated ) :
+        foreach ( $items as $item ) :
+          get_template_part('partials/card', null, array('item' => $item));
+        endforeach;
+      elseif ( $arr_posts->have_posts() ) :
         while ( $arr_posts->have_posts() ) :
           $arr_posts->the_post();
           get_template_part('partials/card');
@@ -56,10 +72,12 @@
       endif;
     ?>
     </div>
+<?php if ( ! empty( $collection_link['url'] ) ) : $link_host = foxtail_external_host( $collection_link['url'] ); ?>
     <div class="ft-c-post-list__cta">
-      <a href="<?php if ($collection_link) echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link">
-        <?php echo $collection_link['title'] ?>
+      <a href="<?php echo esc_url($collection_link['url']) ?>" class="mzp-c-cta-link"<?php if ( $link_host ) echo ' rel="external"' ?>>
+        <?php echo $collection_link['title'] ?><?php echo foxtail_external_marker( $link_host ) ?>
       </a>
     </div>
+<?php endif; ?>
   </div>
 </section>
