@@ -81,3 +81,6 @@ assets/js/vendor.js
 assets/js/vendor.min.js
 z_archive/
 /z_archive/
+
+# Local scratch space and agent session notes (never committed)
+/tmp/

@@ -6,6 +6,9 @@
 # Build output folder itself
 /build/
 
+# Local scratch space and agent notes
+/tmp/
+
 # Dependencies and build tooling
 node_modules/
 /package.json
