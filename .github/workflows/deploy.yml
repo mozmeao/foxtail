@@ -48,6 +48,21 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # The deploy deletes server files that aren't in the workspace, so a
+      # build that fails or skips a file must stop here.
+      - name: Build CSS and JS
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+          for f in assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js; do
+            test -s "$f" || { echo "::error::The build did not produce $f"; exit 1; }
+          done
+
       - name: Deploy to WP Engine
         # Pinned to v3.2.9. The repository only allows approved actions, so this
         # exact commit must be on its allowed list (Settings -> Actions -> General).

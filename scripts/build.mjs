@@ -9,7 +9,7 @@
 //      alphabetical order (as the old gulp build did) and minified with
 //      esbuild -> assets/js/custom.min.js and assets/js/vendor.min.js
 
-import { readFile, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { watch } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -48,6 +48,8 @@ async function buildCss(name) {
   for (const warning of result.warnings) {
     console.warn(`  ${name}.css: ${warning.message} (line ${warning.loc.line})`);
   }
+  // assets/css only holds build output, so it doesn't exist in a fresh checkout.
+  await mkdir(at('assets/css'), { recursive: true });
   await writeFile(at('assets/css', `${name}.min.css`), result.code);
   return `assets/css/${name}.min.css`;
 }

@@ -8,6 +8,7 @@ node_modules/
 /package-lock.json
 /gulpfile*.js
 /wpgulp.config.js
+/scripts/
 
 # Build sources (only the compiled assets/css and assets/js/*.min.js are loaded)
 /assets/sass/
