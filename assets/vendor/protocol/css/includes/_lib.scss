@@ -45,6 +45,9 @@ $type-scale: 'standard' !default;
 
 // Import all the things!
 @import 'tokens/dist/index.scss';
-@import 'themes';
+// Foxtail patch: import functions before themes. _themes.scss calls
+// map-collect(), which _functions.scss defines; Dart Sass errors on the
+// original order (node-sass silently passed the call through as text).
 @import 'functions';
+@import 'themes';
 @import 'mixins';

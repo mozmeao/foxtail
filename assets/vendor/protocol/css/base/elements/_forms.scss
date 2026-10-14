@@ -289,11 +289,14 @@ textarea {
 select {
     @include appearance(none);
     @include border-box;
+    // Foxtail patch: form-input moved above bidi(). Dart Sass emits declarations
+    // in source order, so form-input's `padding` would otherwise override the
+    // bidi() padding that leaves room for the arrow (node-sass hoisted it).
+    @include form-input;
     @include bidi((
         (background-position, right 8px top 50%, left 8px top 50%),
         (padding, $field-padding $symbol-spacing $field-padding $field-padding, $field-padding $field-padding $field-padding $symbol-spacing),
     ));
-    @include form-input;
     background-image: $url-image-arrow-down-form, $select-bg;
     background-repeat: no-repeat, repeat;
     background-size: 1.5em auto, 100%;
