@@ -20,7 +20,23 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         'sub_menu'                  => '__sub-menu',
         'sub_menu_item'             => '__sub-menu__item',
         'link'                      => '__link',
+        'external'                  => '--external',
       );
+    }
+
+    // Return the host of a link that leaves this site, or false for internal links.
+    // Relative URLs and links to the blog's own host (with or without www.) are internal.
+    function external_host($url) {
+      $host = wp_parse_url($url, PHP_URL_HOST);
+
+      if (empty($host)) {
+        return false;
+      }
+
+      $host = preg_replace('/^www\./', '', strtolower($host));
+      $own_host = preg_replace('/^www\./', '', strtolower(wp_parse_url(home_url(), PHP_URL_HOST)));
+
+      return $host === $own_host ? false : $host;
     }
 
     // Check for children
@@ -65,6 +81,9 @@ class walker_texas_ranger extends Walker_Nav_Menu {
       $prefix = $this->css_class_prefix;
       $suffix = $this->item_css_class_suffixes;
 
+      // Links to other sites get a modifier class, rel="external" and a screen reader label
+      $external_host = $this->external_host($item->url);
+
       // Item classes
       $item_classes =  array(
         'item_class'            => $depth == 0 ? $prefix . $suffix['item'] : '',
@@ -89,13 +108,21 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         'depth_class'           => $depth >=1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '  ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
       );
 
+      $rel = preg_split('/\s+/', trim((string) $item->xfn), -1, PREG_SPLIT_NO_EMPTY);
+
+      if ($external_host) {
+        $link_classes['external_class'] = $depth == 0 ? $prefix . $suffix['link'] . $suffix['external'] : $prefix . $suffix['sub_menu'] . $suffix['link'] . $suffix['external'];
+        $rel[] = 'external';
+      }
+
       $link_class_string = implode("  ", array_filter($link_classes));
       $link_class_output = 'class="' . $link_class_string . '"';
+      $rel_string = implode(' ', array_unique($rel));
 
       // link attributes
       $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
       $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
-      $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
+      $attributes .= ! empty($rel_string)       ? ' rel="'    . esc_attr($rel_string      ) .'"' : '';
       $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
 
       // Create link markup
@@ -103,6 +130,11 @@ class walker_texas_ranger extends Walker_Nav_Menu {
       $item_output .= '<a' . $attributes . ' ' . $link_class_output . '>';
       $item_output .=     $args->link_before;
       $item_output .=     apply_filters('the_title', $item->title, $item->ID);
+      if ($external_host) {
+        $item_output .= '<span class="' . $prefix . '__external-icon" aria-hidden="true"></span>';
+        /* translators: %s: the external site's domain, e.g. firefox.com */
+        $item_output .= '<span class="screen-reader-text"> ' . esc_html(sprintf(__('(opens %s)', 'foxtail'), $external_host)) . '</span>';
+      }
       $item_output .=     $args->link_after;
       $item_output .=     $args->after;
       $item_output .= '</a>';
