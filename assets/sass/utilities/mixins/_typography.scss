@@ -1,6 +1,4 @@
 
-@use "../../../vendor/protocol/css/includes/lib" as *;
-
 // header & titles
 @mixin ft-text-title-xl {
   @include font-size(48px);

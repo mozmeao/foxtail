@@ -59,6 +59,15 @@ if( function_exists('acf_add_options_page') ) {
     'parent_slug' => 'foxtail-site-settings',
   ));
 
+  acf_add_options_page(array(
+    'page_title'  => 'Visibility Settings',
+    'menu_title'  => 'Visibility Settings',
+    'menu_slug'   => 'foxtail-visibility-settings',
+    'capability'  => 'manage_options',
+    'icon_url'    => 'dashicons-visibility',
+    'position'    => 30,
+  ));
+
 
 }
 

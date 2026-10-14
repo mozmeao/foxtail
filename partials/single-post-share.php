@@ -6,5 +6,10 @@
       target="_blank">
       <img class="ft-c-post-share__icon" src="<?php echo get_template_directory_uri() . '/assets/images/icons/twitter.svg' ?>" alt="<?php _e('Share on Twitter', 'foxtail'); ?>" />
     </a>
+    <a class="ft-js-share-link"
+      href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo urlencode(get_permalink()); ?>"
+      target="_blank">
+      <img class="ft-c-post-share__icon" src="<?php echo get_template_directory_uri() . '/assets/images/icons/linkedin.svg' ?>" alt="<?php _e('Share on LinkedIn', 'foxtail'); ?>" />
+    </a>
   </div>
 </div>

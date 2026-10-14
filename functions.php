@@ -212,6 +212,51 @@ add_filter( 'posts_search', function( $search, \WP_Query $q )
 }, 10, 2 );
 
 /**
+ * Exclude specific categories from /latest and main RSS feed
+ *
+ * Categories in this list will be excluded from:
+ * 1. The main blog listing page (/latest)
+ * 2. The main RSS feed (/feed)
+ *
+ * They will STILL appear in:
+ * - Category-specific RSS feeds (/category/[slug]/feed/)
+ * - Category archive pages
+ * - Search results
+ *
+ * To manage excluded categories: Go to Visibility Settings in the WordPress admin
+ */
+add_action( 'pre_get_posts', function( $query ) {
+    // Only modify queries on the frontend
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
+
+    // Get excluded categories from ACF options page
+    // Field name: 'excluded_categories' (configured in ACF)
+    $excluded_categories = get_field( 'excluded_categories', 'option' );
+
+    // If no categories are set or ACF returns false, bail early
+    if ( empty( $excluded_categories ) || ! is_array( $excluded_categories ) ) {
+        return;
+    }
+
+    // ACF taxonomy field returns term objects, extract IDs
+    $excluded_category_ids = array_map( function( $term ) {
+        return $term->term_id;
+    }, $excluded_categories );
+
+    // Exclude from main blog listing (/latest and homepage)
+    if ( $query->is_home() ) {
+        $query->set( 'category__not_in', $excluded_category_ids );
+    }
+
+    // Exclude from main RSS feed, but NOT from category-specific feeds
+    if ( $query->is_feed() && ! $query->is_category() && ! $query->is_tag() && ! $query->is_tax() ) {
+        $query->set( 'category__not_in', $excluded_category_ids );
+    }
+});
+
+/**
  * Add Gutenberg block category
  */
 add_filter( 'block_categories', function( $categories, $post ) {
@@ -225,6 +270,19 @@ add_filter( 'block_categories', function( $categories, $post ) {
         )
     );
 }, 10, 2 );
+
+/**
+ * Purge WPEngine page + object cache when a scheduled post goes live,
+ * so index pages (home, archives, feeds) don't serve a stale HTML that
+ * omits the freshly-published post.
+ */
+add_action( 'future_to_publish', function( $post ) {
+    if ( ! class_exists( 'WpeCommon' ) ) {
+        return;
+    }
+    WpeCommon::purge_memcached();
+    WpeCommon::purge_varnish_cache();
+} );
 
 /**
  * Add custom Gutenberg blocks (using ACF)
