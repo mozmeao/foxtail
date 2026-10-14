@@ -149,6 +149,12 @@ How it works (`scripts/build.mjs`):
 
 The build tools are pinned to exact versions in `package.json`. When updating them, rebuild and compare the output before shipping.
 
+## Versioning
+
+The theme version (`Version` in `style.css`, and `version` in `package.json`) is a release label. Bump it once per Production release, in the pull request that prepares the release, not in every feature pull request: patch for fixes (1.0.1), minor for features (1.1.0).
+
+Browser and CDN caches don't depend on it: `functions.php` adds each CSS and JS file's modification time as its `?ver=`, so every deploy serves the new files.
+
 ## WPML outage fallback
 
 `blog.mozilla.org/` redirects to `/en/`, and browsers cache that redirect. `/en/` only exists while WPML is running, so if WPML fails, visitors land on a 404.
