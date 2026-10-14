@@ -19,7 +19,7 @@
         echo '<div class="ft-c-single-post__featured-video video-responsive">';
         // get the youtube ID from the URL and place it in the iframe youtube embed
         preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", get_field('post_featured_video'), $match);
-        echo '<iframe id="player" width="560" height="315" frameborder="2" src="http://www.youtube.com/embed/' . $match[0] . '" ></iframe>';
+        echo '<iframe id="player" width="560" height="315" frameborder="2" src="https://www.youtube-nocookie.com/embed/' . esc_attr( $match[0] ) . '" ></iframe>';
         echo '</div>';
       } else {
       the_post_thumbnail('featured-image', array( 'class' => 'ft-c-single-post__featured-image' ));
