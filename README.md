@@ -34,3 +34,12 @@ Protocol javascript is imported, but requires a few steps:
 1. Add the files you want to import to the protocolJS task in gulpfile.babel.js
 2. `npm run protocolJS`
 3. You only need to run this npm script once, or whenever you update the list of javascript files to import from Protocol.
+
+## WPML outage fallback
+
+`blog.mozilla.org/` redirects to `/en/`, and browsers cache that redirect. `/en/` only exists while WPML is running, so if WPML fails, visitors land on a 404.
+
+To serve the homepage at `/en/` during an outage:
+
+1. In WP Admin → Pages, publish the draft page "Mozilla Blog - Homepage (EN)" (slug `en`). WordPress renders it with `page-en.php`, which loads the normal homepage template.
+2. When WPML is working again, set the page back to draft.
