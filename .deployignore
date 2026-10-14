@@ -1,6 +1,10 @@
-# Paths the deploy workflow never copies to WP Engine (rsync --exclude-from).
-# A leading / anchors to the theme root. Dotfiles are always excluded.
-# Excluded paths are also never deleted on the server.
+# Paths left out of the deployed theme. `npm run build` copies the repo into
+# build/foxtail/ with rsync --exclude-from=.deployignore, and every deploy
+# (CI or manual) uploads that folder. A leading / anchors to the repo root.
+# Dotfiles are always excluded.
+
+# Build output folder itself
+/build/
 
 # Dependencies and build tooling
 node_modules/
@@ -8,6 +12,7 @@ node_modules/
 /package-lock.json
 /gulpfile*.js
 /wpgulp.config.js
+/scripts/
 
 # Build sources (only the compiled assets/css and assets/js/*.min.js are loaded)
 /assets/sass/

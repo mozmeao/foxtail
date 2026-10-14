@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------
+# Moved from Appearance -> Customize -> Additional CSS (2026-10-14)
+
+Imported last, so these rules keep the precedence they had in the
+Customizer (which loads after the theme's CSS). Once this is live, the
+Customizer's Additional CSS can be emptied. Over time, fold these into
+the component partials they belong to.
+
+Changes from the Customizer version:
+- `ft-ai-time` was missing its leading dot and never applied; fixed.
+- `.pocket-btn { display: none; }` dropped: the Pocket button is gone.
+- `#nav-download { font-size: 14px; padding: 6px 18px; }` dropped: the
+  more specific `.ft-c-header__cta-wrap #nav-download` rules in
+  components/_header.scss already override it at every width.
+--------------------------------------------------------------*/
+
+// Timeline styling used inside post content (e.g. "Mozilla's biggest AI moments")
+.ft-ai-time {
+  margin-top: 36px;
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.ft-ai-time__date {
+  font-size: 16px;
+  color: #4a4a4a;
+  display: block;
+}
+
+.ft-ai-time__title {
+  font-size: 24px;
+  display: block;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.ft-ai-time__sub {
+  display: block;
+  font-style: italic;
+}
+
+// Header and navigation adjustments
+.ft-c-hamburger,
+.ft-c-hamburger::after,
+.ft-c-hamburger::before {
+  height: 2px;
+}
+
+.ft-c-hamburger::before {
+  bottom: 6px;
+}
+
+.ft-c-hamburger::after {
+  top: 6px;
+}
+
+.ft-c-primary-nav__link {
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.ft-c-primary-nav__sub-menu__link.ft-c-primary-nav__sub-menu--1__link {
+  font-size: 14px;
+  padding: 4px;
+  margin-bottom: 10px;
+}

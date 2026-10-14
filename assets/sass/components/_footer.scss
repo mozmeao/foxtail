@@ -44,3 +44,9 @@
     }
   }
 }
+
+// Mozilla lockup logo in the footer (replaces Protocol's default logo).
+// Live CSS had this; the SCSS never did.
+.mzp-c-footer-primary-logo a {
+  background-image: url("../images/logo-lockup-hor-white.svg");
+}

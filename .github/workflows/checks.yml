@@ -30,6 +30,18 @@ jobs:
             | xargs -0 -n1 php -l > lint.log 2>&1 || { grep -v '^No syntax errors' lint.log; exit 1; }
           echo "Linted $(grep -c '^No syntax errors' lint.log) files."
 
+  build:
+    name: Build CSS and JS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+
   prod-from-master:
     name: Prod changes come from master
     if: github.event_name == 'pull_request' && github.base_ref == 'prod'
