@@ -78,16 +78,11 @@
         var response = r.target.response;
         if (response.success === true) {
           newsletterWrapper.style.display = 'none';
-
-          // Count signups in Google Analytics
+          // GA4
           if (typeof gtag === 'function') {
-            ga('send', {
-              hitType: 'event',
-              eventAction: 'newsletter subscription',
-              eventCategory: blogname + ' Interactions',
-              eventLabel: newsletter,
+            gtag("event", "newsletter_subscribe", {
+              newsletter_id: newsletter
             });
-
           }
         }
         else {
