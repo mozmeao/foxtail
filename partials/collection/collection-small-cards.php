@@ -25,7 +25,7 @@
     <div class="ft-c-post-list__wrap--two-column">
     <?php
 
-      // "External (curated)": up to 3 hand-entered items, no query (see inc/featured-items.php)
+      // "External (curated)": up to 6 hand-entered items, no query (see inc/featured-items.php)
       if ( $categoryortag === 'external' ) :
         foreach ( foxtail_collection_items($group) as $item ) :
           get_template_part('partials/card', 'small', array('item' => $item));

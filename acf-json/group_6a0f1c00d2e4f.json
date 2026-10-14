@@ -123,5 +123,5 @@
     "active": false,
     "description": "Clone source for the homepage External items (hero, secondary slots, curated collections). Inactive on purpose: it is only used through clone fields.",
     "show_in_rest": 0,
-    "modified": 1792017992
+    "modified": 1792018997
 }

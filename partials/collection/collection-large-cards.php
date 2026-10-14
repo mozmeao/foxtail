@@ -18,11 +18,15 @@
     $limit = $group['limit_posts'];
   endif;
 
-  // "External (curated)": up to 3 hand-entered items, no query (see inc/featured-items.php)
+  // "External (curated)": up to 6 hand-entered items, no query (see inc/featured-items.php)
   $curated = $categoryortag === 'external';
 
   if ( $curated ):
     $items = foxtail_collection_items($group);
+    // like posts below: a full second row of 3 or nothing. Trimmed here instead of hidden with CSS
+    if ( count($items) < 6 || $limit ) {
+      $items = array_slice($items, 0, 3);
+    }
     $num = count($items);
   else:
     $args = array(

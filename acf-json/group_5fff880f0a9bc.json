@@ -523,7 +523,7 @@
                     "name": "category_or_tag",
                     "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 6 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -613,7 +613,7 @@
                     "name": "external_items",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "1 to 3 items, shown in this order.",
+                    "instructions": "1 to 6 items, shown in this order.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -631,7 +631,7 @@
                     },
                     "collapsed": "",
                     "min": 1,
-                    "max": 3,
+                    "max": 6,
                     "layout": "block",
                     "button_label": "Add item",
                     "rows_per_page": 20,
@@ -752,7 +752,7 @@
                     "name": "category_or_tag",
                     "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 6 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -860,7 +860,7 @@
                     "name": "external_items",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "1 to 3 items, shown in this order.",
+                    "instructions": "1 to 6 items, shown in this order. With fewer than 6 items, or \"Limit Displayed posts to 3\" ticked, only the first 3 show.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -883,7 +883,7 @@
                     },
                     "collapsed": "",
                     "min": 1,
-                    "max": 3,
+                    "max": 6,
                     "layout": "block",
                     "button_label": "Add item",
                     "rows_per_page": 20,
@@ -1040,7 +1040,7 @@
                     "name": "category_or_tag",
                     "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 6 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1148,7 +1148,7 @@
                     "name": "external_items",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "1 to 3 items, shown in this order.",
+                    "instructions": "1 to 6 items, shown in this order. With fewer than 6 items, or \"Limit Displayed posts to 3\" ticked, only the first 3 show.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1171,7 +1171,7 @@
                     },
                     "collapsed": "",
                     "min": 1,
-                    "max": 3,
+                    "max": 6,
                     "layout": "block",
                     "button_label": "Add item",
                     "rows_per_page": 20,
@@ -1328,7 +1328,7 @@
                     "name": "category_or_tag",
                     "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 6 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1436,7 +1436,7 @@
                     "name": "external_items",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "1 to 3 items, shown in this order.",
+                    "instructions": "1 to 6 items, shown in this order. With fewer than 6 items, or \"Limit Displayed posts to 3\" ticked, only the first 3 show.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1459,7 +1459,7 @@
                     },
                     "collapsed": "",
                     "min": 1,
-                    "max": 3,
+                    "max": 6,
                     "layout": "block",
                     "button_label": "Add item",
                     "rows_per_page": 20,
@@ -1616,7 +1616,7 @@
                     "name": "category_or_tag",
                     "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 6 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1724,7 +1724,7 @@
                     "name": "external_items",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "1 to 3 items, shown in this order.",
+                    "instructions": "1 to 6 items, shown in this order. With fewer than 6 items, or \"Limit Displayed posts to 3\" ticked, only the first 3 show.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -1747,7 +1747,7 @@
                     },
                     "collapsed": "",
                     "min": 1,
-                    "max": 3,
+                    "max": 6,
                     "layout": "block",
                     "button_label": "Add item",
                     "rows_per_page": 20,
@@ -2028,5 +2028,5 @@
     "active": true,
     "description": "",
     "show_in_rest": false,
-    "modified": 1792017992
+    "modified": 1792018998
 }

@@ -109,7 +109,7 @@ function foxtail_featured_item( $group, $post_field, $source_field, $external_fi
   return empty( $group[ $post_field ] ) ? null : foxtail_post_item( $group[ $post_field ], $options );
 }
 
-// The curated items of a Featured Collection set to "External (curated)", at most 3, in order.
+// The curated items of a Featured Collection set to "External (curated)", at most 6, in order.
 function foxtail_collection_items( $group ) {
   $items = array();
 
@@ -121,7 +121,7 @@ function foxtail_collection_items( $group ) {
     }
   }
 
-  return array_slice( $items, 0, 3 );
+  return array_slice( $items, 0, 6 );
 }
 
 // Should a Featured Collection render? Collections with a Display toggle (#2-#5) can be switched off;
