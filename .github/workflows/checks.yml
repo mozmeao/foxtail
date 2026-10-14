@@ -1,0 +1,48 @@
+# Checks that run on every pull request. See "Branches and protections" in
+# README.md for which of these are required before merging.
+
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  php-lint:
+    name: PHP lint (${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 7.4 matches WP Engine today; 8.2 catches problems ahead of a PHP upgrade.
+        php: ["7.4", "8.2"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: none
+      - name: Lint every PHP file
+        run: |
+          find . -name '*.php' -not -path './node_modules/*' -print0 \
+            | xargs -0 -n1 php -l > lint.log 2>&1 || { grep -v '^No syntax errors' lint.log; exit 1; }
+          echo "Linted $(grep -c '^No syntax errors' lint.log) files."
+
+  prod-from-master:
+    name: Prod changes come from master
+    if: github.event_name == 'pull_request' && github.base_ref == 'prod'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check source branch
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          if [ "$HEAD_REF" != "master" ] || [ "$HEAD_REPO" != "$GITHUB_REPOSITORY" ]; then
+            echo "::error::Pull requests into prod must come from master in this repository (got $HEAD_REPO:$HEAD_REF)."
+            exit 1
+          fi
+          echo "OK: master -> prod"
