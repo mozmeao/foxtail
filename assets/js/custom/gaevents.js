@@ -16,13 +16,20 @@ const twitter = document.querySelector('.ft-js-share-link');
 // Newsletter Signups
 // (handled in basket-client.js)
 
+// Link text without screen reader text, such as "(opens firefox.com)" on external nav links
+const visibleText = link => {
+  const copy = link.cloneNode(true);
+  copy.querySelectorAll('.screen-reader-text').forEach(el => el.remove());
+  return copy.textContent.trim();
+};
+
 if (typeof gtag === 'function') {
   
   //  Global nav
   mainNavLinks.forEach(item => {
     item.addEventListener('click', event => {
       gtag("event", "link_click", {
-        label: item.innerText,
+        label: visibleText(item),
         position: 'global nav'
       });
     })
