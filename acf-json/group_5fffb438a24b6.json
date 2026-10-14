@@ -6,6 +6,7 @@
             "key": "field_5fffb438aeb39",
             "label": "Top Featured Post (de)",
             "name": "de_top_featured_post",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -18,13 +19,45 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5fffb438b1a46",
-                    "label": "Post to Feature",
-                    "name": "post",
-                    "type": "post_object",
+                    "key": "field_6a0f1d1ad2e4f",
+                    "label": "Source",
+                    "name": "source",
+                    "aria-label": "",
+                    "type": "button_group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "post": "WordPress post",
+                        "external": "External"
+                    },
+                    "allow_null": 0,
+                    "default_value": "post",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5fffb438b1a46",
+                    "label": "Post to Feature",
+                    "name": "post",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1ad2e4f",
+                                "operator": "!=",
+                                "value": "external"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -35,7 +68,41 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "object",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d1bd2e4f",
+                    "label": "External item",
+                    "name": "external",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1ad2e4f",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_6a0f1c01d2e4f",
+                        "field_6a0f1c02d2e4f",
+                        "field_6a0f1c04d2e4f",
+                        "field_6a0f1c05d2e4f"
+                    ],
+                    "display": "group",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 1
                 }
             ]
         },
@@ -43,6 +110,7 @@
             "key": "field_5fffb438aeb41",
             "label": "Secondary Featured Group (de)",
             "name": "de_secondary_featured_group",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -55,13 +123,45 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5fffb438b9f41",
-                    "label": "Featured Secondary (1 of 3)",
-                    "name": "first",
-                    "type": "post_object",
+                    "key": "field_6a0f1d1cd2e4f",
+                    "label": "Featured Secondary (1 of 3): source",
+                    "name": "first_source",
+                    "aria-label": "",
+                    "type": "button_group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "post": "WordPress post",
+                        "external": "External"
+                    },
+                    "allow_null": 0,
+                    "default_value": "post",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5fffb438b9f41",
+                    "label": "Featured Secondary (1 of 3)",
+                    "name": "first",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1cd2e4f",
+                                "operator": "!=",
+                                "value": "external"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -72,16 +172,82 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "object",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d1dd2e4f",
+                    "label": "Featured Secondary (1 of 3): external item",
+                    "name": "first_external",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1cd2e4f",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_6a0f1c01d2e4f",
+                        "field_6a0f1c02d2e4f",
+                        "field_6a0f1c03d2e4f",
+                        "field_6a0f1c04d2e4f"
+                    ],
+                    "display": "group",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 1
+                },
+                {
+                    "key": "field_6a0f1d1ed2e4f",
+                    "label": "Featured Secondary (2 of 3): source",
+                    "name": "second_source",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "post": "WordPress post",
+                        "external": "External"
+                    },
+                    "allow_null": 0,
+                    "default_value": "post",
+                    "layout": "horizontal",
+                    "return_format": "value"
                 },
                 {
                     "key": "field_5fffb438b9f4a",
                     "label": "Featured Secondary (2 of 3)",
                     "name": "second",
+                    "aria-label": "",
                     "type": "post_object",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1ed2e4f",
+                                "operator": "!=",
+                                "value": "external"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -92,16 +258,82 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "object",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d1fd2e4f",
+                    "label": "Featured Secondary (2 of 3): external item",
+                    "name": "second_external",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d1ed2e4f",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_6a0f1c01d2e4f",
+                        "field_6a0f1c02d2e4f",
+                        "field_6a0f1c03d2e4f",
+                        "field_6a0f1c04d2e4f"
+                    ],
+                    "display": "group",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 1
+                },
+                {
+                    "key": "field_6a0f1d20d2e4f",
+                    "label": "Featured Secondary (3 of 3): source",
+                    "name": "third_source",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "post": "WordPress post",
+                        "external": "External"
+                    },
+                    "allow_null": 0,
+                    "default_value": "post",
+                    "layout": "horizontal",
+                    "return_format": "value"
                 },
                 {
                     "key": "field_5fffb438b9f50",
                     "label": "Featured Secondary (3 of 3)",
                     "name": "third",
+                    "aria-label": "",
                     "type": "post_object",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d20d2e4f",
+                                "operator": "!=",
+                                "value": "external"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -112,7 +344,41 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "object",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d21d2e4f",
+                    "label": "Featured Secondary (3 of 3): external item",
+                    "name": "third_external",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d20d2e4f",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_6a0f1c01d2e4f",
+                        "field_6a0f1c02d2e4f",
+                        "field_6a0f1c03d2e4f",
+                        "field_6a0f1c04d2e4f"
+                    ],
+                    "display": "group",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 1
                 }
             ]
         },
@@ -120,6 +386,7 @@
             "key": "field_5fffb438aeb47",
             "label": "Featured Video (de)",
             "name": "de_featured_video",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -135,6 +402,7 @@
                     "key": "field_5fffb438c8130",
                     "label": "Featured Video URL",
                     "name": "url",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Past the entire youtube URL. It must be a Youtube URL\r\n\r\nex: https:\/\/www.youtube.com\/watch?v=PLTL0FiV_3o",
                     "required": 1,
@@ -154,6 +422,7 @@
                     "key": "field_5fffb438c8139",
                     "label": "Featured Video Image",
                     "name": "image",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "Upload an image that is either 1920x1080 or 1280x720",
                     "required": 1,
@@ -178,6 +447,7 @@
                     "key": "field_5fffb438c8151",
                     "label": "Featured Video Title (en)",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -199,6 +469,7 @@
             "key": "field_5fffb438aeb4c",
             "label": "Featured Collection #1 (de)",
             "name": "de_featured_collection_1",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -214,6 +485,7 @@
                     "key": "field_5fffb438d63a1",
                     "label": "Featured Collection Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the title displayed before showing this collection. Keep it short.",
                     "required": 1,
@@ -233,8 +505,9 @@
                     "key": "field_5fffb438d63aa",
                     "label": "Feature Category or Tag",
                     "name": "category_or_tag",
+                    "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -244,7 +517,8 @@
                     },
                     "choices": {
                         "category": "category",
-                        "tag": "tag"
+                        "tag": "tag",
+                        "external": "External (curated)"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -257,6 +531,7 @@
                     "key": "field_5fffb438d63b0",
                     "label": "Featured Collection Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -281,12 +556,14 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_5fffb438d63b5",
                     "label": "Featured Collection Tag",
                     "name": "tag",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -311,12 +588,71 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d22d2e4f",
+                    "label": "External items",
+                    "name": "external_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "1 to 3 items, shown in this order.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5fffb438d63aa",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a0f1d23d2e4f",
+                            "label": "External item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_6a0f1c01d2e4f",
+                                "field_6a0f1c02d2e4f",
+                                "field_6a0f1c03d2e4f",
+                                "field_6a0f1c04d2e4f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "parent_repeater": "field_6a0f1d22d2e4f"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5fffb438d63ba",
                     "label": "Featured Collection Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
@@ -334,6 +670,7 @@
             "key": "field_5fffb438aeb52",
             "label": "Featured Collection #2 (de)",
             "name": "de_featured_collection_2",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -346,13 +683,42 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_6a0f1d24d2e4f",
+                    "label": "Display Collection",
+                    "name": "display",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_5fffb438eb44e",
                     "label": "Featured Collection Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the title displayed before showing this collection. Keep it short.",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -368,10 +734,19 @@
                     "key": "field_5fffb438eb459",
                     "label": "Feature Category or Tag",
                     "name": "category_or_tag",
+                    "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -379,7 +754,8 @@
                     },
                     "choices": {
                         "category": "category",
-                        "tag": "tag"
+                        "tag": "tag",
+                        "external": "External (curated)"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -392,6 +768,7 @@
                     "key": "field_5fffb438eb464",
                     "label": "Featured Collection Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -401,6 +778,11 @@
                                 "field": "field_5fffb438eb459",
                                 "operator": "==",
                                 "value": "category"
+                            },
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
                             }
                         ]
                     ],
@@ -416,12 +798,14 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_5fffb438eb46b",
                     "label": "Featured Collection Tag",
                     "name": "tag",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -431,6 +815,11 @@
                                 "field": "field_5fffb438eb459",
                                 "operator": "==",
                                 "value": "tag"
+                            },
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
                             }
                         ]
                     ],
@@ -446,16 +835,88 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d25d2e4f",
+                    "label": "External items",
+                    "name": "external_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "1 to 3 items, shown in this order.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5fffb438eb459",
+                                "operator": "==",
+                                "value": "external"
+                            },
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a0f1d26d2e4f",
+                            "label": "External item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_6a0f1c01d2e4f",
+                                "field_6a0f1c02d2e4f",
+                                "field_6a0f1c03d2e4f",
+                                "field_6a0f1c04d2e4f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "parent_repeater": "field_6a0f1d25d2e4f"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5fffb438eb475",
                     "label": "Featured Collection Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -467,10 +928,19 @@
                     "key": "field_5fffb438eb47c",
                     "label": "Limit Displayed posts to 3",
                     "name": "limit_posts",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d24d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -488,6 +958,7 @@
             "key": "field_5fffb438aeb57",
             "label": "Featured Collection #3 (de)",
             "name": "de_featured_collection_3",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -500,13 +971,42 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_6a0f1d27d2e4f",
+                    "label": "Display Collection",
+                    "name": "display",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_5fffb439115f4",
                     "label": "Featured Collection Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the title displayed before showing this collection. Keep it short.",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -522,10 +1022,19 @@
                     "key": "field_5fffb439115fc",
                     "label": "Feature Category or Tag",
                     "name": "category_or_tag",
+                    "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -533,7 +1042,8 @@
                     },
                     "choices": {
                         "category": "category",
-                        "tag": "tag"
+                        "tag": "tag",
+                        "external": "External (curated)"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -546,6 +1056,7 @@
                     "key": "field_5fffb43911603",
                     "label": "Featured Collection Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -555,6 +1066,11 @@
                                 "field": "field_5fffb439115fc",
                                 "operator": "==",
                                 "value": "category"
+                            },
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
                             }
                         ]
                     ],
@@ -570,12 +1086,14 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_5fffb43911608",
                     "label": "Featured Collection Tag",
                     "name": "tag",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -585,6 +1103,11 @@
                                 "field": "field_5fffb439115fc",
                                 "operator": "==",
                                 "value": "tag"
+                            },
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
                             }
                         ]
                     ],
@@ -600,16 +1123,88 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d28d2e4f",
+                    "label": "External items",
+                    "name": "external_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "1 to 3 items, shown in this order.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5fffb439115fc",
+                                "operator": "==",
+                                "value": "external"
+                            },
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a0f1d29d2e4f",
+                            "label": "External item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_6a0f1c01d2e4f",
+                                "field_6a0f1c02d2e4f",
+                                "field_6a0f1c03d2e4f",
+                                "field_6a0f1c04d2e4f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "parent_repeater": "field_6a0f1d28d2e4f"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5fffb4391160e",
                     "label": "Featured Collection Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -621,10 +1216,19 @@
                     "key": "field_5fffb43911613",
                     "label": "Limit Displayed posts to 3",
                     "name": "limit_posts",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a0f1d27d2e4f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -642,6 +1246,7 @@
             "key": "field_5fffb438aeb5e",
             "label": "Featured Collection #4 (de)",
             "name": "de_featured_collection_4",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -657,6 +1262,7 @@
                     "key": "field_5fffb439286e4",
                     "label": "Display Collection",
                     "name": "display",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -676,6 +1282,7 @@
                     "key": "field_5fffb439286ef",
                     "label": "Featured Collection Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the title displayed before showing this collection. Keep it short.",
                     "required": 1,
@@ -703,8 +1310,9 @@
                     "key": "field_5fffb439286f5",
                     "label": "Feature Category or Tag",
                     "name": "category_or_tag",
+                    "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -722,7 +1330,8 @@
                     },
                     "choices": {
                         "category": "category",
-                        "tag": "tag"
+                        "tag": "tag",
+                        "external": "External (curated)"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -735,6 +1344,7 @@
                     "key": "field_5fffb439286fd",
                     "label": "Featured Collection Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -764,12 +1374,14 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_5fffb43928705",
                     "label": "Featured Collection Tag",
                     "name": "tag",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -799,12 +1411,76 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d2ad2e4f",
+                    "label": "External items",
+                    "name": "external_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "1 to 3 items, shown in this order.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5fffb439286f5",
+                                "operator": "==",
+                                "value": "external"
+                            },
+                            {
+                                "field": "field_5fffb439286e4",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a0f1d2bd2e4f",
+                            "label": "External item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_6a0f1c01d2e4f",
+                                "field_6a0f1c02d2e4f",
+                                "field_6a0f1c03d2e4f",
+                                "field_6a0f1c04d2e4f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "parent_repeater": "field_6a0f1d2ad2e4f"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5fffb4392870b",
                     "label": "Featured Collection Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
@@ -828,6 +1504,7 @@
                     "key": "field_5fffb43928712",
                     "label": "Limit Displayed posts to 3",
                     "name": "limit_posts",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -857,6 +1534,7 @@
             "key": "field_5fffb438aeb63",
             "label": "Featured Collection #5 (de)",
             "name": "de_featured_collection_5",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -872,6 +1550,7 @@
                     "key": "field_5fffb43942794",
                     "label": "Display Collection",
                     "name": "display",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -891,6 +1570,7 @@
                     "key": "field_5fffb4394279f",
                     "label": "Featured Collection Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the title displayed before showing this collection. Keep it short.",
                     "required": 1,
@@ -918,8 +1598,9 @@
                     "key": "field_5fffb439427a7",
                     "label": "Feature Category or Tag",
                     "name": "category_or_tag",
+                    "aria-label": "",
                     "type": "radio",
-                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one.",
+                    "instructions": "For the featured collection section on the homepage, you can either have the posts be pulled from a category, or from a tag. Please select one. External (curated) shows up to 3 items you enter by hand, for example firefox.com articles.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -937,7 +1618,8 @@
                     },
                     "choices": {
                         "category": "category",
-                        "tag": "tag"
+                        "tag": "tag",
+                        "external": "External (curated)"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -950,6 +1632,7 @@
                     "key": "field_5fffb439427ad",
                     "label": "Featured Collection Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -979,12 +1662,14 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_5fffb439427b3",
                     "label": "Featured Collection Tag",
                     "name": "tag",
+                    "aria-label": "",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -1014,12 +1699,76 @@
                     "save_terms": 0,
                     "load_terms": 0,
                     "return_format": "id",
-                    "multiple": 0
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_6a0f1d2cd2e4f",
+                    "label": "External items",
+                    "name": "external_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "1 to 3 items, shown in this order.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5fffb439427a7",
+                                "operator": "==",
+                                "value": "external"
+                            },
+                            {
+                                "field": "field_5fffb43942794",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a0f1d2dd2e4f",
+                            "label": "External item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_6a0f1c01d2e4f",
+                                "field_6a0f1c02d2e4f",
+                                "field_6a0f1c03d2e4f",
+                                "field_6a0f1c04d2e4f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "parent_repeater": "field_6a0f1d2cd2e4f"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5fffb439427b8",
                     "label": "Featured Collection Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
@@ -1043,6 +1792,7 @@
                     "key": "field_5fffb439427be",
                     "label": "Limit Displayed posts to 3",
                     "name": "limit_posts",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -1072,6 +1822,7 @@
             "key": "field_5fffb438aeb69",
             "label": "Featured Extra (de)",
             "name": "de_featured_extra",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -1087,6 +1838,7 @@
                     "key": "field_5fffb4395ac59",
                     "label": "Headline",
                     "name": "headline",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Example: IRL: Online life is real life",
                     "required": 1,
@@ -1106,6 +1858,7 @@
                     "key": "field_5fffb4395ac85",
                     "label": "Subheading (EN)",
                     "name": "subheading",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "Example:\r\n\r\nHost Manoush Zomorodi shares real stories of life online and real talk about the future of the Web.\r\n\r\nIRL is an original podcast from Firefox.",
                     "required": 1,
@@ -1125,6 +1878,7 @@
                     "key": "field_5fffb4395ac8b",
                     "label": "Label Text",
                     "name": "label",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the small label that appears on this section. Keep this short. For example: \"Ear Candy\"",
                     "required": 1,
@@ -1144,6 +1898,7 @@
                     "key": "field_5fffb4395ac90",
                     "label": "Image to Feature",
                     "name": "featured_image",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 1,
@@ -1168,6 +1923,7 @@
                     "key": "field_5fffb4395ac96",
                     "label": "CTA 1 Text",
                     "name": "cta_1_text",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "This is the text in the CTA button. Keep it short. Examples are \"Listen\", \"Read More\", \"Learn More\", \"Subscribe\", etc",
                     "required": 1,
@@ -1187,6 +1943,7 @@
                     "key": "field_5fffb4395ac9b",
                     "label": "CTA 1 Link",
                     "name": "cta_1_link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 1,
@@ -1202,6 +1959,7 @@
                     "key": "field_5fffb4395aca0",
                     "label": "CTA 2 Text",
                     "name": "cta_2_text",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "If you need a secondary CTA, you can use this. This is not required",
                     "required": 0,
@@ -1221,6 +1979,7 @@
                     "key": "field_5fffb4395aca6",
                     "label": "CTA 2 Link",
                     "name": "cta_2_link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
@@ -1252,5 +2011,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610593425
+    "show_in_rest": false,
+    "modified": 1792017993
 }
