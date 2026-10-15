@@ -18,8 +18,11 @@
 // For each post it tries the old permalink and the other paths WordPress
 // accepts (another category path, no language directory, /en/products/...,
 // /blog/YYYY/MM/DD/..., the comment feed, a utm_ link). Active rows must
-// redirect straight to new_url; inactive rows must not redirect, and must
+// end at new_url, redirected by the theme; inactive rows must not redirect, and must
 // carry the X-Foxtail-Redirect: inactive header (so the matching is proven).
+// Redirects on the same site that come before the theme's (WP Engine or
+// WordPress sending an old form to the permalink) are followed first, and the
+// result shows the number of steps.
 // It also checks URLs that must never redirect (Mozilla categories, tags,
 // authors, dates, search, site-wide and Firefox category feeds, posts that
 // didn't move).
@@ -133,30 +136,46 @@ for (const path of [
 ]) checks.push({ label: `stays: ${path}`, path, want: null });
 
 // A few requests at a time: much faster than one by one, still gentle on the host.
+// Requests a URL. For rows (active or inactive) it follows redirects that stay
+// on this site and aren't the theme's (WP Engine, WPML or WordPress itself
+// sending an old form to the permalink), so the theme's answer is what gets
+// judged. URLs that must not redirect are judged on the first response.
+async function fetchFollowing(path, follow) {
+  let url = base + path;
+  let hops = 0;
+  for (;;) {
+    const res = await fetch(url, { method: 'GET', redirect: 'manual', headers });
+    const location = res.headers.get('location');
+    const by = res.headers.get('x-redirect-by');
+    const next = location ? new URL(location, url) : null;
+    if (!follow || hops >= 5 || by === 'Foxtail' || res.status < 300 || res.status >= 400 || !next || next.origin !== new URL(base).origin) {
+      return { res, location: next ? next.href : null, by, marker: res.headers.get('x-foxtail-redirect'), hops, url };
+    }
+    url = next.href;
+    hops++;
+  }
+}
+
 async function run(c) {
-  const res = await fetch(base + c.path, { method: 'GET', redirect: 'manual', headers }).catch((e) => ({ error: e.message }));
-  if (res.error) return `FAIL  ${c.label}: ${res.error}`;
-  const location = res.headers.get('location');
-  const by = res.headers.get('x-redirect-by');
-  const marker = res.headers.get('x-foxtail-redirect');
+  const follow = Boolean(c.want || c.inactiveUrl);
+  const r = await fetchFollowing(c.path, follow).catch((e) => ({ error: e.message }));
+  if (r.error) return `FAIL  ${c.label}: ${r.error}`;
+  const { res, location, by, marker, hops } = r;
+  const via = hops ? ` (after ${hops} redirect${hops > 1 ? 's' : ''} on this site, from ${r.url.slice(base.length)})` : '';
   let problem = null;
   if (c.want && marker?.startsWith('off ')) {
     problem = 'redirects are switched off on this site (WP Admin -> Tools -> Firefox redirects)';
   } else if (c.want) {
     if (res.status !== expectStatus || location !== c.want || by !== 'Foxtail') {
-      problem = `want ${expectStatus} -> ${c.want}, got ${res.status}${location ? ` -> ${location}` : ''}${by ? ` (by ${by})` : ''}`;
+      problem = `want ${expectStatus} -> ${c.want}, got ${res.status}${location ? ` -> ${location}` : ''}${by ? ` (by ${by})` : ''}${via}`;
     }
   } else if (by === 'Foxtail') {
-    problem = `must not redirect, got ${res.status} -> ${location}`;
+    problem = `must not redirect, got ${res.status} -> ${location}${via}`;
   } else if (c.inactiveUrl && marker !== `inactive ${c.inactiveUrl}`) {
-    // A WordPress redirect (e.g. legacy path -> permalink) is fine: the next
-    // hop is where the inactive marker shows. Only flag direct responses.
-    if (res.status < 300 || res.status >= 400) {
-      if (!c.optional || res.status === 200) problem = `inactive row should add "X-Foxtail-Redirect: inactive ${c.inactiveUrl}", got ${res.status} ${marker ? `"${marker}"` : 'no header'}`;
-    }
+    if (!c.optional || res.status === 200) problem = `inactive row should add "X-Foxtail-Redirect: inactive ${c.inactiveUrl}", got ${res.status} ${marker ? `"${marker}"` : 'no header'}${via}`;
   }
   if (problem) return `FAIL  ${c.label}  ${c.path}\n      ${problem}`;
-  return `ok    ${c.label}  ${res.status}${location ? ` -> ${location}` : ''}${marker ? `  [${marker}]` : ''}`;
+  return `ok    ${c.label}  ${res.status}${location ? ` -> ${location}` : ''}${marker ? `  [${marker}]` : ''}${hops ? `  (${hops + 1} steps)` : ''}`;
 }
 
 const results = new Array(checks.length);
