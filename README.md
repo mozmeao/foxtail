@@ -48,8 +48,8 @@ Deploys are done by the **Deploy theme** GitHub workflow (`.github/workflows/dep
 
 What a deploy does:
 
-- Runs `npm run build`, which assembles `build/foxtail/`: the theme without build tooling, sources, docs and dotfiles (see `.deployignore`).
-- Copies `build/foxtail/` into `wp-content/themes/foxtail/` on the chosen environment, and nothing outside that folder.
+- In a job with no secrets, runs `npm run build`, which assembles `build/foxtail/`: the theme without build tooling, sources, docs and dotfiles (see `.deployignore`).
+- In a separate job (the only one that gets the SSH key), copies `build/foxtail/` into `wp-content/themes/foxtail/` on the chosen environment, and nothing outside that folder.
 - Deletes files in that folder that aren't in `build/foxtail/`.
 - Clears the WP Engine page cache when it's done.
 
@@ -75,8 +75,8 @@ These steps need admin access to the GitHub repository and the WP Engine User Po
    ```
 
 2. **Add the public key to WP Engine.** In the User Portal, open your profile → **SSH keys** (not a site's GitPush page) and add the contents of `~/.ssh/foxtail_wpe_deploy.pub`. Paste the key itself (it starts with `ssh-ed25519`), not its `SHA256:` fingerprint. The key can reach every install its WP Engine user can reach, so prefer a dedicated portal user that only has access to this install.
-3. **Add the private key to GitHub.** Repository → Settings → Secrets and variables → Actions → New repository secret. Name: `WPE_SSHG_KEY_PRIVATE`. Value: the contents of `~/.ssh/foxtail_wpe_deploy` (the file without `.pub`). After that, delete the private key from your machine or keep it in a password manager.
-4. **Create three GitHub environments** (Settings → Environments): `development`, `staging` and `production`. In each one, add a variable named `WPE_ENV` set to that environment's WP Engine install name, as shown under Sites in the User Portal (for example `mozilladev` for Development).
+3. **Create three GitHub environments** (Settings → Environments): `development`, `staging` and `production`. In each one, add a variable named `WPE_ENV` set to that environment's WP Engine install name, as shown under Sites in the User Portal (for example `mozilladev` for Development).
+4. **Add the private key to each environment, not to the repository.** In each environment → Environment secrets → Add secret. Name: `WPE_SSHG_KEY_PRIVATE`. Value: the contents of `~/.ssh/foxtail_wpe_deploy` (the file without `.pub`). As an environment secret, only the deploy job for that environment can read it (and for Production, only after approval); the build job and pull request checks never see it. Don't also keep a repository secret with the same name. After that, delete the private key from your machine or keep it in a password manager.
 5. **Protect production.** In the `production` environment:
    - Deployment branches and tags: Selected branches → `prod` only.
    - Required reviewers: add the people who approve production deploys.

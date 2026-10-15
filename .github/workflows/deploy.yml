@@ -7,6 +7,12 @@
 # Runs on push to those branches, or from Actions -> "Deploy theme" ->
 # Run workflow, picking the branch under "Use workflow from".
 #
+# Two jobs, so third-party build code never runs where the SSH key is:
+#   build  - no environment, no secrets: npm ci + npm run build, then uploads
+#            build/foxtail/ as an artifact.
+#   deploy - the GitHub environment (and its WPE_SSHG_KEY_PRIVATE secret):
+#            downloads the artifact and deploys it. No checkout, no npm.
+#
 # The WP Engine install is a multisite network. Every deploy is limited to
 # wp-content/themes/foxtail/; nothing outside that folder is touched.
 
@@ -24,10 +30,48 @@ concurrency:
   group: deploy-${{ github.ref_name }}
   cancel-in-progress: false
 
+env:
+  # Files that must exist in build/foxtail/ before anything is deployed. The
+  # deploy deletes server files that aren't in that folder, so a build that
+  # fails or skips a file must stop the run.
+  REQUIRED_FILES: >-
+    style.css functions.php inc/redirects-map.php
+    assets/css/main.min.css assets/css/editor.min.css
+    assets/js/custom.min.js assets/js/vendor.min.js
+
 jobs:
+  build:
+    name: Build ${{ github.ref_name }}
+    if: contains(fromJSON('["develop", "stage", "prod"]'), github.ref_name)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Build
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+          for f in $REQUIRED_FILES; do
+            test -s "build/foxtail/$f" || { echo "::error::build/foxtail/$f is missing"; exit 1; }
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foxtail-theme
+          path: build/foxtail/
+          if-no-files-found: error
+          retention-days: 1
+
   deploy:
     name: Deploy ${{ github.ref_name }}
-    if: contains(fromJSON('["develop", "stage", "prod"]'), github.ref_name)
+    needs: build
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name == 'prod' && 'production' || (github.ref_name == 'stage' && 'staging' || 'development') }}
     steps:
@@ -41,32 +85,28 @@ jobs:
             exit 1
           fi
           if [ "$HAS_KEY" != "true" ]; then
-            echo "::error::The WPE_SSHG_KEY_PRIVATE secret is not set."
+            echo "::error::The WPE_SSHG_KEY_PRIVATE secret is not set for this GitHub environment."
             exit 1
           fi
           echo "Deploying ${GITHUB_REF_NAME} (${GITHUB_SHA::7}) to WP Engine install: $WPE_ENV"
 
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/download-artifact@v4
         with:
-          node-version-file: .nvmrc
-          cache: npm
+          name: foxtail-theme
+          path: build/foxtail/
 
-      # Builds CSS and JS and assembles build/foxtail/, the folder that gets
-      # deployed. The deploy deletes server files that aren't in that folder,
-      # so a build that fails or skips a file must stop here.
-      - name: Build
+      - name: Check the downloaded theme
         run: |
-          npm ci --ignore-scripts
-          npm run build
-          for f in style.css functions.php assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js inc/redirects-map.php; do
+          for f in $REQUIRED_FILES; do
             test -s "build/foxtail/$f" || { echo "::error::build/foxtail/$f is missing"; exit 1; }
           done
+          echo "$(find build/foxtail -type f | wc -l) files to deploy"
 
       - name: Deploy to WP Engine
         # Pinned to v3.2.9. The repository only allows approved actions, so this
         # exact commit must be on its allowed list (Settings -> Actions -> General).
+        # It runs the Docker image wpengine/site-deploy:1.0.7 (by tag; see the
+        # approval request for the digest discussion).
         uses: wpengine/github-action-wpe-site-deploy@7bdbfb62eb657ae92afb91cb889d9c3fb36ef6c0 # v3.2.9
         with:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}

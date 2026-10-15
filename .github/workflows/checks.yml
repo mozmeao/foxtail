@@ -24,6 +24,8 @@ jobs:
         php: ["7.4", "8.2"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Lint every PHP file
         run: |
           find . -name '*.php' -not -path './node_modules/*' -print0 \
@@ -37,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
