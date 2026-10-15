@@ -1,0 +1,9 @@
+locale,path,active,new_url,note
+en,category/firefox,no,https://www.firefox.com/en-US/blog/,Firefox category archive (decided 2026-10-14)
+en,category/firefox/extensions-addons,no,https://www.firefox.com/en-US/blog/topics/extensions-addons/,
+en,category/firefox/firefox-ai,no,https://www.firefox.com/en-US/blog/topics/firefox-ai/,
+en,category/firefox/firefox-features,no,https://www.firefox.com/en-US/blog/topics/firefox-features/,
+en,category/firefox/firefox-tips,no,https://www.firefox.com/en-US/blog/topics/tips-and-tricks/,Topic slug differs
+en,category/firefox/mozilla-vpn,no,,No firefox.com topic: stays on blog.mozilla.org
+en,category/firefox/privacy-security,no,https://www.firefox.com/en-US/blog/topics/privacy-security/,
+en,firefox,no,https://www.firefox.com/en-US/blog/,The /en/firefox/ section landing (same archive as category/firefox)

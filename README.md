@@ -145,6 +145,7 @@ How it works (`scripts/build.mjs`):
 - **CSS:** Dart Sass compiles the SCSS, then Lightning CSS adds vendor prefixes for the browsers in `package.json` → `browserslist` and minifies.
 - **JS:** the files in each folder are joined in alphabetical order and minified with esbuild. They are plain scripts, not modules, so order matters.
 - `assets/vendor/protocol/` is a fixed copy of Mozilla Protocol's SCSS, images and fonts (an old version, not the npm package). It has small Dart Sass compatibility patches, each marked `Foxtail patch`.
+- **Redirects:** `redirects/*.csv` are validated and written to `inc/redirects-map.php` (see [Redirects](#redirects)).
 - `assets/sass/_customizer.scss` holds the rules that used to live in Appearance → Customize → Additional CSS. Keep it imported last.
 
 The build tools are pinned to exact versions in `package.json`. When updating them, rebuild and compare the output before shipping.
@@ -154,6 +155,60 @@ The build tools are pinned to exact versions in `package.json`. When updating th
 The theme version (`Version` in `style.css`, and `version` in `package.json`) is a release label. Bump it once per Production release, in the pull request that prepares the release, not in every feature pull request: patch for fixes (1.0.1), minor for features (1.1.0).
 
 Browser and CDN caches don't depend on it: `functions.php` adds each CSS and JS file's modification time as its `?ver=`, so every deploy serves the new files.
+
+## Redirects
+
+Posts that moved to [firefox.com/blog](https://www.firefox.com/en-US/blog/), and the Firefox category archives, redirect there. The list is in this repo:
+
+| File | One row per | Columns |
+|---|---|---|
+| `redirects/posts.csv` | migrated post | `locale, slug, wp_id, active, new_url, old_url, note` |
+| `redirects/categories.csv` | Firefox category archive | `locale, path, active, new_url, note` |
+
+Only rows with `active=yes` redirect, so a post can be listed before its firefox.com page is published. `npm run build` (and so CI and every deploy) validates both files and writes `inc/redirects-map.php`, which `inc/redirects.php` reads. A bad row fails the build with the line number and the problem.
+
+### What redirects
+
+- **Posts** are matched on language + final slug, so every URL WordPress accepts for a post redirects: its permalink, any other category path (`/en/firefox/<slug>/` for a post under `/en/mozilla/`), `/firefox/<slug>/`, `/en/products/firefox/<slug>/`, `/blog/YYYY/MM/DD/<slug>/`, its comment feed (`<permalink>feed/`), and the permalink after the post is unpublished on WordPress. A match only redirects when the URL resolves to that post (by `wp_id`) or is a 404, so another page or archive with the same slug is never redirected. Languages are separate: an `en` row doesn't redirect `/de/...`.
+- **Categories** redirect their archive and its `/page/N/`. Only Firefox categories can be listed (the build rejects Mozilla categories such as News or Internet Policy).
+- **Never redirected:** tags, authors, date archives, search, `/latest/`, the homepage, site-wide feeds and category feeds (firefox.com has no RSS).
+- `utm_*` parameters are carried over; other query parameters are dropped. Previews and non-GET requests are left alone.
+- **WP Admin → Tools → Firefox redirects** (administrators only) has the site-wide switch and the status code, and lists every row read-only (active or not, the post on this site, the target). The switch is **off** by default: nothing redirects until it's turned on, whatever the CSVs say. Status is **302** by default; choose **301** once the list is final (from the switch-over). Browsers cache 301s, so going back to 302 doesn't undo them. Saving clears the WP Engine cache. Both are site options (`foxtail_redirects_enabled`, `foxtail_redirects_status` in `wp_278_options`), so environment copies carry them.
+- A row with `active=no` adds a response header instead, `X-Foxtail-Redirect: inactive <new_url>` (or `off <new_url>` for active rows while the switch is off), so matching can be checked on any environment without redirecting anyone.
+
+### Updating the list
+
+1. **New posts migrated to firefox.com:** regenerate `blog-inventory.csv` in springfield, then run the import here and review the diff:
+
+   ```bash
+   npm run redirects:import -- ../springfield/tmp/blog/blog-inventory.csv --write
+   git diff redirects/posts.csv
+   ```
+
+   The import adds newly migrated posts as `active=no`, updates the slug and `old_url` when a permalink moved, and sets a row back to `active=no` when its firefox.com URL changed. It never deletes rows; it lists the ones to review (no longer migrated, or no longer published on WordPress).
+2. **Switch rows on** once their firefox.com page is live. Check which targets are live, then either edit `active` by hand or let the import switch on every row whose target answers 200:
+
+   ```bash
+   npm run redirects:check -- --targets
+   npm run redirects:import -- --activate-live --write
+   ```
+
+3. **Build and test locally:** `npm run build` (validates and regenerates), then check the old URLs on your local site:
+
+   ```bash
+   npm run redirects:check -- http://yoursite.local
+   ```
+
+   Add `--status 301` if the site is set to 301.
+
+   Turn the switch on first (Tools → Firefox redirects) to test active rows. It requests every path form of a sample of posts (`--all` for every row), all category rows and a list of URLs that must never redirect, and checks the status and `Location`. Active rows must redirect straight to `new_url` with `X-Redirect-By: Foxtail`; inactive rows must not redirect and must carry the `X-Foxtail-Redirect` header.
+4. **Pull request** into `master`. CI fails on invalid rows, and runs the matcher's tests (`php scripts/test-redirects.php`).
+5. **Deploy and check** each environment with the same script. For a password-protected environment, set `CHECK_BASIC_AUTH=user:password` in your own shell first (the script only reads it from there). Clear the WP Engine cache after deploying, since cached pages keep their old response. If the check still sees the previous list straight after a deploy, PHP's opcode cache hasn't picked up the new `inc/redirects-map.php` yet: wait a minute (or clear all caches in the portal) and run it again.
+6. **Right before the switch-over**, run the import again from a fresh inventory: a post's permalink changes when its primary category changes.
+
+**Translations:** each language version of a post is its own row (its own `locale`, slug and `wp_id`). A German or French translation without a row keeps showing on WordPress, even after the English post redirects. When springfield migrates translations, the inventory marks them `migrated=yes` with their firefox.com URL (e.g. `https://www.firefox.com/de/blog/<slug>/`), and the import adds them like any other post. The build warns if a row's language doesn't match its target's. The admin page shows, for each listed post, what happens to its translations ("stays here", "listed, inactive", "redirects").
+
+Categories are edited by hand in `redirects/categories.csv` (`path` is the part after the language, e.g. `category/firefox/firefox-tips`; `firefox` is the `/en/firefox/` landing).
 
 ## WPML outage fallback
 

@@ -17,6 +17,9 @@ node_modules/
 /wpgulp.config.js
 /scripts/
 
+# Redirect list sources (the build turns them into inc/redirects-map.php)
+/redirects/
+
 # Build sources (only the compiled assets/css and assets/js/*.min.js are loaded)
 /assets/sass/
 /assets/vendor/protocol/css/

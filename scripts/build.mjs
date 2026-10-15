@@ -8,6 +8,8 @@
 // JS:  assets/js/custom/*.js and assets/js/vendor/**/*.js are joined in
 //      alphabetical order (as the old gulp build did) and minified with
 //      esbuild -> assets/js/custom.min.js and assets/js/vendor.min.js
+// Redirects: redirects/*.csv are validated and written to
+//      inc/redirects-map.php (scripts/redirects.mjs); bad rows fail the build
 // build/foxtail/: the theme exactly as deployed, copied with rsync using
 //      .deployignore. Deploys (CI or manual) upload this folder.
 
@@ -20,6 +22,7 @@ import * as sass from 'sass';
 import browserslist from 'browserslist';
 import { browserslistToTargets, transform as transformCss } from 'lightningcss';
 import { transform as transformJs } from 'esbuild';
+import { generate as generateRedirects } from './redirects.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const at = (...parts) => path.join(root, ...parts);
@@ -89,6 +92,7 @@ async function build(what = 'all', { assemble = false } = {}) {
   if (what !== 'js') jobs.push(...cssEntries.map(buildCss));
   if (what !== 'css') jobs.push(...jsBundles.map(buildJs));
   const built = await Promise.all(jobs);
+  if (what === 'all') built.push(generateRedirects());
   if (assemble) built.push(assembleTheme());
   console.log(`Built in ${Date.now() - started}ms:\n  ${built.join('\n  ')}`);
 }
@@ -102,7 +106,13 @@ if (process.argv.includes('--watch')) {
   };
   watch(at('assets/sass'), { recursive: true }, () => rebuild('css'));
   for (const { dir } of jsBundles) watch(at(dir), { recursive: true }, () => rebuild('js'));
-  console.log('Watching assets/sass and assets/js for changes...');
+  watch(at('redirects'), () => {
+    try { console.log(`Wrote ${generateRedirects()}`); } catch (err) { console.error(err.message); }
+  });
+  console.log('Watching assets/sass, assets/js and redirects for changes...');
 } else {
-  await build('all', { assemble: true });
+  await build('all', { assemble: true }).catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+  });
 }

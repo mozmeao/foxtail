@@ -13,7 +13,10 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "watch": "node scripts/build.mjs --watch"
+    "watch": "node scripts/build.mjs --watch",
+    "redirects": "node scripts/redirects.mjs",
+    "redirects:import": "node scripts/redirects-import.mjs",
+    "redirects:check": "node scripts/redirects-check.mjs"
   },
   "devDependencies": {
     "browserslist": "4.29.3",
