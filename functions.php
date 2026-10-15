@@ -214,6 +214,12 @@ require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/featured-items.php';
 
 /**
+ * Redirects for posts and categories that moved to firefox.com/blog
+ */
+
+require get_template_directory() . '/inc/redirects.php';
+
+/**
  * Halt the main query in the case of an empty search
  */
 add_filter( 'posts_search', function( $search, \WP_Query $q )

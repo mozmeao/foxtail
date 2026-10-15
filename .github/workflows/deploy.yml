@@ -60,7 +60,7 @@ jobs:
         run: |
           npm ci --ignore-scripts
           npm run build
-          for f in style.css functions.php assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js; do
+          for f in style.css functions.php assets/css/main.min.css assets/css/editor.min.css assets/js/custom.min.js assets/js/vendor.min.js inc/redirects-map.php; do
             test -s "build/foxtail/$f" || { echo "::error::build/foxtail/$f is missing"; exit 1; }
           done
 

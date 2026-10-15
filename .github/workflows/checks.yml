@@ -29,6 +29,8 @@ jobs:
           find . -name '*.php' -not -path './node_modules/*' -print0 \
             | xargs -0 -n1 php -l > lint.log 2>&1 || { grep -v '^No syntax errors' lint.log; exit 1; }
           echo "Linted $(grep -c '^No syntax errors' lint.log) files."
+      - name: Test the redirect matcher
+        run: php scripts/test-redirects.php
 
   build:
     name: Build CSS and JS
