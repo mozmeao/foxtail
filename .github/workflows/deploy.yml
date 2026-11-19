@@ -107,7 +107,7 @@ jobs:
         # exact commit must be on its allowed list (Settings -> Actions -> General).
         # It runs the Docker image wpengine/site-deploy:1.0.7 (by tag; see the
         # approval request for the digest discussion).
-        uses: wpengine/github-action-wpe-site-deploy@7bdbfb62eb657ae92afb91cb889d9c3fb36ef6c0 # v3.2.9
+        uses: wpengine/github-action-wpe-site-deploy@996a3648a51f37dd54078741f46257fe9610a82c # v3.2.10
         with:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: ${{ vars.WPE_ENV }}
