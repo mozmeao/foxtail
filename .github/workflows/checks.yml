@@ -23,7 +23,7 @@ jobs:
         # 7.4 matches WP Engine today; 8.2 catches problems ahead of a PHP upgrade.
         php: ["7.4", "8.2"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Lint every PHP file
@@ -40,7 +40,7 @@ jobs:
     name: Build CSS and JS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: actions/setup-node@v4
