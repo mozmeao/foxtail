@@ -10,8 +10,9 @@
  * for a post (any category path, /firefox/<slug>/, /blog/YYYY/MM/DD/<slug>/,
  * /<permalink>/feed/, ...) goes to the same place. A match only redirects
  * when the request resolves to that very post ID, or is a 404 (a legacy path
- * form, or the post was unpublished after migrating). Category rows only
- * apply to category archives (and their /page/N/), never to their feeds.
+ * form, or the post was unpublished after migrating). Category rows apply
+ * to category archives (and their /page/N/), and send the archive's feed
+ * (/feed/, /feed/atom/, ...) to the new page's feed (<new_url>feed/).
  * Tags, authors, dates, search and site-wide feeds are never touched.
  *
  * Rows with active=no don't redirect. They add an X-Foxtail-Redirect response
@@ -116,15 +117,16 @@ function foxtail_redirect_find( $map, $path, $site, $context ) {
 		}
 	}
 
-	// Category archives (and their pages), never their feeds.
+	// Category archives (and their pages) go to the blog or topic page; their
+	// feeds (any format) go to that page's feed.
 	$categories = isset( $map['categories'][ $locale ] ) ? $map['categories'][ $locale ] : array();
 	$key        = implode( '/', $segments );
-	if ( $context['is_category'] && ! $parsed['feed'] && isset( $categories[ $key ] ) ) {
+	if ( $context['is_category'] && isset( $categories[ $key ] ) ) {
 		list( $url, $active ) = $categories[ $key ];
 		return array(
-			'url'    => $url,
+			'url'    => $parsed['feed'] ? $url . 'feed/' : $url,
 			'active' => (bool) $active,
-			'type'   => 'category',
+			'type'   => $parsed['feed'] ? 'category feed' : 'category',
 		);
 	}
 

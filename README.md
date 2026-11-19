@@ -170,8 +170,8 @@ Only rows with `active=yes` redirect, so a post can be listed before its firefox
 ### What redirects
 
 - **Posts** are matched on language + final slug, so every URL WordPress accepts for a post redirects: its permalink, any other category path (`/en/firefox/<slug>/` for a post under `/en/mozilla/`), `/firefox/<slug>/`, `/en/products/firefox/<slug>/`, `/blog/YYYY/MM/DD/<slug>/`, its comment feed (`<permalink>feed/`), and the permalink after the post is unpublished on WordPress. A match only redirects when the URL resolves to that post (by `wp_id`) or is a 404, so another page or archive with the same slug is never redirected. Languages are separate: an `en` row doesn't redirect `/de/...`.
-- **Categories** redirect their archive and its `/page/N/`. Only Firefox categories can be listed (the build rejects Mozilla categories such as News or Internet Policy).
-- **Never redirected:** tags, authors, date archives, search, `/latest/`, the homepage, site-wide feeds and category feeds (firefox.com has no RSS).
+- **Categories** redirect their archive and its `/page/N/` to `new_url`, and their feed (`/feed/`, `/feed/atom/`, any format) to the firefox.com feed at `<new_url>feed/` (`/en/category/firefox/feed/` → `https://www.firefox.com/en-US/blog/feed/`, a subcategory → its topic feed). Feeds use the same status setting: with 302, readers fetch the firefox.com feed each time; with 301, most readers also update the subscription. Only Firefox categories can be listed (the build rejects Mozilla categories such as News or Internet Policy).
+- **Never redirected:** tags, authors, date archives, search, `/latest/`, the homepage, site-wide feeds (see "Feed note" below) and feeds of categories that aren't listed (Mozilla categories, `mozilla-vpn`).
 - `utm_*` parameters are carried over; other query parameters are dropped. Previews and non-GET requests are left alone.
 - **WP Admin → Tools → Firefox redirects** (administrators only) has the site-wide switch and the status code, and lists every row read-only (active or not, the post on this site, the target). The switch is **off** by default: nothing redirects until it's turned on, whatever the CSVs say. Status is **302** by default; choose **301** once the list is final (from the switch-over). Browsers cache 301s, so going back to 302 doesn't undo them. Saving clears the WP Engine cache. Both are site options (`foxtail_redirects_enabled`, `foxtail_redirects_status` in `wp_278_options`), so environment copies carry them.
 - A row with `active=no` adds a response header instead, `X-Foxtail-Redirect: inactive <new_url>` (or `off <new_url>` for active rows while the switch is off), so matching can be checked on any environment without redirecting anyone.
@@ -209,6 +209,19 @@ Only rows with `active=yes` redirect, so a post can be listed before its firefox
 **Translations:** each language version of a post is its own row (its own `locale`, slug and `wp_id`). A German or French translation without a row keeps showing on WordPress, even after the English post redirects. When springfield migrates translations, the inventory marks them `migrated=yes` with their firefox.com URL (e.g. `https://www.firefox.com/de/blog/<slug>/`), and the import adds them like any other post. The build warns if a row's language doesn't match its target's. The admin page shows, for each listed post, what happens to its translations ("stays here", "listed, inactive", "redirects").
 
 Categories are edited by hand in `redirects/categories.csv` (`path` is the part after the language, e.g. `category/firefox/firefox-tips`; `firefox` is the `/en/firefox/` landing).
+
+## Feed note
+
+The site-wide feed (`/en/feed/`, and `/en/feed/atom/`) keeps carrying Mozilla posts after the Firefox blog moves, so instead of redirecting it tells subscribers where Firefox posts went. `inc/feed-note.php` adds, when switched on:
+
+- one item at the top, "Firefox posts have moved to firefox.com", linking `https://www.firefox.com/en-US/blog/` and giving the new feed as `firefox.com/blog/feed` (the link itself goes to `https://www.firefox.com/en-US/blog/feed/`; firefox.com redirects the short form by the reader's language). It has a fixed ID (`tag:blog.mozilla.org,2026-12-01:firefox-posts-moved`), so readers show it once, and its date is when the note was switched on;
+- a line after the feed's description: "Firefox posts now publish on firefox.com: firefox.com/blog/feed".
+
+The feed's `lastBuildDate`, `Last-Modified` and `ETag` move to that date too, so readers that ask "changed since?" don't get a 304 and miss it.
+
+Only the site-wide RSS 2.0 and Atom feeds get it (not RDF or RSS 0.92), and only for languages whose `category/firefox` row in `redirects/categories.csv` has a `new_url` (active or not): `en` for now. The note links that row's target plus `feed/`, so de/fr get it once their rows are added, when their firefox.com feed is live (their Firefox posts are still published here until then). Category, tag, author, search and comment feeds never get it; Firefox category feeds redirect instead (above). Tests: `php scripts/test-feed-note.php` (CI runs it).
+
+**Switch:** WP Admin → Tools → Firefox redirects → **Feed note** (option `foxtail_feed_note_enabled` in `wp_278_options`, default off; `foxtail_feed_note_since` holds when it was turned on). It's independent of the redirect switch, so the note can go on at launch and redirects later, and turning redirects off doesn't remove it. Saving clears the WP Engine cache. Turning it off and on again re-dates the item; readers that track IDs still show it once.
 
 ## WPML outage fallback
 
