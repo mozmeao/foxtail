@@ -62,7 +62,7 @@ jobs:
             test -s "build/foxtail/$f" || { echo "::error::build/foxtail/$f is missing"; exit 1; }
           done
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: foxtail-theme
           path: build/foxtail/
