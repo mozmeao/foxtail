@@ -1,0 +1,12 @@
+version: 2
+updates:
+  # Keep the actions in .github/workflows/ up to date. Actions pinned by SHA
+  # get the new SHA and the version comment updated together.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Wait 14 days after a release before proposing it (Mozilla security
+    # requirement for wpengine/github-action-wpe-site-deploy, MZCLD-4573).
+    cooldown:
+      default-days: 14
