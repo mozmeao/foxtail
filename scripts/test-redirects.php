@@ -89,9 +89,16 @@ $cases = array(
 	array( '/en/category/firefox/page/3/', $category, $home ),
 	array( '/firefox/', $category, $home ),
 	array( '/en/category/firefox/privacy-security/', $category, 'https://www.firefox.com/en-US/blog/topics/privacy-security/', false ),
-	// Category feeds stay.
-	array( '/en/category/firefox/feed/', $category, null ),
-	array( '/en/firefox/feed/', $category, null ),
+	// Category feeds go to the matching firefox.com feed, in any format.
+	array( '/en/category/firefox/feed/', $category, $home . 'feed/' ),
+	array( '/en/category/firefox/feed/atom/', $category, $home . 'feed/' ),
+	// WordPress serves no feed for the /en/firefox/ landing (it's a 404), so
+	// nothing forwards there.
+	array( '/en/firefox/feed/', $notfound, null ),
+	array( '/en/category/firefox/privacy-security/feed/', $category, 'https://www.firefox.com/en-US/blog/topics/privacy-security/feed/', false ),
+	array( '/en/category/firefox/mozilla-vpn/feed/', $category, null ),
+	array( '/de/category/firefox/feed/', $category, null ),
+	array( '/en/category/mozilla/feed/', $category, null ),
 	// Only listed categories, only on category archives, only their locale.
 	array( '/en/category/mozilla/news/', $category, null ),
 	array( '/en/category/firefox/mozilla-vpn/', $category, null ),

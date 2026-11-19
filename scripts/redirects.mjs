@@ -162,7 +162,7 @@ export function validateCategories(rows) {
     if (!top || !top.startsWith('firefox')) err('path must be "firefox" or start with "category/firefox" (only Firefox categories redirect)');
     const owned = segs.find((s) => MOZILLA_CATEGORIES.includes(s));
     if (owned) err(`"${owned}" is a Mozilla-owned category; its archives stay on blog.mozilla.org`);
-    if (segs.includes('feed') || segs.includes('page')) err('list the category path only (pages follow automatically, feeds are never redirected)');
+    if (segs.includes('feed') || segs.includes('page')) err('list the category path only (its pages and feed follow automatically)');
     if (!['yes', 'no'].includes(r.active)) err(`active must be "yes" or "no" (got "${r.active}")`);
     if (r.new_url === '') {
       if (r.active === 'yes') err('active row needs a new_url');

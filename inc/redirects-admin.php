@@ -1,15 +1,26 @@
 <?php
 /**
- * Tools -> Firefox redirects: the on/off switch for inc/redirects.php and a
- * read-only view of the redirect list. The list itself is edited in git
+ * Tools -> Firefox redirects: the on/off switch for inc/redirects.php, the
+ * switch for the feed note (inc/feed-note.php) and a read-only view of the
+ * redirect list. The list itself is edited in git
  * (redirects/*.csv, see "Redirects" in README.md), not here.
  *
  * @package foxtail
  */
 
 /**
- * Both settings are options of this site (wp_278_options), so they travel
- * with environment copies of the site's tables. Defaults: off, 302.
+ * A checkbox value: '1' or '0'.
+ *
+ * @param mixed $value Submitted value.
+ * @return string
+ */
+function foxtail_redirects_sanitize_flag( $value ) {
+	return '1' === (string) $value ? '1' : '0';
+}
+
+/**
+ * The settings are options of this site (wp_278_options), so they travel
+ * with environment copies of the site's tables. Defaults: off, 302, off.
  */
 function foxtail_redirects_register_setting() {
 	register_setting(
@@ -18,9 +29,7 @@ function foxtail_redirects_register_setting() {
 		array(
 			'type'              => 'string',
 			'default'           => '0',
-			'sanitize_callback' => function ( $value ) {
-				return '1' === (string) $value ? '1' : '0';
-			},
+			'sanitize_callback' => 'foxtail_redirects_sanitize_flag',
 		)
 	);
 	register_setting(
@@ -32,6 +41,15 @@ function foxtail_redirects_register_setting() {
 			'sanitize_callback' => function ( $value ) {
 				return '301' === (string) $value ? '301' : '302';
 			},
+		)
+	);
+	register_setting(
+		'foxtail_redirects',
+		'foxtail_feed_note_enabled',
+		array(
+			'type'              => 'string',
+			'default'           => '0',
+			'sanitize_callback' => 'foxtail_redirects_sanitize_flag',
 		)
 	);
 }
@@ -99,6 +117,13 @@ foxtail_redirects_watch(
 	}
 );
 foxtail_redirects_watch(
+	'foxtail_feed_note_enabled',
+	'0',
+	function ( $value ) {
+		return '1' === $value ? 'Feed note turned on' : 'Feed note turned off';
+	}
+);
+foxtail_redirects_watch(
 	'foxtail_redirects_status',
 	'302',
 	function ( $value ) {
@@ -160,6 +185,8 @@ function foxtail_redirects_admin_page() {
 	}
 	$map      = foxtail_redirect_map();
 	$enabled  = foxtail_redirects_enabled();
+	$note_on  = foxtail_feed_note_enabled();
+	$note_for = foxtail_feed_note_targets( $map );
 	$status   = foxtail_redirect_status();
 	$changed  = get_option( 'foxtail_redirects_changed' );
 	$posts    = $map ? $map['posts'] : array();
@@ -195,7 +222,7 @@ function foxtail_redirects_admin_page() {
 	?>
 	<div class="wrap">
 		<h1>Firefox redirects</h1>
-		<p>Redirects blog posts and Firefox category archives that moved to firefox.com/blog. The list is part of the Foxtail theme: change it in the theme's repository (<code>redirects/posts.csv</code>, <code>redirects/categories.csv</code>) and deploy. This page switches the whole feature on or off and sets the status code.</p>
+		<p>Redirects blog posts and Firefox category archives (and their feeds) that moved to firefox.com/blog. The list is part of the Foxtail theme: change it in the theme's repository (<code>redirects/posts.csv</code>, <code>redirects/categories.csv</code>) and deploy. This page switches the whole feature on or off and sets the status code.</p>
 
 		<?php if ( ! $map ) : ?>
 			<div class="notice notice-error inline"><p>The redirect list (<code>inc/redirects-map.php</code>) is missing from the theme, so nothing redirects. Deploy a theme built with <code>npm run build</code>.</p></div>
@@ -207,7 +234,7 @@ function foxtail_redirects_admin_page() {
 				<tr>
 					<th scope="row">Redirects</th>
 					<td>
-						<label><input type="checkbox" name="foxtail_redirects_enabled" value="1" <?php checked( $enabled ); ?>> Redirect the rows marked Active below</label>
+						<label><input type="checkbox" name="foxtail_redirects_enabled" value="1" <?php checked( $enabled ); ?>> Redirect the rows marked Active below (and their feeds)</label>
 						<p class="description">
 							Currently <strong><?php echo $enabled ? 'on' : 'off'; ?></strong>.
 							When off, nothing redirects, whatever the list says. Saving clears the WP Engine cache.
@@ -222,7 +249,29 @@ function foxtail_redirects_admin_page() {
 							<label><input type="radio" name="foxtail_redirects_status" value="302" <?php checked( 302, $status ); ?>> 302 Found (temporary)</label><br>
 							<label><input type="radio" name="foxtail_redirects_status" value="301" <?php checked( 301, $status ); ?>> 301 Moved Permanently</label>
 						</fieldset>
-						<p class="description">Use 302 while testing and until the list is final. Browsers and search engines remember a 301: switching back to 302 doesn't undo it for visitors who already followed it.</p>
+						<p class="description">Use 302 while testing and until the list is final. Browsers and search engines remember a 301: switching back to 302 doesn't undo it for visitors who already followed it. Feed readers only update a subscription to the new feed on a 301.</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Feed note</th>
+					<td>
+						<label><input type="checkbox" name="foxtail_feed_note_enabled" value="1" <?php checked( $note_on ); ?>> Add a "Firefox posts have moved" note to the site-wide feed</label>
+						<p class="description">
+							Currently <strong><?php echo $note_on ? 'on' : 'off'; ?></strong><?php echo $note_on ? ' (dated ' . esc_html( wp_date( 'Y-m-d H:i', foxtail_feed_note_since() ) ) . ')' : ''; ?>.
+							When on,
+							<?php
+							$links = array();
+							foreach ( array_keys( $note_for ) as $lang ) {
+								$url     = apply_filters( 'wpml_permalink', get_feed_link(), $lang );
+								$links[] = '<a href="' . esc_url( $url ) . '"><code>' . esc_html( wp_parse_url( $url, PHP_URL_PATH ) ) . '</code></a>';
+							}
+							echo $links ? implode( ', ', $links ) : 'no feed (no language has a <code>category/firefox</code> row in the redirect list)'; // phpcs:ignore WordPress.Security.EscapeOutput
+							?>
+							gets one item at the top pointing subscribers to the firefox.com feed, plus a line in the feed description.
+							This is separate from the Redirects switch above.
+							Firefox category feeds don't get the note: they forward to firefox.com along with the category redirects.
+							Saving clears the WP Engine cache.
+						</p>
 					</td>
 				</tr>
 			</table>
@@ -270,7 +319,7 @@ function foxtail_redirects_admin_page() {
 		<p class="description">Translations: each language version of a post needs its own row to redirect. Until then it stays on this site.</p>
 
 		<h2>Category archives (<?php echo (int) $n_cats_active; ?> of <?php echo (int) $n_cats; ?> active)</h2>
-		<p>The archive and its pages redirect. Category feeds, tags, authors, date archives and search never redirect.</p>
+		<p>The archive and its pages redirect; its feed (<code>…/feed/</code>, any format) redirects to the new page's feed (<code>…/feed/</code>). Tags, authors, date archives and search never redirect.</p>
 		<table class="widefat striped">
 			<thead><tr><th>Status</th><th>Lang</th><th>Archive</th><th>Redirects to</th></tr></thead>
 			<tbody>

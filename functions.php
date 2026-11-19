@@ -220,6 +220,12 @@ require get_template_directory() . '/inc/featured-items.php';
 require get_template_directory() . '/inc/redirects.php';
 
 /**
+ * "Firefox posts have moved" note in the site-wide feed
+ */
+
+require get_template_directory() . '/inc/feed-note.php';
+
+/**
  * Halt the main query in the case of an empty search
  */
 add_filter( 'posts_search', function( $search, \WP_Query $q )

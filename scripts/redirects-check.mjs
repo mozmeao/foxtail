@@ -24,7 +24,7 @@
 // WordPress sending an old form to the permalink) are followed first, and the
 // result shows the number of steps.
 // It also checks URLs that must never redirect (Mozilla categories, tags,
-// authors, dates, search, site-wide and Firefox category feeds, posts that
+// authors, dates, search, site-wide and Mozilla category feeds, posts that
 // didn't move).
 //
 // The site-wide switch (Tools -> Firefox redirects) must be on for active
@@ -46,7 +46,9 @@ const categories = readCsv(CATEGORIES_CSV, CATEGORY_COLUMNS);
 
 if (flag('--targets')) {
   let bad = 0;
-  const rows = [...posts, ...categories.filter((r) => r.new_url)];
+  // Category rows also send their feed to <new_url>feed/, so that has to be live too.
+  const catRows = categories.filter((r) => r.new_url);
+  const rows = [...posts, ...catRows, ...catRows.map((r) => ({ ...r, path: `${r.path} feed`, new_url: `${r.new_url}feed/` }))];
   for (const r of rows) {
     const res = await fetch(r.new_url, { method: 'HEAD', redirect: 'manual' }).catch((e) => ({ status: e.message }));
     const live = res.status === 200;
@@ -114,7 +116,8 @@ for (const r of sample(categories, Infinity)) {
   // WordPress only serves pages and feeds under /category/ (/en/firefox/page/2/ is a 404).
   if (r.path.startsWith('category/')) {
     checks.push({ label: `category ${r.path} page 2`, path: `${path}page/2/`, want: live ? r.new_url : null, inactiveUrl, optional: true });
-    checks.push({ label: `category ${r.path} feed (stays)`, path: `${path}feed/`, want: null });
+    const feed = r.new_url ? `${r.new_url}feed/` : null;
+    checks.push({ label: `category ${r.path} feed`, path: `${path}feed/`, want: live ? feed : null, inactiveUrl: live ? null : feed });
   }
 }
 
@@ -132,7 +135,7 @@ for (const r of [...active, ...inactive].filter((p) => p.locale === 'en')) {
 for (const path of [
   '/en/', '/en/feed/', '/en/comments/feed/', '/en/latest/', '/en/2025/08/', '/en/?s=firefox',
   '/en/category/mozilla/news/', '/en/category/mozilla/internet-policy/', '/en/tag/firefox/',
-  '/en/tag/firefox/feed/', '/en/category/firefox/feed/',
+  '/en/tag/firefox/feed/', '/en/category/mozilla/feed/', '/en/category/firefox/mozilla-vpn/feed/',
 ]) checks.push({ label: `stays: ${path}`, path, want: null });
 
 // A few requests at a time: much faster than one by one, still gentle on the host.

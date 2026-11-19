@@ -33,6 +33,8 @@ jobs:
           echo "Linted $(grep -c '^No syntax errors' lint.log) files."
       - name: Test the redirect matcher
         run: php scripts/test-redirects.php
+      - name: Test the feed note
+        run: php scripts/test-feed-note.php
 
   build:
     name: Build CSS and JS
